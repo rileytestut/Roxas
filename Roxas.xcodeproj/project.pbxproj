@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADB00819AE7BB80050CF31 /* RoxasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB00719AE7BB80050CF31 /* RoxasTests.m */; };
+		BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		BFADB00319AE7BB80050CF31 /* RoxasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoxasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFADB00619AE7BB80050CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFADB00719AE7BB80050CF31 /* RoxasTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoxasTests.m; sourceTree = "<group>"; };
+		BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTHelperFile.h; sourceTree = "<group>"; };
+		BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTHelperFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				BFADAFFD19AE7BB70050CF31 /* Roxas.h */,
+				BFADB01519AE7C4E0050CF31 /* Generic */,
 				BFADAFFB19AE7BB70050CF31 /* Supporting Files */,
 			);
 			path = Roxas;
@@ -90,6 +95,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BFADB01519AE7C4E0050CF31 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */,
+				BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */,
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -97,6 +111,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
 				BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +243,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
