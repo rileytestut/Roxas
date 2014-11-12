@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Riley Testut. All rights reserved.
 //
 
+#import "RSTNavigationController.h"
+
 @import UIKit;
 
 #if defined(__cplusplus)
@@ -17,9 +19,9 @@
 
 /*** General ***/
 
-static inline UINavigationController *RSTContainInNavigationController(UIViewController *viewController)
+static inline RSTNavigationController *RSTContainInNavigationController(UIViewController *viewController)
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    RSTNavigationController *navigationController = [[RSTNavigationController alloc] initWithRootViewController:viewController];
     return navigationController;
 }
 
