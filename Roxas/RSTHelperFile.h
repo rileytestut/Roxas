@@ -70,5 +70,5 @@ RST_EXTERN uint64_t rst_benchmark(size_t count, void (^block)(void));
 /*** Concurrency ***/
 
 RST_EXTERN void rst_dispatch_sync_on_main_thread(dispatch_block_t block);
-RST_EXTERN UIBackgroundTaskIdentifier rst_begin_background_task();
+RST_EXTERN UIBackgroundTaskIdentifier rst_begin_background_task(NSString *name);
 RST_EXTERN void rst_end_background_task(UIBackgroundTaskIdentifier backgroundTask);

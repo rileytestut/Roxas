@@ -26,8 +26,6 @@ uint64_t rst_benchmark(size_t count, void (^block)(void))
 
 #endif
 
-UIBackgroundTaskIdentifier rst_begin_background_task(void);
-
 void rst_dispatch_sync_on_main_thread(dispatch_block_t block)
 {
     if ([NSThread isMainThread])
@@ -43,11 +41,10 @@ void rst_dispatch_sync_on_main_thread(dispatch_block_t block)
     }
 }
 
-UIBackgroundTaskIdentifier rst_begin_background_task(void)
+UIBackgroundTaskIdentifier rst_begin_background_task(NSString *name)
 {
-    __block UIBackgroundTaskIdentifier backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
-        backgroundTask = UIBackgroundTaskInvalid;
+    __block UIBackgroundTaskIdentifier backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:name expirationHandler:^{
+        rst_end_background_task(backgroundTask);
     }];
     
     return backgroundTask;
