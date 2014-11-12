@@ -8,6 +8,24 @@
 
 #import "RSTHelperFile.h"
 
+#ifdef DEBUG
+
+uint64_t dispatch_benchmark(size_t count, void (^block)(void));
+
+uint64_t rst_benchmark(size_t count, void (^block)(void))
+{
+    return dispatch_benchmark(count, block);;
+}
+
+#else
+
+uint64_t rst_benchmark(size_t count, void (^block)(void))
+{
+    return 0;
+}
+
+#endif
+
 UIBackgroundTaskIdentifier rst_begin_background_task(void);
 
 void rst_dispatch_sync_on_main_thread(dispatch_block_t block)

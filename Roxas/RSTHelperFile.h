@@ -14,6 +14,7 @@
 #define RST_EXTERN extern
 #endif
 
+
 /*** General ***/
 
 static inline UINavigationController *RSTContainInNavigationController(UIViewController *viewController)
@@ -21,6 +22,7 @@ static inline UINavigationController *RSTContainInNavigationController(UIViewCon
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     return navigationController;
 }
+
 
 /*** Math ***/
 
@@ -33,6 +35,7 @@ static inline CGFloat RSTRadiansFromDegrees(CGFloat degrees)
 {
     return (degrees * M_PI) / 180.0;
 }
+
 
 /*** Logging ***/
 
@@ -53,6 +56,13 @@ static inline CGFloat RSTRadiansFromDegrees(CGFloat degrees)
 #endif
 
 #define ELog(error) NSLog(@"%s [Line %d] Error:\n%@\n%@\n%@", __PRETTY_FUNCTION__, __LINE__, [error localizedDescription], [error localizedRecoverySuggestion], [error userInfo])
+
+
+/*** Private Debugging ***/
+
+// Daniel Eggert, http://www.objc.io/issue-2/low-level-concurrency-apis.html
+// Returns average number of nanoseconds needed to perform task
+RST_EXTERN uint64_t rst_benchmark(size_t count, void (^block)(void));
 
 
 /*** Concurrency ***/
