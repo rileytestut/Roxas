@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
+		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADB00819AE7BB80050CF31 /* RoxasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB00719AE7BB80050CF31 /* RoxasTests.m */; };
 		BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
+		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
 		BFADAFF819AE7BB70050CF31 /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFADAFFC19AE7BB70050CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFADAFFD19AE7BB70050CF31 /* Roxas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Roxas.h; sourceTree = "<group>"; };
@@ -71,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF36F1CE1A1459720057FF07 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */,
+				BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		BFADAFEE19AE7BB70050CF31 = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				BFADAFFD19AE7BB70050CF31 /* Roxas.h */,
-				BFC6B5CF1A0A100E00BECAB5 /* Containers */,
 				BFADB01519AE7C4E0050CF31 /* Generic */,
+				BFC6B5CF1A0A100E00BECAB5 /* Containers */,
+				BF36F1CE1A1459720057FF07 /* Categories */,
 				BFADAFFB19AE7BB70050CF31 /* Supporting Files */,
 			);
 			path = Roxas;
@@ -151,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
+				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
 				BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */,
 			);
@@ -272,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
+				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
 				BFC6B5D31A0A10A900BECAB5 /* RSTNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
