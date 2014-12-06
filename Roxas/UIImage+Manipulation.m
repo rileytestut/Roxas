@@ -61,7 +61,8 @@
                                                  rect.size.width,
                                                  rect.size.height,
                                                  CGImageGetBitsPerComponent(self.CGImage),
-                                                 CGImageGetBytesPerRow(self.CGImage),
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's)
+                                                 // Passing 0 = automatic calculation, and is safer
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
     
@@ -131,7 +132,8 @@
                                                  CGRectGetWidth(clippedRect),
                                                  CGRectGetHeight(clippedRect),
                                                  CGImageGetBitsPerComponent(self.CGImage),
-                                                 CGImageGetBytesPerRow(self.CGImage),
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's)
+                                                 // Passing 0 = automatic calculation, and is safer
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
     
