@@ -11,3 +11,5 @@
 @interface RSTNavigationController : UINavigationController
 
 @end
+
+RST_EXTERN RSTNavigationController *RSTContainInNavigationController(UIViewController *viewController);

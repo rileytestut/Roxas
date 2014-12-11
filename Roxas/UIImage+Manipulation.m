@@ -61,8 +61,7 @@
                                                  rect.size.width,
                                                  rect.size.height,
                                                  CGImageGetBitsPerComponent(self.CGImage),
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's)
-                                                 // Passing 0 = automatic calculation, and is safer
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
     
@@ -132,8 +131,7 @@
                                                  CGRectGetWidth(clippedRect),
                                                  CGRectGetHeight(clippedRect),
                                                  CGImageGetBitsPerComponent(self.CGImage),
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's)
-                                                 // Passing 0 = automatic calculation, and is safer
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
     
@@ -154,3 +152,94 @@
 }
 
 @end
+
+
+UIImageMetadataOrientation UIImageMetadataOrientationFromImageOrientation(UIImageOrientation imageOrientation)
+{
+    UIImageMetadataOrientation metadataOrientation = UIImageMetadataOrientationUp;
+    
+    switch (imageOrientation)
+    {
+        case UIImageOrientationUp:
+            metadataOrientation = UIImageMetadataOrientationUp;
+            break;
+            
+        case UIImageOrientationDown:
+            metadataOrientation = UIImageMetadataOrientationDown;
+            break;
+            
+        case UIImageOrientationLeft:
+            metadataOrientation = UIImageMetadataOrientationLeft;
+            break;
+            
+        case UIImageOrientationRight:
+            metadataOrientation = UIImageMetadataOrientationRight;
+            break;
+            
+        case UIImageOrientationUpMirrored:
+            metadataOrientation = UIImageMetadataOrientationUpMirrored;
+            break;
+            
+        case UIImageOrientationDownMirrored:
+            metadataOrientation = UIImageMetadataOrientationDownMirrored;
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+            metadataOrientation = UIImageMetadataOrientationLeftMirrored;
+            break;
+            
+        case UIImageOrientationRightMirrored:
+            metadataOrientation = UIImageMetadataOrientationRightMirrored;
+            break;
+    }
+    
+    return metadataOrientation;
+}
+
+UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageMetadataOrientation metadataOrientation)
+{
+    UIImageOrientation imageOrientation = UIImageOrientationUp;
+    
+    switch (metadataOrientation)
+    {
+        case UIImageMetadataOrientationUp:
+            imageOrientation = UIImageOrientationUp;
+            break;
+            
+        case UIImageMetadataOrientationDown:
+            imageOrientation = UIImageOrientationDown;
+            break;
+            
+        case UIImageMetadataOrientationLeft:
+            imageOrientation = UIImageOrientationLeft;
+            break;
+            
+        case UIImageMetadataOrientationRight:
+            imageOrientation = UIImageOrientationRight;
+            break;
+            
+        case UIImageMetadataOrientationUpMirrored:
+            imageOrientation = UIImageOrientationUpMirrored;
+            break;
+            
+        case UIImageMetadataOrientationDownMirrored:
+            imageOrientation = UIImageOrientationDownMirrored;
+            break;
+            
+        case UIImageMetadataOrientationLeftMirrored:
+            imageOrientation = UIImageOrientationLeftMirrored;
+            break;
+            
+        case UIImageMetadataOrientationRightMirrored:
+            imageOrientation = UIImageOrientationRightMirrored;
+            break;
+    }
+    
+    return imageOrientation;
+}
+
+
+
+
+
+

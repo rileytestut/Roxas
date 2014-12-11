@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADB00819AE7BB80050CF31 /* RoxasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB00719AE7BB80050CF31 /* RoxasTests.m */; };
 		BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
+		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
+		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		BFADAFF819AE7BB70050CF31 /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFADAFFC19AE7BB70050CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFADAFFD19AE7BB70050CF31 /* Roxas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Roxas.h; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		BFADAFFB19AE7BB70050CF31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */,
 				BFADAFFC19AE7BB70050CF31 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -142,6 +146,7 @@
 		BFADB01519AE7C4E0050CF31 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */,
 				BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */,
 				BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */,
 			);
@@ -168,6 +173,7 @@
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
 				BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */,
+				BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +341,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -379,6 +386,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -402,6 +410,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Roxas/Roxas-Prefix.pch";
 				INFOPLIST_FILE = Roxas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -417,6 +426,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Roxas/Roxas-Prefix.pch";
 				INFOPLIST_FILE = Roxas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

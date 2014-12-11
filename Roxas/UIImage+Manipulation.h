@@ -8,6 +8,21 @@
 
 @import UIKit;
 
+typedef NS_ENUM(NSInteger, UIImageMetadataOrientation)
+{
+    UIImageMetadataOrientationUp               = 1,
+    UIImageMetadataOrientationDown             = 3,
+    UIImageMetadataOrientationLeft             = 8,
+    UIImageMetadataOrientationRight            = 6,
+    UIImageMetadataOrientationUpMirrored       = 2,
+    UIImageMetadataOrientationDownMirrored     = 4,
+    UIImageMetadataOrientationLeftMirrored     = 5,
+    UIImageMetadataOrientationRightMirrored    = 7,
+};
+
+RST_EXTERN UIImageMetadataOrientation UIImageMetadataOrientationFromImageOrientation(UIImageOrientation imageOrientation);
+RST_EXTERN UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageMetadataOrientation metadataOrientation);
+
 @interface UIImage (Manipulation)
 
 // Resizing

@@ -44,3 +44,10 @@
 }
 
 @end
+
+
+RSTNavigationController *RSTContainInNavigationController(UIViewController *viewController)
+{
+    RSTNavigationController *navigationController = [[RSTNavigationController alloc] initWithRootViewController:viewController];
+    return navigationController;
+}
