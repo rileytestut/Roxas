@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Riley Testut. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for Roxas.
 FOUNDATION_EXPORT double RoxasVersionNumber;

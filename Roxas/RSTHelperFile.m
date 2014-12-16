@@ -41,17 +41,17 @@ void rst_dispatch_sync_on_main_thread(dispatch_block_t block)
     }
 }
 
-UIBackgroundTaskIdentifier rst_begin_background_task(NSString *name)
+UIBackgroundTaskIdentifier RSTBeginBackgroundTask(NSString *name)
 {
-    __block UIBackgroundTaskIdentifier backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:name expirationHandler:^{
-        rst_end_background_task(backgroundTask);
+    __block UIBackgroundTaskIdentifier backgroundTask = [[[UIApplication class] sharedApplication] beginBackgroundTaskWithName:name expirationHandler:^{
+        RSTEndBackgroundTask(backgroundTask);
     }];
     
     return backgroundTask;
 };
 
-void rst_end_background_task(UIBackgroundTaskIdentifier backgroundTask)
+void RSTEndBackgroundTask(UIBackgroundTaskIdentifier backgroundTask)
 {
-    [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
+    [[[UIApplication class] sharedApplication] endBackgroundTask:backgroundTask];
     backgroundTask = UIBackgroundTaskInvalid;
 }
