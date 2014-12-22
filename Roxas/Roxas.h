@@ -26,5 +26,6 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Categories
 #import <Roxas/UIImage+Manipulation.h>
 #import <Roxas/NSBundle+Extensions.h>
+#import <Roxas/NSFileManager+TemporaryFiles.h>
 
 
