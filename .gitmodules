@@ -1,0 +1,3 @@
+[submodule "External/RSTWebViewController"]
+	path = External/RSTWebViewController
+	url = git@github.com:rileytestut/RSTWebViewController.git
