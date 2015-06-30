@@ -47,27 +47,6 @@
 			remoteGlobalIDString = BFADAFF719AE7BB70050CF31;
 			remoteInfo = Roxas;
 		};
-		BFE9ACD41A50C78200671888 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF7E5EEF1A4A13E800106AAB;
-			remoteInfo = RSTWebViewController;
-		};
-		BFE9ACD61A50C78200671888 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF7E5EFA1A4A13E800106AAB;
-			remoteInfo = RSTWebViewControllerTests;
-		};
-		BFE9ACD81A50C78B00671888 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BF7E5EEE1A4A13E800106AAB;
-			remoteInfo = RSTWebViewController;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -91,7 +70,6 @@
 		BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTHelperFile.m; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
 		BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTNavigationController.m; sourceTree = "<group>"; };
-		BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RSTWebViewController.xcodeproj; path = External/RSTWebViewController/RSTWebViewController/RSTWebViewController.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +110,6 @@
 			children = (
 				BFADAFFA19AE7BB70050CF31 /* Roxas */,
 				BFADB00419AE7BB80050CF31 /* RoxasTests */,
-				BFE9ACAC1A50C60800671888 /* External */,
 				BFADAFF919AE7BB70050CF31 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,23 +180,6 @@
 			name = Containers;
 			sourceTree = "<group>";
 		};
-		BFE9ACAC1A50C60800671888 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */,
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
-		BFE9ACD01A50C78200671888 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BFE9ACD51A50C78200671888 /* RSTWebViewController.framework */,
-				BFE9ACD71A50C78200671888 /* RSTWebViewControllerTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -253,7 +213,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BFE9ACD91A50C78B00671888 /* PBXTargetDependency */,
 			);
 			name = Roxas;
 			productName = Roxas;
@@ -307,12 +266,6 @@
 			mainGroup = BFADAFEE19AE7BB70050CF31;
 			productRefGroup = BFADAFF919AE7BB70050CF31 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BFE9ACD01A50C78200671888 /* Products */;
-					ProjectRef = BFE9ACC31A50C70D00671888 /* RSTWebViewController.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BFADAFF719AE7BB70050CF31 /* Roxas */,
@@ -321,23 +274,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BFE9ACD51A50C78200671888 /* RSTWebViewController.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RSTWebViewController.framework;
-			remoteRef = BFE9ACD41A50C78200671888 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BFE9ACD71A50C78200671888 /* RSTWebViewControllerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RSTWebViewControllerTests.xctest;
-			remoteRef = BFE9ACD61A50C78200671888 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BFADAFF619AE7BB70050CF31 /* Resources */ = {
@@ -401,11 +337,6 @@
 			isa = PBXTargetDependency;
 			target = BFADAFF719AE7BB70050CF31 /* Roxas */;
 			targetProxy = BFCDA49219AF7BA7001630D4 /* PBXContainerItemProxy */;
-		};
-		BFE9ACD91A50C78B00671888 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RSTWebViewController;
-			targetProxy = BFE9ACD81A50C78B00671888 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
