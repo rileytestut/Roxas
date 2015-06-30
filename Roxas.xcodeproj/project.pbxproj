@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DynamicProperties.h"; sourceTree = "<group>"; };
+		BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DynamicProperties.m"; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */,
 				BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */,
 				BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */,
+				BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */,
+				BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
+				BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
@@ -372,6 +379,7 @@
 			files = (
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
+				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,
 				BFC6B5D31A0A10A900BECAB5 /* RSTNavigationController.m in Sources */,
