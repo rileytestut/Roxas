@@ -27,6 +27,20 @@
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
+		BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
+		BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
+		BF86246E1BB742E700C12EEE /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */; };
+		BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */; };
+		BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */; };
+		BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624791BB742E700C12EEE /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */; };
 		BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,6 +70,7 @@
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
 		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		BF8624801BB742E700C12EEE /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TemporaryFiles.h"; sourceTree = "<group>"; };
 		BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TemporaryFiles.m"; sourceTree = "<group>"; };
 		BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Extensions.h"; sourceTree = "<group>"; };
@@ -73,6 +88,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF8624711BB742E700C12EEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFADAFF419AE7BB70050CF31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,6 +141,7 @@
 			children = (
 				BFADAFF819AE7BB70050CF31 /* Roxas.framework */,
 				BFADB00319AE7BB80050CF31 /* RoxasTests.xctest */,
+				BF8624801BB742E700C12EEE /* Roxas.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +206,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		BF8624721BB742E700C12EEE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */,
+				BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */,
+				BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */,
+				BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */,
+				BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */,
+				BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */,
+				BF8624791BB742E700C12EEE /* Roxas.h in Headers */,
+				BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFADAFF519AE7BB70050CF31 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +239,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		BF8624691BB742E700C12EEE /* RoxasTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF86247C1BB742E700C12EEE /* Build configuration list for PBXNativeTarget "RoxasTV" */;
+			buildPhases = (
+				BF86246A1BB742E700C12EEE /* Sources */,
+				BF8624711BB742E700C12EEE /* Frameworks */,
+				BF8624721BB742E700C12EEE /* Headers */,
+				BF86247B1BB742E700C12EEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoxasTV;
+			productName = Roxas;
+			productReference = BF8624801BB742E700C12EEE /* Roxas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		BFADAFF719AE7BB70050CF31 /* Roxas */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFADB00B19AE7BB80050CF31 /* Build configuration list for PBXNativeTarget "Roxas" */;
@@ -242,7 +298,7 @@
 		BFADAFEF19AE7BB70050CF31 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Riley Testut";
 				TargetAttributes = {
 					BFADAFF719AE7BB70050CF31 = {
@@ -269,6 +325,7 @@
 			projectRoot = "";
 			targets = (
 				BFADAFF719AE7BB70050CF31 /* Roxas */,
+				BF8624691BB742E700C12EEE /* RoxasTV */,
 				BFADB00219AE7BB80050CF31 /* RoxasTests */,
 				BFCDA48D19AF7B81001630D4 /* Universal */,
 			);
@@ -276,6 +333,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF86247B1BB742E700C12EEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFADAFF619AE7BB70050CF31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +373,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF86246A1BB742E700C12EEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */,
+				BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */,
+				BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */,
+				BF86246E1BB742E700C12EEE /* NSFileManager+TemporaryFiles.m in Sources */,
+				BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */,
+				BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFADAFF319AE7BB70050CF31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,6 +418,54 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BF86247D1BB742E700C12EEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Roxas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF86247E1BB742E700C12EEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Roxas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BF86247F1BB742E700C12EEE /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Roxas/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+			};
+			name = "Ad Hoc";
+		};
 		BFA7210E1A412F71008A0A21 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -374,6 +499,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Roxas;
+				PRODUCT_NAME = Roxas;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -393,7 +520,6 @@
 				INFOPLIST_FILE = Roxas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = "Ad Hoc";
@@ -407,6 +533,7 @@
 				);
 				INFOPLIST_FILE = RoxasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rileytestut.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Ad Hoc";
@@ -439,6 +566,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -458,6 +586,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Roxas;
+				PRODUCT_NAME = Roxas;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -498,6 +628,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.Roxas;
+				PRODUCT_NAME = Roxas;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -517,7 +649,6 @@
 				INFOPLIST_FILE = Roxas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -533,7 +664,6 @@
 				INFOPLIST_FILE = Roxas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -551,6 +681,7 @@
 				);
 				INFOPLIST_FILE = RoxasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rileytestut.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -564,6 +695,7 @@
 				);
 				INFOPLIST_FILE = RoxasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rileytestut.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -585,6 +717,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF86247C1BB742E700C12EEE /* Build configuration list for PBXNativeTarget "RoxasTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF86247D1BB742E700C12EEE /* Debug */,
+				BF86247E1BB742E700C12EEE /* Release */,
+				BF86247F1BB742E700C12EEE /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BFADAFF219AE7BB70050CF31 /* Build configuration list for PBXProject "Roxas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
