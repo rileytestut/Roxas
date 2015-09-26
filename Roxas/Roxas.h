@@ -8,9 +8,6 @@
 
 @import Foundation;
 
-// External
-@import RSTWebViewController;
-
 //! Project version number for Roxas.
 FOUNDATION_EXPORT double RoxasVersionNumber;
 
