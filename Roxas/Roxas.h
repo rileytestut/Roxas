@@ -20,6 +20,9 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTDefines.h>
 #import <Roxas/RSTHelperFile.h>
 
+// Visual Components
+#import <Roxas/RSTBackgroundView.h>
+
 // Containers
 #import <Roxas/RSTNavigationController.h>
 
