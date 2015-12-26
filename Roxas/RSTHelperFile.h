@@ -22,6 +22,20 @@ static inline CGFloat RSTRadiansFromDegrees(CGFloat degrees)
     return (degrees * M_PI) / 180.0;
 }
 
+static inline BOOL CGFloatEqualToFloat(CGFloat float1, CGFloat float2)
+{
+    if (float1 == float2)
+    {
+        return YES;
+    }
+    
+    if (ABS(float1 - float2) < FLT_EPSILON)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
 
 /*** Private Debugging ***/
 
