@@ -47,6 +47,8 @@
 		BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624791BB742E700C12EEE /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */; };
 		BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,6 +82,7 @@
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
 		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		BF8624801BB742E700C12EEE /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF9A87F71C538187008927B8 /* RSTConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTConstants.h; sourceTree = "<group>"; };
 		BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TemporaryFiles.h"; sourceTree = "<group>"; };
 		BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TemporaryFiles.m"; sourceTree = "<group>"; };
 		BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Extensions.h"; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */,
+				BF9A87F71C538187008927B8 /* RSTConstants.h */,
 				BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */,
 				BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */,
 			);
@@ -232,6 +236,7 @@
 			files = (
 				BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */,
 				BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */,
+				BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */,
 				BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */,
 				BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */,
 				BF0FB4461C017DF600D26616 /* RSTBackgroundView.h in Headers */,
@@ -248,6 +253,7 @@
 			files = (
 				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
 				BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */,
+				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BF0FB4451C017DF600D26616 /* RSTBackgroundView.h in Headers */,

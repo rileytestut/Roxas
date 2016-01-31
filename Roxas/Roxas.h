@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 
 // Generic
 #import <Roxas/RSTDefines.h>
+#import <Roxas/RSTConstants.h>
 #import <Roxas/RSTHelperFile.h>
 
 // Visual Components
