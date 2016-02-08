@@ -32,7 +32,11 @@
     NSError *error = nil;
     if (![self removeItemAtURL:temporaryURL error:&error])
     {
-        ELog(error);
+        // Ignore this error, because it means the client has manually removed the file themselves
+        if (error.code != NSFileNoSuchFileError)
+        {
+            ELog(error);
+        }
     }
 }
 
