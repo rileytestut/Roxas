@@ -8,6 +8,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSFileManager (TemporaryFiles)
 
 + (NSURL *)uniqueTemporaryURL;
@@ -16,3 +18,5 @@
 - (void)prepareTemporaryURL:(void(^)(NSURL *temporaryURL))fileHandlingBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END
