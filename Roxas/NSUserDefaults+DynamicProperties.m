@@ -28,11 +28,24 @@ typedef NS_ENUM(char, RSTObjCEncoding)
 
 
 @interface RSTDummyObject : NSObject
+
+// Primitives
+@property (assign, nonatomic) BOOL boolProperty;
 @property (assign, nonatomic) float floatProperty;
+@property (assign, nonatomic) double doubleProperty;
+@property (assign, nonatomic) NSInteger integerProperty;
+
+// Objects
+@property (copy, nonatomic) NSURL *URLProperty;
+@property (strong, nonatomic) id objectProperty;
+
 @end
 
 @implementation RSTDummyObject
+@synthesize boolProperty;
 @synthesize floatProperty;
+@synthesize doubleProperty;
+@synthesize integerProperty;
 @end
 
 
@@ -157,12 +170,12 @@ typedef NS_ENUM(char, RSTObjCEncoding)
             if (isSetter)
             {
                 imp = (IMP)rst_setBoolValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(setSuspended:)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(setBoolProperty:)));
             }
             else
             {
                 imp = (IMP)rst_boolValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(isSuspended)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(boolProperty)));
             }
             
             break;
@@ -189,12 +202,12 @@ typedef NS_ENUM(char, RSTObjCEncoding)
             if (isSetter)
             {
                 imp = (IMP)rst_setDoubleValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSThread class], @selector(setThreadPriority:)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(setDoubleProperty:)));
             }
             else
             {
                 imp = (IMP)rst_doubleValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSThread class], @selector(threadPriority)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(doubleProperty)));
             }
             
             break;
@@ -207,12 +220,12 @@ typedef NS_ENUM(char, RSTObjCEncoding)
             if (isSetter)
             {
                 imp = (IMP)rst_setIntegerValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(setMaxConcurrentOperationCount:)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(setIntegerProperty:)));
             }
             else
             {
                 imp = (IMP)rst_integerValue;
-                types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(maxConcurrentOperationCount)));
+                types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(integerProperty)));
             }
             
             break;
@@ -241,12 +254,12 @@ typedef NS_ENUM(char, RSTObjCEncoding)
                 if (isSetter)
                 {
                     imp = (IMP)rst_setURLValue;
-                    types = method_getTypeEncoding(class_getInstanceMethod([NSMutableURLRequest class], @selector(setURL:)));
+                    types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(setURLProperty:)));
                 }
                 else
                 {
                     imp = (IMP)rst_URLValue;
-                    types = method_getTypeEncoding(class_getInstanceMethod([NSMutableURLRequest class], @selector(URL)));
+                    types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(URLProperty)));
                 }
             }
             else
@@ -254,12 +267,12 @@ typedef NS_ENUM(char, RSTObjCEncoding)
                 if (isSetter)
                 {
                     imp = (IMP)rst_setObjectValue;
-                    types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(setName:)));
+                    types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(setObjectProperty:)));
                 }
                 else
                 {
                     imp = (IMP)rst_objectValue;
-                    types = method_getTypeEncoding(class_getInstanceMethod([NSOperationQueue class], @selector(name)));
+                    types = method_getTypeEncoding(class_getInstanceMethod([RSTDummyObject class], @selector(objectProperty)));
                 }
             }
             
@@ -343,7 +356,7 @@ NSInteger rst_integerValue(id self, SEL _cmd)
 void rst_setURLValue(id self, SEL _cmd, NSURL *value)
 {
     NSString *propertyName = _propertyAccessorMethodsMappingDictionary[NSStringFromSelector(_cmd)];
-    return [self setURL:value forKey:propertyName];
+    return [self setURL:[value copy] forKey:propertyName];
 }
 
 NSURL *rst_URLValue(id self, SEL _cmd)
