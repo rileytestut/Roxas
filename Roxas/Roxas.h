@@ -32,5 +32,6 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/NSBundle+Extensions.h>
 #import <Roxas/NSFileManager+TemporaryFiles.h>
 #import <Roxas/NSUserDefaults+DynamicProperties.h>
+#import <Roxas/UIViewController+TransitionState.h>
 
 

@@ -30,6 +30,8 @@
 		BF0FB44B1C017F1300D26616 /* RSTBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0FB4491C017F1300D26616 /* RSTBackgroundView.xib */; };
 		BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
+		BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5B42391C7D828900835FEF /* NSUserDefaultsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */; };
@@ -79,6 +81,8 @@
 		BF0FB4491C017F1300D26616 /* RSTBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSTBackgroundView.xib; sourceTree = "<group>"; };
 		BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DynamicProperties.h"; sourceTree = "<group>"; };
 		BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DynamicProperties.m"; sourceTree = "<group>"; };
+		BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TransitionState.h"; sourceTree = "<group>"; };
+		BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitionState.m"; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
 		BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsTests.m; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */,
 				BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */,
 				BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */,
+				BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */,
+				BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BF0FB4451C017DF600D26616 /* RSTBackgroundView.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
+				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
 				BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */,
 				BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */,
 				BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */,
@@ -442,6 +449,7 @@
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,
+				BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */,
 				BFC6B5D31A0A10A900BECAB5 /* RSTNavigationController.m in Sources */,
 				BF0FB4471C017DF600D26616 /* RSTBackgroundView.m in Sources */,
 			);
