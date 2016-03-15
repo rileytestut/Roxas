@@ -64,4 +64,27 @@
     return _isFinished;
 }
 
+#pragma mark - Getters/Setters -
+
+- (void)setImmediate:(BOOL)immediate
+{
+    if (immediate == _immediate)
+    {
+        return;
+    }
+    
+    _immediate = immediate;
+    
+    if (immediate)
+    {
+        self.qualityOfService = NSQualityOfServiceUserInitiated;
+        self.queuePriority = NSOperationQueuePriorityHigh;
+    }
+    else
+    {
+        self.qualityOfService = NSQualityOfServiceDefault;
+        self.queuePriority = NSOperationQueuePriorityNormal;
+    }
+}
+
 @end
