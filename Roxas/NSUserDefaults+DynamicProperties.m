@@ -42,10 +42,6 @@ typedef NS_ENUM(char, RSTObjCEncoding)
 @end
 
 @implementation RSTDummyObject
-@synthesize boolProperty;
-@synthesize floatProperty;
-@synthesize doubleProperty;
-@synthesize integerProperty;
 @end
 
 
