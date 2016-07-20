@@ -55,15 +55,20 @@ NS_ASSUME_NONNULL_END
 
 - (void)addOperation:(NSOperation *)operation forKey:(id<NSCopying>)key
 {
-    [self.operationsMapTable setObject:operation forKey:key];
+    [self.operationsMapTable setObject:operation forKey:[key copyWithZone:nil]];
     
     [self addOperation:operation];
 }
 
 - (NSOperation *)operationForKey:(id<NSCopying>)key
 {
-    NSOperation *operation = [self.operationsMapTable objectForKey:key];
+    NSOperation *operation = [self.operationsMapTable objectForKey:[key copyWithZone:nil]];
     return operation;
+}
+
+- (NSOperation *)objectForKeyedSubscript:(id<NSCopying>)key
+{
+    return [self operationForKey:key];
 }
 
 @end

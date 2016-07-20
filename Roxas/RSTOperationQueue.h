@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addOperation:(NSOperation *)operation forKey:(id<NSCopying>)key;
 - (nullable __kindof NSOperation *)operationForKey:(id<NSCopying>)key;
 
+- (nullable __kindof NSOperation *)objectForKeyedSubscript:(id<NSCopying>)key;
+
 // Unavailable
 - (void)addOperations:(NSArray<NSOperation *> *)ops waitUntilFinished:(BOOL)wait __attribute__((unavailable("waitUntilFinished conflicts with RSTOperation's immediate property.")));
 
