@@ -16,7 +16,7 @@
     UIViewController *toViewController = [transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromViewController = [transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    BOOL isAppearing = (toViewController == self || toViewController == self.parentViewController);
+    BOOL isAppearing = [toViewController isEqualToViewControllerOrAncestor:self];
     return isAppearing && ![fromViewController isKindOfClass:[UIAlertController class]];
 }
 
@@ -26,8 +26,26 @@
     UIViewController *fromViewController = [transitionCoordinator viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionCoordinator viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    BOOL isDisappearing = (fromViewController == self || fromViewController == self.parentViewController);
-    return isDisappearing && ![toViewController isKindOfClass:[UIAlertController class]];;
+    BOOL isDisappearing = [fromViewController isEqualToViewControllerOrAncestor:self];
+    return isDisappearing && ![toViewController isKindOfClass:[UIAlertController class]];
+}
+
+- (BOOL)isEqualToViewControllerOrAncestor:(UIViewController *)viewController
+{
+    BOOL isEqual = NO;
+    
+    while (viewController != nil)
+    {
+        if (self == viewController)
+        {
+            isEqual = YES;
+            break;
+        }
+        
+        viewController = viewController.parentViewController;
+    }
+    
+    return isEqual;
 }
 
 @end
