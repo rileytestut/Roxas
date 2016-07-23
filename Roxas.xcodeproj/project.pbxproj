@@ -342,8 +342,6 @@
 				TargetAttributes = {
 					BFADAFF719AE7BB70050CF31 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 6XVY5G3U44;
-						DevelopmentTeamName = "Yvette Testut";
 					};
 					BFADB00219AE7BB80050CF31 = {
 						CreatedOnToolsVersion = 6.0;
