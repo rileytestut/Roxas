@@ -8,6 +8,8 @@
 
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, UIImageMetadataOrientation)
 {
     UIImageMetadataOrientationUp               = 1,
@@ -35,3 +37,5 @@ RST_EXTERN UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageM
 - (UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius inset:(UIEdgeInsets)inset;
 
 @end
+
+NS_ASSUME_NONNULL_END
