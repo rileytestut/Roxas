@@ -29,6 +29,8 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Core Data
 #import <Roxas/RSTFetchedResultsChange.h>
 #import <Roxas/RSTFetchedResultsChangeOperation.h>
+#import <Roxas/RSTFetchedResultsDataSource.h>
+#import <Roxas/RSTFetchedResultsCollectionViewDataSource.h>
 
 // Visual Components
 #import <Roxas/RSTBackgroundView.h>
