@@ -81,6 +81,14 @@
 		BFDF04D91D51193B00091747 /* RSTFetchedResultsChangeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDF04D61D51193B00091747 /* RSTFetchedResultsChangeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFDF04DA1D51193B00091747 /* RSTFetchedResultsChangeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDF04D71D51193B00091747 /* RSTFetchedResultsChangeOperation.m */; };
 		BFDF04DB1D51193B00091747 /* RSTFetchedResultsChangeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDF04D71D51193B00091747 /* RSTFetchedResultsChangeOperation.m */; };
+		BFE35D821DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D801DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE35D831DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D801DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE35D841DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D811DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m */; };
+		BFE35D851DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D811DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m */; };
+		BFE35D881DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D861DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE35D891DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D861DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE35D8A1DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D871DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m */; };
+		BFE35D8B1DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D871DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +138,10 @@
 		BFDD05001D5E61D7002D450E /* RSTFetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTFetchedResultsDataSource.m; sourceTree = "<group>"; };
 		BFDF04D61D51193B00091747 /* RSTFetchedResultsChangeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTFetchedResultsChangeOperation.h; sourceTree = "<group>"; };
 		BFDF04D71D51193B00091747 /* RSTFetchedResultsChangeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTFetchedResultsChangeOperation.m; sourceTree = "<group>"; };
+		BFE35D801DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FetchedResultsChanges.h"; sourceTree = "<group>"; };
+		BFE35D811DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FetchedResultsChanges.m"; sourceTree = "<group>"; };
+		BFE35D861DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTFetchedResultsTableViewDataSource.h; sourceTree = "<group>"; };
+		BFE35D871DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTFetchedResultsTableViewDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +206,8 @@
 				BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */,
 				BF58BC0C1D51A027008FC1A3 /* UICollectionView+FetchedResultsChanges.h */,
 				BF58BC0D1D51A027008FC1A3 /* UICollectionView+FetchedResultsChanges.m */,
+				BFE35D801DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h */,
+				BFE35D811DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m */,
 				BFC2BC621D52DC6700C30751 /* UICollectionViewCell+Nibs.h */,
 				BFC2BC631D52DC6700C30751 /* UICollectionViewCell+Nibs.m */,
 				BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */,
@@ -289,6 +303,8 @@
 				BFDD05001D5E61D7002D450E /* RSTFetchedResultsDataSource.m */,
 				BFDD04FA1D5E5A03002D450E /* RSTFetchedResultsCollectionViewDataSource.h */,
 				BFDD04FB1D5E5A03002D450E /* RSTFetchedResultsCollectionViewDataSource.m */,
+				BFE35D861DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h */,
+				BFE35D871DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m */,
 			);
 			name = "Data Sources";
 			sourceTree = "<group>";
@@ -329,12 +345,14 @@
 				BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */,
 				BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */,
 				BF0FB4461C017DF600D26616 /* RSTBackgroundView.h in Headers */,
+				BFE35D831DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h in Headers */,
 				BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */,
 				BF57C0281D726016000132D2 /* UIView+AnimatedHide.h in Headers */,
 				BF58BC141D51A5AC008FC1A3 /* RSTFetchedResultsChange.h in Headers */,
 				BFC2BC651D52DC6700C30751 /* UICollectionViewCell+Nibs.h in Headers */,
 				BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */,
 				BF8624791BB742E700C12EEE /* Roxas.h in Headers */,
+				BFE35D891DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */,
 				BFDF04D91D51193B00091747 /* RSTFetchedResultsChangeOperation.h in Headers */,
 				BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */,
 			);
@@ -345,10 +363,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
+				BFE35D881DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */,
 				BF58BC131D51A5AC008FC1A3 /* RSTFetchedResultsChange.h in Headers */,
 				BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */,
 				BF2DF14B1C96B56000F9FDD8 /* RSTOperation.h in Headers */,
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
+				BFE35D821DBED4D700F77C10 /* UITableView+FetchedResultsChanges.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
@@ -508,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE35D851DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m in Sources */,
 				BFDF04DB1D51193B00091747 /* RSTFetchedResultsChangeOperation.m in Sources */,
 				BF57C02A1D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */,
@@ -520,6 +541,7 @@
 				BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */,
 				BFDD05021D5E61D7002D450E /* RSTFetchedResultsDataSource.m in Sources */,
 				BF0FB4481C017DF600D26616 /* RSTBackgroundView.m in Sources */,
+				BFE35D8B1DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m in Sources */,
 				BF58BC111D51A027008FC1A3 /* UICollectionView+FetchedResultsChanges.m in Sources */,
 				BFC2BC671D52DC6700C30751 /* UICollectionViewCell+Nibs.m in Sources */,
 			);
@@ -529,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE35D841DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m in Sources */,
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
 				BFDD05011D5E61D7002D450E /* RSTFetchedResultsDataSource.m in Sources */,
 				BFDF04DA1D51193B00091747 /* RSTFetchedResultsChangeOperation.m in Sources */,
@@ -546,6 +569,7 @@
 				BF58BC101D51A027008FC1A3 /* UICollectionView+FetchedResultsChanges.m in Sources */,
 				BFC2BC661D52DC6700C30751 /* UICollectionViewCell+Nibs.m in Sources */,
 				BF0FB4471C017DF600D26616 /* RSTBackgroundView.m in Sources */,
+				BFE35D8A1DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

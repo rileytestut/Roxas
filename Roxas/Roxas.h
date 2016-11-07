@@ -31,6 +31,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTFetchedResultsChangeOperation.h>
 #import <Roxas/RSTFetchedResultsDataSource.h>
 #import <Roxas/RSTFetchedResultsCollectionViewDataSource.h>
+#import <Roxas/RSTFetchedResultsTableViewDataSource.h>
 
 // Visual Components
 #import <Roxas/RSTBackgroundView.h>
@@ -45,6 +46,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/NSUserDefaults+DynamicProperties.h>
 #import <Roxas/UIViewController+TransitionState.h>
 #import <Roxas/UICollectionView+FetchedResultsChanges.h>
+#import <Roxas/UITableView+FetchedResultsChanges.h>
 #import <Roxas/UICollectionViewCell+Nibs.h>
 #import <Roxas/UIView+AnimatedHide.h>
 
