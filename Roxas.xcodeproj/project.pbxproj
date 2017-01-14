@@ -13,6 +13,13 @@
 		BF0FB4481C017DF600D26616 /* RSTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0FB4441C017DF600D26616 /* RSTBackgroundView.m */; };
 		BF0FB44A1C017F1300D26616 /* RSTBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0FB4491C017F1300D26616 /* RSTBackgroundView.xib */; };
 		BF0FB44B1C017F1300D26616 /* RSTBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0FB4491C017F1300D26616 /* RSTBackgroundView.xib */; };
+		BF18B6131E2967D400F70067 /* NSString+Localization.h in Headers */ = {isa = PBXBuildFile; fileRef = BF18B6111E2967D400F70067 /* NSString+Localization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF18B6141E2967D400F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
+		BF18B6151E2967D800F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
+		BF18B6171E2970B800F70067 /* NSStringLocalizationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6161E2970B800F70067 /* NSStringLocalizationTests.m */; };
+		BF18B6181E2975C800F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
+		BF18B61B1E297E0100F70067 /* RSTSilentAssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B61A1E297E0100F70067 /* RSTSilentAssertionHandler.m */; };
+		BF18B61D1E2981DF00F70067 /* NSString+Localization.h in Headers */ = {isa = PBXBuildFile; fileRef = BF18B6111E2967D400F70067 /* NSString+Localization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
 		BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF1441C96ABA100F9FDD8 /* RSTOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,6 +102,11 @@
 		BF0FB4431C017DF600D26616 /* RSTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTBackgroundView.h; sourceTree = "<group>"; };
 		BF0FB4441C017DF600D26616 /* RSTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTBackgroundView.m; sourceTree = "<group>"; };
 		BF0FB4491C017F1300D26616 /* RSTBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSTBackgroundView.xib; sourceTree = "<group>"; };
+		BF18B6111E2967D400F70067 /* NSString+Localization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Localization.h"; sourceTree = "<group>"; };
+		BF18B6121E2967D400F70067 /* NSString+Localization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localization.m"; sourceTree = "<group>"; };
+		BF18B6161E2970B800F70067 /* NSStringLocalizationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringLocalizationTests.m; sourceTree = "<group>"; };
+		BF18B6191E297E0100F70067 /* RSTSilentAssertionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTSilentAssertionHandler.h; sourceTree = "<group>"; };
+		BF18B61A1E297E0100F70067 /* RSTSilentAssertionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTSilentAssertionHandler.m; sourceTree = "<group>"; };
 		BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DynamicProperties.h"; sourceTree = "<group>"; };
 		BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DynamicProperties.m"; sourceTree = "<group>"; };
 		BF2DF1441C96ABA100F9FDD8 /* RSTOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTOperationQueue.h; sourceTree = "<group>"; };
@@ -179,6 +191,15 @@
 			name = "Visual Components";
 			sourceTree = "<group>";
 		};
+		BF18B61C1E297E0E00F70067 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */,
+				BF18B6161E2970B800F70067 /* NSStringLocalizationTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 		BF2DF1481C96ABA400F9FDD8 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +233,8 @@
 				BFC2BC631D52DC6700C30751 /* UICollectionViewCell+Nibs.m */,
 				BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */,
 				BF57C0261D726016000132D2 /* UIView+AnimatedHide.m */,
+				BF18B6111E2967D400F70067 /* NSString+Localization.h */,
+				BF18B6121E2967D400F70067 /* NSString+Localization.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -262,7 +285,9 @@
 		BFADB00419AE7BB80050CF31 /* RoxasTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */,
+				BF18B6191E297E0100F70067 /* RSTSilentAssertionHandler.h */,
+				BF18B61A1E297E0100F70067 /* RSTSilentAssertionHandler.m */,
+				BF18B61C1E297E0E00F70067 /* Tests */,
 				BFADB00519AE7BB80050CF31 /* Supporting Files */,
 			);
 			path = RoxasTests;
@@ -353,6 +378,7 @@
 				BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */,
 				BF8624791BB742E700C12EEE /* Roxas.h in Headers */,
 				BFE35D891DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */,
+				BF18B61D1E2981DF00F70067 /* NSString+Localization.h in Headers */,
 				BFDF04D91D51193B00091747 /* RSTFetchedResultsChangeOperation.h in Headers */,
 				BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */,
 			);
@@ -363,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */,
+				BF18B6131E2967D400F70067 /* NSString+Localization.h in Headers */,
 				BFE35D881DBED50700F77C10 /* RSTFetchedResultsTableViewDataSource.h in Headers */,
 				BF58BC131D51A5AC008FC1A3 /* RSTFetchedResultsChange.h in Headers */,
 				BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */,
@@ -537,6 +564,7 @@
 				BFDD04FF1D5E5A03002D450E /* RSTFetchedResultsCollectionViewDataSource.m in Sources */,
 				BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF86246E1BB742E700C12EEE /* NSFileManager+TemporaryFiles.m in Sources */,
+				BF18B6151E2967D800F70067 /* NSString+Localization.m in Sources */,
 				BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */,
 				BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */,
 				BFDD05021D5E61D7002D450E /* RSTFetchedResultsDataSource.m in Sources */,
@@ -553,6 +581,7 @@
 			files = (
 				BFE35D841DBED4D700F77C10 /* UITableView+FetchedResultsChanges.m in Sources */,
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
+				BF18B6141E2967D400F70067 /* NSString+Localization.m in Sources */,
 				BFDD05011D5E61D7002D450E /* RSTFetchedResultsDataSource.m in Sources */,
 				BFDF04DA1D51193B00091747 /* RSTFetchedResultsChangeOperation.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
@@ -579,6 +608,9 @@
 			files = (
 				BF5B423A1C7D84C800835FEF /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF5B42391C7D828900835FEF /* NSUserDefaultsTests.m in Sources */,
+				BF18B61B1E297E0100F70067 /* RSTSilentAssertionHandler.m in Sources */,
+				BF18B6181E2975C800F70067 /* NSString+Localization.m in Sources */,
+				BF18B6171E2970B800F70067 /* NSStringLocalizationTests.m in Sources */,
 				BF5B423B1C7D87F800835FEF /* RSTHelperFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
