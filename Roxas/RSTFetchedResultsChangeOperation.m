@@ -58,10 +58,6 @@
             
         case NSFetchedResultsChangeMove:
         {
-            // According to documentation:
-            // Move is reported when an object changes in a manner that affects its position in the results.  An update of the object is assumed in this case, no separate update message is sent to the delegate.
-            [self.collectionView reloadItemsAtIndexPaths:@[self.change.currentIndexPath]];
-            
             [self.collectionView moveItemAtIndexPath:self.change.currentIndexPath toIndexPath:self.change.destinationIndexPath];
             break;
         }
