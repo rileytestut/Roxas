@@ -6,22 +6,34 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
-@import UIKit;
+#import "RSTCellContentDataSource.h"
+
 @import CoreData;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RSTFetchedResultsDataSource<ResultType: NSManagedObject *> : NSObject <NSFetchedResultsControllerDelegate>
+@interface RSTFetchedResultsDataSource<ContentType: NSManagedObject *, CellType: UIView<RSTCellContentCell> *, ViewType: UIScrollView<RSTCellContentView> *, DataSourceType> : RSTCellContentDataSource<ContentType, CellType, ViewType, DataSourceType> <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic) NSFetchedResultsController<ResultType> *fetchedResultsController;
+@property (nonatomic) NSFetchedResultsController<ContentType> *fetchedResultsController;
 
-@property (nullable, copy, nonatomic) NSString * (^cellIdentifierHandler)(NSIndexPath *);
-
-- (instancetype)initWithFetchRequest:(NSFetchRequest<ResultType> *)fetchRequest managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
-- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController<ResultType> *)fetchedResultsController NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFetchRequest:(NSFetchRequest<ContentType> *)fetchRequest managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController<ContentType> *)fetchedResultsController NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
 
+@end
+
+NS_ASSUME_NONNULL_END
+
+
+// Concrete Subclasses
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface RSTFetchedResultsTableViewDataSource<ContentType: NSManagedObject *> : RSTFetchedResultsDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>> <UITableViewDataSource>
+@end
+
+@interface RSTFetchedResultsCollectionViewDataSource<ContentType: NSManagedObject *> : RSTFetchedResultsDataSource<ContentType, UICollectionViewCell *, UICollectionView *, id<UICollectionViewDataSource>> <UICollectionViewDataSource>
 @end
 
 NS_ASSUME_NONNULL_END

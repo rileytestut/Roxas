@@ -11,9 +11,6 @@
 
 @import UIKit;
 
-// UITableView/UICollectionView
-static NSString *RSTGenericCellIdentifier = @"Cell";
-
 static UIViewAnimationOptions RSTSystemTransitionAnimationCurve = (7 << 16);
 
 #endif /* RSTConstants_h */

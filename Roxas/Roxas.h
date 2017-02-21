@@ -26,12 +26,21 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTOperation.h>
 #import <Roxas/RSTOperation_Subclasses.h>
 
-// Core Data
-#import <Roxas/RSTFetchedResultsChange.h>
-#import <Roxas/RSTFetchedResultsChangeOperation.h>
+// Cell Content
+#import <Roxas/RSTCellContentCell.h>
+#import <Roxas/RSTCellContentView.h>
+
+// Cell Content - Changes
+#import <Roxas/RSTCellContentChange.h>
+#import <Roxas/RSTCellContentChangeOperation.h>
+
+// Cell Content - Data Sources
+#import <Roxas/RSTCellContentDataSource.h>
+#import <Roxas/RSTArrayDataSource.h>
 #import <Roxas/RSTFetchedResultsDataSource.h>
-#import <Roxas/RSTFetchedResultsCollectionViewDataSource.h>
-#import <Roxas/RSTFetchedResultsTableViewDataSource.h>
+
+// Cell Content - Search
+#import <Roxas/RSTSearchController.h>
 
 // Visual Components
 #import <Roxas/RSTBackgroundView.h>
@@ -45,10 +54,14 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/NSFileManager+TemporaryFiles.h>
 #import <Roxas/NSUserDefaults+DynamicProperties.h>
 #import <Roxas/UIViewController+TransitionState.h>
-#import <Roxas/UICollectionView+FetchedResultsChanges.h>
-#import <Roxas/UITableView+FetchedResultsChanges.h>
-#import <Roxas/UICollectionViewCell+Nibs.h>
 #import <Roxas/UIView+AnimatedHide.h>
 #import <Roxas/NSString+Localization.h>
+#import <Roxas/NSPredicate+Search.h>
+
+// Categories - Cell Content
+#import <Roxas/UITableView+CellContent.h>
+#import <Roxas/UITableViewCell+CellContent.h>
+#import <Roxas/UICollectionView+CellContent.h>
+#import <Roxas/UICollectionViewCell+CellContent.h>
 
 
