@@ -14,6 +14,6 @@
     @protected BOOL _isFinished;
 }
 
-- (void)finish;
+- (void)finish NS_REQUIRES_SUPER;
 
 @end
