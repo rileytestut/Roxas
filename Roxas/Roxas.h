@@ -29,6 +29,9 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Operations - Block Operations
 #import <Roxas/RSTBlockOperation.h>
 
+// Operations - Load Operations
+#import <Roxas/RSTLoadOperation.h>
+
 // Cell Content
 #import <Roxas/RSTCellContentCell.h>
 #import <Roxas/RSTCellContentView.h>
