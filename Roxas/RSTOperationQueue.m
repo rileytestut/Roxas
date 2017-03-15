@@ -46,8 +46,11 @@ NS_ASSUME_NONNULL_END
         
         [operation waitUntilFinished];
         
-        // Call the completion block ourselves to ensure it gets called synchronously *after* waitUntilFinished returns, but *before* this method returns
-        completionBlock();
+        if (completionBlock)
+        {
+            // Call the completion block ourselves to ensure it gets called synchronously *after* waitUntilFinished returns, but *before* this method returns
+            completionBlock();
+        }
     }
 }
 
@@ -55,6 +58,10 @@ NS_ASSUME_NONNULL_END
 
 - (void)addOperation:(NSOperation *)operation forKey:(id<NSCopying>)key
 {
+    NSOperation *previousOperation = [self operationForKey:key];
+    [previousOperation cancel];
+        
+    // Only need to copy key when seting object, not when looking up.
     [self.operationsMapTable setObject:operation forKey:[key copyWithZone:nil]];
     
     [self addOperation:operation];
@@ -62,7 +69,7 @@ NS_ASSUME_NONNULL_END
 
 - (NSOperation *)operationForKey:(id<NSCopying>)key
 {
-    NSOperation *operation = [self.operationsMapTable objectForKey:[key copyWithZone:nil]];
+    NSOperation *operation = [self.operationsMapTable objectForKey:key];
     return operation;
 }
 
