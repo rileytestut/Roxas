@@ -7,6 +7,7 @@
 //
 
 #import "RSTSearchController.h"
+#import "RSTOperationQueue.h"
 
 #import "NSPredicate+Search.h"
 
@@ -52,6 +53,8 @@
 
 @property (nullable, copy, nonatomic) RSTSearchValue *previousSearchValue;
 
+@property (nonatomic, readonly) RSTOperationQueue *searchOperationQueue;
+
 @end
 
 
@@ -63,6 +66,13 @@
     if (self)
     {
         _searchableKeyPaths = [NSSet setWithObject:@"self"];
+        
+        _searchOperationQueue = [[RSTOperationQueue alloc] init];
+        _searchOperationQueue.qualityOfService = NSOperationQualityOfServiceUserInitiated;
+        
+        // We want a concurrent queue, since this allows an operation to start before the previous operation has finished.
+        // However, because we cancel the previous operation before adding a new one, there's no issue with finishing out of order.
+        // _searchOperationQueue.maxConcurrentOperationCount = 1;
         
         self.searchResultsUpdater = self;
         
@@ -84,9 +94,16 @@
     
     RSTSearchValue *searchValue = [[RSTSearchValue alloc] initWithText:searchText predicate:searchPredicate];
     
+    NSOperation *previousSearchOperation = self.searchOperationQueue[self.previousSearchValue];
+    [previousSearchOperation cancel];
+    
     if (self.searchHandler)
     {
-        self.searchHandler(searchValue, self.previousSearchValue);
+        NSOperation *searchOperation = self.searchHandler(searchValue, self.previousSearchValue);
+        if (searchOperation)
+        {
+            [self.searchOperationQueue addOperation:searchOperation forKey:searchValue];
+        }
     }
 
     self.previousSearchValue = searchValue;

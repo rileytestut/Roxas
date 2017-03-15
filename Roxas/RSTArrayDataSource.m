@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_END
     return items.count;
 }
 
-- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate
+- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate refreshContent:(BOOL)refreshContent
 {
     if (predicate == nil)
     {
@@ -64,6 +64,13 @@ NS_ASSUME_NONNULL_END
     else
     {
         self.filteredItems = [self.items filteredArrayUsingPredicate:predicate];
+    }
+    
+    if (refreshContent)
+    {
+        rst_dispatch_sync_on_main_thread(^{
+            [self.contentView reloadData];
+        });
     }
 }
 
@@ -80,7 +87,7 @@ NS_ASSUME_NONNULL_END
     
     if (self.filteredItems)
     {
-        [self filterContentWithPredicate:self.predicate];
+        [self filterContentWithPredicate:self.predicate refreshContent:YES];
     }
     else
     {

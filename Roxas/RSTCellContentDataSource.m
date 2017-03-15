@@ -52,6 +52,12 @@ NS_ASSUME_NONNULL_END
             }
         } copy];
         
+        __weak RSTCellContentDataSource *weakSelf = self;
+        _defaultSearchHandler = [^NSOperation *(RSTSearchValue *searchValue, RSTSearchValue *previousSearchValue) {
+            weakSelf.predicate = searchValue.predicate;
+            return nil;
+        } copy];
+        
         _rowAnimation = UITableViewRowAnimationAutomatic;
     }
     
@@ -122,6 +128,7 @@ NS_ASSUME_NONNULL_END
         _previousSeparatorStyle = tableView.separatorStyle;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
+    
     _previousScrollEnabled = self.contentView.scrollEnabled;
     self.contentView.scrollEnabled = NO;
     
@@ -157,7 +164,7 @@ NS_ASSUME_NONNULL_END
     return nil;
 }
 
-- (void)filterContentWithPredicate:(NSPredicate *)predicate
+- (void)filterContentWithPredicate:(NSPredicate *)predicate refreshContent:(BOOL)refreshContent
 {
     [self doesNotRecognizeSelector:_cmd];
 }
@@ -289,8 +296,9 @@ NS_ASSUME_NONNULL_END
         _searchController = [[RSTSearchController alloc] initWithSearchResultsController:nil];
         
         __weak RSTCellContentDataSource *weakSelf = self;
-        _searchController.searchHandler = ^(RSTSearchValue *searchValue, RSTSearchValue *previousSearchValue) {
+        _searchController.searchHandler = ^NSOperation *(RSTSearchValue *searchValue, RSTSearchValue *previousSearchValue) {
             weakSelf.predicate = searchValue.predicate;
+            return nil;
         };
     }
     
@@ -316,9 +324,14 @@ NS_ASSUME_NONNULL_END
 
 - (void)setPredicate:(NSPredicate *)predicate
 {
+    [self setPredicate:predicate refreshContent:YES];
+}
+
+- (void)setPredicate:(NSPredicate *)predicate refreshContent:(BOOL)refreshContent
+{
     _predicate = predicate;
     
-    [self filterContentWithPredicate:_predicate];
+    [self filterContentWithPredicate:_predicate refreshContent:refreshContent];
 }
 
 - (void)setPlaceholderView:(UIView *)placeholderView

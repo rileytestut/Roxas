@@ -9,6 +9,9 @@
 #import "RSTFetchedResultsDataSource.h"
 #import "RSTCellContentDataSource_Subclasses.h"
 
+#import "RSTBlockOperation.h"
+#import "RSTSearchController.h"
+
 #import "RSTHelperFile.h"
 
 static void *RSTFetchedResultsDataSourceContext = &RSTFetchedResultsDataSourceContext;
@@ -76,6 +79,21 @@ NS_ASSUME_NONNULL_END
     if (self)
     {
         [self setFetchedResultsController:fetchedResultsController];
+        
+        __weak RSTFetchedResultsDataSource *weakSelf = self;
+        self.defaultSearchHandler = ^NSOperation *(RSTSearchValue *searchValue, RSTSearchValue *previousSearchValue) {
+            return [RSTBlockOperation blockOperationWithExecutionBlock:^(RSTBlockOperation * _Nonnull __weak operation) {
+                [weakSelf setPredicate:searchValue.predicate refreshContent:NO];
+                
+                // Only refresh content if search operation has not been cancelled, such as when the search text changes.
+                if (operation != nil && ![operation isCancelled])
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.contentView reloadData];
+                    });
+                }
+            }];
+        };
     }
     
     return self;
@@ -115,7 +133,7 @@ NS_ASSUME_NONNULL_END
     return sectionInfo.numberOfObjects;
 }
 
-- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate
+- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate refreshContent:(BOOL)refreshContent
 {
     RSTProxyPredicate *proxyPredicate = [[RSTProxyPredicate alloc] initWithPredicate:predicate externalPredicate:self.externalPredicate];
     self.fetchedResultsController.fetchRequest.predicate = proxyPredicate;
@@ -126,9 +144,12 @@ NS_ASSUME_NONNULL_END
         ELog(error);
     }
     
-    rst_dispatch_sync_on_main_thread(^{
-        [self.contentView reloadData];
-    });
+    if (refreshContent)
+    {
+        rst_dispatch_sync_on_main_thread(^{
+            [self.contentView reloadData];
+        });
+    }
 }
 
 #pragma mark - KVO -

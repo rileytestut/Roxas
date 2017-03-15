@@ -43,7 +43,8 @@ RST_EXTERN NSString *RSTCellContentGenericCellIdentifier;
 // Defaults to setting textLabel.text to item.description if CellType is UITableViewCell.
 @property (copy, nonatomic) void (^cellConfigurationHandler)(CellType cell, ContentType item, NSIndexPath *indexPath);
 
-// Optional predicate to filter content.
+// Optional predicate to filter content, and refreshes content immediately.
+// To set predicate without refreshing content, call -[RSTCellContentDataSource setPredicate:refreshContent:] and pass NO to refreshContent:.
 @property (nullable, copy, nonatomic) NSPredicate *predicate;
 
 // A view to display when there is no content available.
@@ -56,6 +57,10 @@ RST_EXTERN NSString *RSTCellContentGenericCellIdentifier;
 
 // Returns content item at indexPath. Performs no bounds-checking.
 - (ContentType)itemAtIndexPath:(NSIndexPath *)indexPath;
+
+// Sets an optional predicate to filter content.
+// Refreshes content immediately if passed YES for refreshContent:, otherwise refreshes at some later point (such as when calling [contentView reloadData]).
+- (void)setPredicate:(NSPredicate * _Nullable)predicate refreshContent:(BOOL)refreshContent;
 
 @end
 
