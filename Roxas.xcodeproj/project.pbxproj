@@ -80,6 +80,8 @@
 		BFADAFFE19AE7BB70050CF31 /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADB01319AE7C4A0050CF31 /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
+		BFAFF4E41E5C233500C67FF3 /* RSTBlockOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAFF4E21E5C233500C67FF3 /* RSTBlockOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */; };
 		BFC2BC641D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC651D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
@@ -153,6 +155,8 @@
 		BFADB00619AE7BB80050CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTHelperFile.h; sourceTree = "<group>"; };
 		BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTHelperFile.m; sourceTree = "<group>"; };
+		BFAFF4E21E5C233500C67FF3 /* RSTBlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTBlockOperation.h; sourceTree = "<group>"; };
+		BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTBlockOperation.m; sourceTree = "<group>"; };
 		BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CellContent.h"; sourceTree = "<group>"; };
 		BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CellContent.m"; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				BF2DF1491C96B56000F9FDD8 /* RSTOperation.h */,
 				BF2DF14E1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h */,
 				BF2DF14A1C96B56000F9FDD8 /* RSTOperation.m */,
+				BFAFF4EC1E5CBDC200C67FF3 /* Block Operations */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -356,6 +361,15 @@
 			name = Generic;
 			sourceTree = "<group>";
 		};
+		BFAFF4EC1E5CBDC200C67FF3 /* Block Operations */ = {
+			isa = PBXGroup;
+			children = (
+				BFAFF4E21E5C233500C67FF3 /* RSTBlockOperation.h */,
+				BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */,
+			);
+			name = "Block Operations";
+			sourceTree = "<group>";
+		};
 		BFC6B5CF1A0A100E00BECAB5 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +466,7 @@
 				BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */,
 				BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */,
 				BF6C2E2D1E52521400EABBC9 /* RSTArrayDataSource.h in Headers */,
+				BFAFF4E41E5C233500C67FF3 /* RSTBlockOperation.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
 				BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */,
 				BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */,
@@ -644,6 +659,7 @@
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,
+				BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */,
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,

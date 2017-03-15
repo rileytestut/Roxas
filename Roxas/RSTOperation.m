@@ -24,17 +24,26 @@ static void *RSTOperationKVOContext = &RSTOperationKVOContext;
         return;
     }
     
+    if ([self isFinished])
+    {
+        return;
+    }
+    
     if ([self isCancelled])
     {
         [self willChangeValueForKey:@"isFinished"];
         _isFinished = YES;
         [self didChangeValueForKey:@"isFinished"];
+        
+        [self finish];
     }
     else
     {
         [self willChangeValueForKey:@"isExecuting"];
         _isExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
+        
+        [self main];
     }
 }
 
