@@ -1,5 +1,5 @@
 //
-//  RSTBackgroundView.h
+//  RSTPlaceholderView.h
 //  Roxas
 //
 //  Created by Riley Testut on 11/21/15.
@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@interface RSTBackgroundView : UIView
+@interface RSTPlaceholderView : UIView
 
 // Visible by default
 @property (nonnull, nonatomic, readonly) UILabel *textLabel;

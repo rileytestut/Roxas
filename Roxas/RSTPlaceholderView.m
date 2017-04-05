@@ -1,14 +1,14 @@
 //
-//  RSTBackgroundView.m
+//  RSTPlaceholderView.m
 //  Roxas
 //
 //  Created by Riley Testut on 11/21/15.
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
-#import "RSTBackgroundView.h"
+#import "RSTPlaceholderView.h"
 
-@interface RSTBackgroundView ()
+@interface RSTPlaceholderView ()
 
 @property (nonnull, nonatomic, readwrite) IBOutlet UILabel *textLabel;
 @property (nonnull, nonatomic, readwrite) IBOutlet UILabel *detailTextLabel;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation RSTBackgroundView
+@implementation RSTPlaceholderView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

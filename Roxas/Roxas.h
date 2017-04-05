@@ -49,7 +49,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTSearchController.h>
 
 // Visual Components
-#import <Roxas/RSTBackgroundView.h>
+#import <Roxas/RSTPlaceholderView.h>
 
 // Containers
 #import <Roxas/RSTNavigationController.h>
