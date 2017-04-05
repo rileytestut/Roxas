@@ -244,7 +244,7 @@ NS_ASSUME_NONNULL_END
     
     if (sections == 0)
     {
-        self.placeholderViewVisible = YES;
+        [self showPlaceholderView];
     }
     
     _itemsCount = 0;
@@ -262,11 +262,11 @@ NS_ASSUME_NONNULL_END
     {
         if (_itemsCount == 0)
         {
-            self.placeholderViewVisible = YES;
+            [self showPlaceholderView];
         }
         else
         {
-            self.placeholderViewVisible = NO;
+            [self hidePlaceholderView];
         }
         
         _itemsCount = 0;
