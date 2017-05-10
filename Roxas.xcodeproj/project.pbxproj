@@ -84,6 +84,8 @@
 		BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */; };
 		BFAFF4E81E5CBBE600C67FF3 /* RSTLoadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAFF4E61E5CBBE600C67FF3 /* RSTLoadOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFAFF4E91E5CBBE600C67FF3 /* RSTLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */; };
+		BFBDEA341EC274D20034D65E /* UIAlertAction+Actions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */; };
 		BFC2BC641D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC651D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
@@ -161,6 +163,8 @@
 		BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTBlockOperation.m; sourceTree = "<group>"; };
 		BFAFF4E61E5CBBE600C67FF3 /* RSTLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTLoadOperation.h; sourceTree = "<group>"; };
 		BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTLoadOperation.m; sourceTree = "<group>"; };
+		BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+Actions.h"; sourceTree = "<group>"; };
+		BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+Actions.m"; sourceTree = "<group>"; };
 		BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CellContent.h"; sourceTree = "<group>"; };
 		BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CellContent.m"; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				BF18B6121E2967D400F70067 /* NSString+Localization.m */,
 				BF8D82241E53CFEE00756F08 /* NSPredicate+Search.h */,
 				BF8D82251E53CFEE00756F08 /* NSPredicate+Search.m */,
+				BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */,
+				BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				BF18B6131E2967D400F70067 /* NSString+Localization.h in Headers */,
 				BF58BC131D51A5AC008FC1A3 /* RSTCellContentChange.h in Headers */,
 				BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */,
+				BFBDEA341EC274D20034D65E /* UIAlertAction+Actions.h in Headers */,
 				BF2DF14B1C96B56000F9FDD8 /* RSTOperation.h in Headers */,
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
@@ -669,6 +676,7 @@
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
 				BF18B6141E2967D400F70067 /* NSString+Localization.m in Sources */,
 				BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
+				BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
