@@ -165,6 +165,7 @@
 		BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTLoadOperation.m; sourceTree = "<group>"; };
 		BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+Actions.h"; sourceTree = "<group>"; };
 		BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+Actions.m"; sourceTree = "<group>"; };
+		BFBDEA411EC2C5AC0034D65E /* Roxas.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Roxas.playground; sourceTree = "<group>"; };
 		BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CellContent.h"; sourceTree = "<group>"; };
 		BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CellContent.m"; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 		BFADAFEE19AE7BB70050CF31 = {
 			isa = PBXGroup;
 			children = (
+				BFBDEA411EC2C5AC0034D65E /* Roxas.playground */,
 				BFADAFFA19AE7BB70050CF31 /* Roxas */,
 				BFADB00419AE7BB80050CF31 /* RoxasTests */,
 				BFADAFF919AE7BB70050CF31 /* Products */,
