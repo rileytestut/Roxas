@@ -8,8 +8,12 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSPredicate (Search)
 
 + (instancetype)predicateForSearchingForText:(NSString *)searchText inValuesForKeyPaths:(NSSet<NSString *> *)keyPaths;
 
 @end
+
+NS_ASSUME_NONNULL_END
