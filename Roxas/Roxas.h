@@ -64,6 +64,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/NSString+Localization.h>
 #import <Roxas/NSPredicate+Search.h>
 #import <Roxas/UIAlertAction+Actions.h>
+#import <Roxas/NSLayoutConstraint+Edges.h>
 
 // Categories - Cell Content
 #import <Roxas/UITableView+CellContent.h>

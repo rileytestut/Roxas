@@ -92,6 +92,8 @@
 		BFC2BC671D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
 		BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC6B5D31A0A10A900BECAB5 /* RSTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */; };
+		BFDB50621EB942F50084C58A /* NSLayoutConstraint+Edges.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDB50601EB942F50084C58A /* NSLayoutConstraint+Edges.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */; };
 		BFDF04D81D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDF04D61D51193B00091747 /* RSTCellContentChangeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFDF04D91D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDF04D61D51193B00091747 /* RSTCellContentChangeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDF04D71D51193B00091747 /* RSTCellContentChangeOperation.m */; };
@@ -170,6 +172,8 @@
 		BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CellContent.m"; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
 		BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTNavigationController.m; sourceTree = "<group>"; };
+		BFDB50601EB942F50084C58A /* NSLayoutConstraint+Edges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Edges.h"; sourceTree = "<group>"; };
+		BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+Edges.m"; sourceTree = "<group>"; };
 		BFDF04D61D51193B00091747 /* RSTCellContentChangeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentChangeOperation.h; sourceTree = "<group>"; };
 		BFDF04D71D51193B00091747 /* RSTCellContentChangeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTCellContentChangeOperation.m; sourceTree = "<group>"; };
 		BFE35D801DBED4D700F77C10 /* UITableView+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CellContent.h"; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				BF8D82251E53CFEE00756F08 /* NSPredicate+Search.m */,
 				BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */,
 				BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */,
+				BFDB50601EB942F50084C58A /* NSLayoutConstraint+Edges.h */,
+				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */,
 				BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */,
 				BFAFF4E81E5CBBE600C67FF3 /* RSTLoadOperation.h in Headers */,
+				BFDB50621EB942F50084C58A /* NSLayoutConstraint+Edges.h in Headers */,
 				BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
 				BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */,
 				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
@@ -687,6 +694,7 @@
 				BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */,
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
+				BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,
 				BF2DF14C1C96B56000F9FDD8 /* RSTOperation.m in Sources */,
 				BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */,
