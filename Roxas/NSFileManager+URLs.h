@@ -1,5 +1,5 @@
 //
-//  NSFileManager+TemporaryFiles.h
+//  NSFileManager+URLs.h
 //  Roxas
 //
 //  Created by Riley Testut on 12/21/14.
@@ -10,9 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSFileManager (TemporaryFiles)
+@interface NSFileManager (URLs)
 
-+ (NSURL *)uniqueTemporaryURL;
+@property (readonly, copy) NSURL *documentsDirectory;
+@property (readonly, copy) NSURL *libraryDirectory;
+@property (readonly, copy) NSURL *applicationSupportDirectory;
+@property (readonly, copy) NSURL *cachesDirectory;
+
+- (NSURL *)uniqueTemporaryURL;
 
 // Automatically removes item at temporaryURL upon returning from block. Synchronous.
 - (void)prepareTemporaryURL:(void(^)(NSURL *temporaryURL))fileHandlingBlock;

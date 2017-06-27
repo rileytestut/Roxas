@@ -52,12 +52,12 @@
 		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
 		BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
-		BF86246E1BB742E700C12EEE /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */; };
+		BF86246E1BB742E700C12EEE /* NSFileManager+URLs.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */; };
 		BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */; };
 		BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */; };
 		BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8624751BB742E700C12EEE /* NSFileManager+URLs.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,8 +72,8 @@
 		BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8FD1CB1E5BBFB100820F2C /* UITableViewCell+CellContent.m */; };
 		BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */; };
+		BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */; };
 		BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */; };
 		BFAD9D0A1E5283970051F340 /* RSTCellContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAD9D091E5283970051F340 /* RSTCellContentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -149,8 +149,8 @@
 		BF8FD1CA1E5BBFB100820F2C /* UITableViewCell+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+CellContent.h"; sourceTree = "<group>"; };
 		BF8FD1CB1E5BBFB100820F2C /* UITableViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+CellContent.m"; sourceTree = "<group>"; };
 		BF9A87F71C538187008927B8 /* RSTConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTConstants.h; sourceTree = "<group>"; };
-		BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TemporaryFiles.h"; sourceTree = "<group>"; };
-		BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TemporaryFiles.m"; sourceTree = "<group>"; };
+		BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+URLs.h"; sourceTree = "<group>"; };
+		BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+URLs.m"; sourceTree = "<group>"; };
 		BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Extensions.h"; sourceTree = "<group>"; };
 		BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Extensions.m"; sourceTree = "<group>"; };
 		BFAD9D091E5283970051F340 /* RSTCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentView.h; sourceTree = "<group>"; };
@@ -251,8 +251,8 @@
 				BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */,
 				BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */,
 				BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */,
-				BF9AB7CF1A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h */,
-				BF9AB7D01A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m */,
+				BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */,
+				BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */,
 				BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */,
 				BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */,
 				BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */,
@@ -460,7 +460,7 @@
 				BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */,
 				BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */,
 				BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */,
-				BF8624751BB742E700C12EEE /* NSFileManager+TemporaryFiles.h in Headers */,
+				BF8624751BB742E700C12EEE /* NSFileManager+URLs.h in Headers */,
 				BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */,
 				BF0FB4461C017DF600D26616 /* RSTPlaceholderView.h in Headers */,
 				BFE35D831DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
@@ -489,7 +489,7 @@
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
-				BF9AB7D11A477FF4007DFEFF /* NSFileManager+TemporaryFiles.h in Headers */,
+				BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BF0FB4451C017DF600D26616 /* RSTPlaceholderView.h in Headers */,
 				BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */,
@@ -665,7 +665,7 @@
 				BF58BC171D51A5C9008FC1A3 /* RSTCellContentChange.m in Sources */,
 				BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */,
 				BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */,
-				BF86246E1BB742E700C12EEE /* NSFileManager+TemporaryFiles.m in Sources */,
+				BF86246E1BB742E700C12EEE /* NSFileManager+URLs.m in Sources */,
 				BF18B6151E2967D800F70067 /* NSString+Localization.m in Sources */,
 				BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */,
 				BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */,
@@ -689,7 +689,7 @@
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
-				BF9AB7D21A477FF4007DFEFF /* NSFileManager+TemporaryFiles.m in Sources */,
+				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,
 				BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */,
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
