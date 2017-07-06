@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTOperationQueue ()
 
-@property (copy, nonatomic, readonly) NSMapTable<id<NSCopying>, NSOperation *> *operationsMapTable;
+@property (copy, nonatomic, readonly) NSMapTable<id, NSOperation *> *operationsMapTable;
 
 @end
 
@@ -56,24 +56,23 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - RSTOperationQueue -
 
-- (void)addOperation:(NSOperation *)operation forKey:(id<NSCopying>)key
+- (void)addOperation:(NSOperation *)operation forKey:(id)key
 {
     NSOperation *previousOperation = [self operationForKey:key];
     [previousOperation cancel];
         
-    // Only need to copy key when seting object, not when looking up.
-    [self.operationsMapTable setObject:operation forKey:[key copyWithZone:nil]];
+    [self.operationsMapTable setObject:operation forKey:key];
     
     [self addOperation:operation];
 }
 
-- (NSOperation *)operationForKey:(id<NSCopying>)key
+- (NSOperation *)operationForKey:(id)key
 {
     NSOperation *operation = [self.operationsMapTable objectForKey:key];
     return operation;
 }
 
-- (NSOperation *)objectForKeyedSubscript:(id<NSCopying>)key
+- (NSOperation *)objectForKeyedSubscript:(id)key
 {
     return [self operationForKey:key];
 }
