@@ -8,8 +8,13 @@
 
 #import "RSTCellContentDataSource_Subclasses.h"
 #import "RSTSearchController.h"
+#import "RSTOperationQueue.h"
+
+#import "RSTHelperFile.h"
 
 @import ObjectiveC.runtime;
+
+typedef void (^PrefetchCompletionHandler)(_Nullable id prefetchItem, NSError *_Nullable error);
 
 NSString *RSTCellContentGenericCellIdentifier = @"Cell";
 
@@ -19,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, weak, readwrite) UIScrollView<RSTCellContentView> *contentView;
 @property (nonatomic, getter=isPlaceholderViewVisible) BOOL placeholderViewVisible;
+
+@property (nonatomic, readonly) RSTOperationQueue *prefetchOperationQueue;
+
+@property (nonatomic, readonly) NSMapTable<id, NSMutableDictionary<NSIndexPath *, PrefetchCompletionHandler> *> *prefetchCompletionHandlers;
 
 @end
 
@@ -35,6 +44,9 @@ NS_ASSUME_NONNULL_END
     NSInteger _itemsCount;
 }
 @synthesize searchController = _searchController;
+@synthesize prefetchItemCache = _prefetchItemCache;
+@synthesize prefetchHandler = _prefetchHandler;
+@synthesize prefetchCompletionHandler = _prefetchCompletionHandler;
 
 - (instancetype)init
 {
@@ -59,6 +71,14 @@ NS_ASSUME_NONNULL_END
         } copy];
         
         _rowAnimation = UITableViewRowAnimationAutomatic;
+        
+        _prefetchItemCache = [[NSCache alloc] init];
+        
+        _prefetchOperationQueue = [[RSTOperationQueue alloc] init];
+        _prefetchOperationQueue.name = @"com.rileytestut.Roxas.RSTCellContentDataSource.prefetchOperationQueue";
+        _prefetchOperationQueue.qualityOfService = NSQualityOfServiceUserInitiated;
+        
+        _prefetchCompletionHandlers = [NSMapTable strongToStrongObjectsMapTable];
     }
     
     return self;
@@ -106,6 +126,8 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - RSTCellContentDataSource -
+
+#pragma mark Placeholder View
 
 - (void)showPlaceholderView
 {
@@ -156,6 +178,77 @@ NS_ASSUME_NONNULL_END
     self.contentView.backgroundView = _previousBackgroundView;
 }
 
+#pragma mark Prefetching
+
+- (void)prefetchItemAtIndexPath:(NSIndexPath *)indexPath completionHandler:(void (^_Nullable)(id prefetchItem, NSError *error))completionHandler
+{
+    if (self.prefetchHandler == nil || self.prefetchCompletionHandler == nil)
+    {
+        return;
+    }
+    
+    id item = [self itemAtIndexPath:indexPath];
+    
+    if (completionHandler)
+    {
+        // Each completionHandler is mapped to an item, and then to the indexPath originally requested.
+        // This allows us to prevent multiple fetches for the same item, but also handle the case where the prefetch item is needed by multiple cells, or the cell has moved.
+        
+        NSMutableDictionary<NSIndexPath *, PrefetchCompletionHandler> *completionHandlers = [self.prefetchCompletionHandlers objectForKey:item];
+        if (completionHandlers == nil)
+        {
+            completionHandlers = [NSMutableDictionary dictionary];
+            [self.prefetchCompletionHandlers setObject:completionHandlers forKey:item];
+        }
+        
+        completionHandlers[indexPath] = completionHandler;
+    }
+    
+    // If prefetch operation is currently in progress, return.
+    if (self.prefetchOperationQueue[item] != nil)
+    {
+        return;
+    }
+    
+    void (^prefetchCompletionHandler)(id, NSError *) = ^(id prefetchItem, NSError *error) {
+        if (prefetchItem)
+        {
+            [self.prefetchItemCache setObject:prefetchItem forKey:item];
+        }
+        
+        NSMutableDictionary<NSIndexPath *, PrefetchCompletionHandler> *completionHandlers = [self.prefetchCompletionHandlers objectForKey:item];
+        [completionHandlers enumerateKeysAndObjectsUsingBlock:^(NSIndexPath *indexPath, PrefetchCompletionHandler completionHandler, BOOL *stop) {
+            completionHandler(prefetchItem, error);
+        }];
+        [self.prefetchCompletionHandlers removeObjectForKey:item];
+    };
+    
+    id cachedItem = [self.prefetchItemCache objectForKey:item];
+    if (cachedItem)
+    {
+        // Prefetch item has been cached, so use it immediately.
+        
+        rst_dispatch_sync_on_main_thread(^{
+            prefetchCompletionHandler(cachedItem, nil);
+        });
+    }
+    else
+    {
+        // Prefetch item has not been cached, so perform operation to retrieve it.
+        
+        NSOperation *operation = self.prefetchHandler(item, indexPath, ^(id prefetchItem, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                prefetchCompletionHandler(prefetchItem, error);
+            });
+        });
+        
+        if (operation)
+        {
+            [self.prefetchOperationQueue addOperation:operation forKey:item];
+        }
+    }
+}
+
 #pragma mark - RSTCellContentDataSource Subclass Methods -
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath
@@ -181,13 +274,13 @@ NS_ASSUME_NONNULL_END
     return 0;
 }
 
-#pragma mark - <UITableViewDataSource> -
+#pragma mark - Data Source -
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)_numberOfSectionsInContentView:(UIScrollView<RSTCellContentView> *)contentView
 {
-    self.contentView = tableView;
+    self.contentView = contentView;
     
-    NSInteger sections = [self numberOfSectionsInContentView:tableView];
+    NSInteger sections = [self numberOfSectionsInContentView:contentView];
     
     if (sections == 0)
     {
@@ -200,62 +293,9 @@ NS_ASSUME_NONNULL_END
     return sections;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)_contentView:(UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section
 {
-    NSInteger rows = [self contentView:tableView numberOfItemsInSection:section];
-    _itemsCount += rows;
-    
-    if (section == _sectionsCount - 1)
-    {
-        if (_itemsCount == 0)
-        {
-            [self showPlaceholderView];
-        }
-        else
-        {
-            [self hidePlaceholderView];
-        }
-        
-        _itemsCount = 0;
-        _sectionsCount = 0;
-    }
-    
-    return rows;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *identifier = self.cellIdentifierHandler(indexPath);
-    id item = [self itemAtIndexPath:indexPath];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    self.cellConfigurationHandler(cell, item, indexPath);
-    
-    return cell;
-}
-
-#pragma mark - <UICollectionViewDataSource> -
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    self.contentView = collectionView;
-    
-    NSInteger sections = [self numberOfSectionsInContentView:collectionView];
-    
-    if (sections == 0)
-    {
-        [self showPlaceholderView];
-    }
-    
-    _itemsCount = 0;
-    _sectionsCount = sections;
-    
-    return sections;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    NSInteger items = [self contentView:collectionView numberOfItemsInSection:section];
+    NSInteger items = [self contentView:contentView numberOfItemsInSection:section];
     _itemsCount += items;
     
     if (section == _sectionsCount - 1)
@@ -276,15 +316,119 @@ NS_ASSUME_NONNULL_END
     return items;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (__kindof UIView<RSTCellContentCell> *)_contentView:(UIScrollView<RSTCellContentView> *)contentView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = self.cellIdentifierHandler(indexPath);
     id item = [self itemAtIndexPath:indexPath];
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    id cell = [contentView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     self.cellConfigurationHandler(cell, item, indexPath);
     
+    // We store the completionHandler, and it's not guaranteed to be nil'd out (since prefetch may take a long time), so we use a weak reference to self inside the block to prevent strong reference cycle.
+    RSTCellContentDataSource *__weak weakSelf = self;
+    [self prefetchItemAtIndexPath:indexPath completionHandler:^(id prefetchItem, NSError *error) {
+        NSIndexPath *cellIndexPath = [contentView indexPathForCell:cell];
+        
+        if (cellIndexPath)
+        {
+            id cellItem = [weakSelf itemAtIndexPath:cellIndexPath];
+            if ([item isEqual:cellItem])
+            {
+                // Cell is in use, but its current index path still corresponds to the same item, so update.
+                weakSelf.prefetchCompletionHandler(cell, prefetchItem, cellIndexPath, error);
+            }
+            else
+            {
+                // Cell is in use, but its new index path does *not* correspond to the same item, so ignore.
+            }
+        }
+        else
+        {
+            // Cell is currently being configured for use, so update.
+            weakSelf.prefetchCompletionHandler(cell, prefetchItem, indexPath, error);
+        }
+    }];
+    
     return cell;
+}
+
+#pragma mark Prefetching
+
+- (void)_contentView:(UIScrollView<RSTCellContentView> *)contentView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    for (NSIndexPath *indexPath in indexPaths)
+    {
+        [self prefetchItemAtIndexPath:indexPath completionHandler:nil];
+    }
+}
+
+- (void)_contentView:(UIScrollView<RSTCellContentView> *)contentView cancelPrefetchingItemsForIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    for (NSIndexPath *indexPath in indexPaths)
+    {
+        id item = [self itemAtIndexPath:indexPath];
+        
+        NSOperation *operation = self.prefetchOperationQueue[item];
+        [operation cancel];
+    }
+}
+
+#pragma mark - <UITableViewDataSource> -
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self _numberOfSectionsInContentView:tableView];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self _contentView:tableView numberOfItemsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self _contentView:tableView cellForItemAtIndexPath:indexPath];
+}
+
+#pragma mark - <UITableViewDataSourcePrefetching> -
+
+- (void)tableView:(UITableView *)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self _contentView:tableView prefetchItemsAtIndexPaths:indexPaths];
+}
+
+- (void)tableView:(UITableView *)tableView cancelPrefetchingForRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self _contentView:tableView cancelPrefetchingItemsForIndexPaths:indexPaths];
+}
+
+#pragma mark - <UICollectionViewDataSource> -
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return [self _numberOfSectionsInContentView:collectionView];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self _contentView:collectionView numberOfItemsInSection:section];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self _contentView:collectionView cellForItemAtIndexPath:indexPath];
+}
+
+#pragma mark - <UICollectionViewDataSourcePrefetching> -
+
+- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self _contentView:collectionView prefetchItemsAtIndexPaths:indexPaths];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView cancelPrefetchingForItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self _contentView:collectionView cancelPrefetchingItemsForIndexPaths:indexPaths];
 }
 
 #pragma mark - Getters/Setters -
@@ -344,26 +488,29 @@ NS_ASSUME_NONNULL_END
     _placeholderView = placeholderView;
     _placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    // Show placeholder only if there are no items to display.
-    
-    BOOL shouldShowPlaceholderView = YES;
-    
-    for (int i = 0; i < [self numberOfSectionsInContentView:self.contentView]; i++)
+    if (self.contentView)
     {
-        if ([self contentView:self.contentView numberOfItemsInSection:i] > 0)
+        // Show placeholder only if there are no items to display.
+        
+        BOOL shouldShowPlaceholderView = YES;
+        
+        for (int i = 0; i < [self numberOfSectionsInContentView:self.contentView]; i++)
         {
-            shouldShowPlaceholderView = NO;
-            break;
+            if ([self contentView:self.contentView numberOfItemsInSection:i] > 0)
+            {
+                shouldShowPlaceholderView = NO;
+                break;
+            }
         }
-    }
-    
-    if (shouldShowPlaceholderView)
-    {
-        [self showPlaceholderView];
-    }
-    else
-    {
-        [self hidePlaceholderView];
+        
+        if (shouldShowPlaceholderView)
+        {
+            [self showPlaceholderView];
+        }
+        else
+        {
+            [self hidePlaceholderView];
+        }
     }
 }
 

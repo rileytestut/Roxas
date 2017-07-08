@@ -6,6 +6,8 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#import "RSTCellContentCell.h"
+
 @import UIKit;
 
 @class RSTCellContentChange;
@@ -23,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)endUpdates;
 
 - (void)addChange:(RSTCellContentChange *)change;
+
+- (nullable id)indexPathForCell:(id)cell;
+
+- (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

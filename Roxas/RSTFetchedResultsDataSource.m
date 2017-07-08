@@ -244,3 +244,15 @@ NS_ASSUME_NONNULL_END
 
 @implementation RSTFetchedResultsCollectionViewDataSource
 @end
+
+@implementation RSTFetchedResultsPrefetchingDataSource
+@dynamic prefetchItemCache;
+@dynamic prefetchHandler;
+@dynamic prefetchCompletionHandler;
+@end
+
+@implementation RSTFetchedResultsTableViewPrefetchingDataSource
+@end
+
+@implementation RSTFetchedResultsCollectionViewPrefetchingDataSource
+@end

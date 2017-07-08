@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0FB4451C017DF600D26616 /* RSTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0FB4461C017DF600D26616 /* RSTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0FB4471C017DF600D26616 /* RSTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */; };
@@ -110,6 +111,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTCellContentPrefetchingDataSource.h; sourceTree = "<group>"; };
 		BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTPlaceholderView.h; sourceTree = "<group>"; };
 		BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTPlaceholderView.m; sourceTree = "<group>"; };
 		BF0FB4491C017F1300D26616 /* RSTPlaceholderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSTPlaceholderView.xib; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 		BFE8F03A1E4AF30900A64745 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */,
 				BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */,
 				BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */,
 				BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */,
@@ -490,6 +493,7 @@
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */,
+				BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BF0FB4451C017DF600D26616 /* RSTPlaceholderView.h in Headers */,
 				BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */,

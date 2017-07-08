@@ -7,6 +7,7 @@
 //
 
 #import "RSTCellContentDataSource.h"
+#import "RSTCellContentPrefetchingDataSource.h"
 
 @class RSTCellContentChange;
 
@@ -24,6 +25,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface RSTArrayPrefetchingDataSource<ContentType, CellType: UIView<RSTCellContentCell> *, ViewType: UIScrollView<RSTCellContentView> *, DataSourceType, PrefetchContentType> : RSTArrayDataSource<ContentType, CellType, ViewType, DataSourceType> <RSTCellContentPrefetchingDataSource>
+
+@property (nonatomic) NSCache<ContentType, PrefetchContentType> *prefetchItemCache;
+
+@property (nullable, copy, nonatomic) NSOperation *_Nullable (^prefetchHandler)(ContentType item, NSIndexPath *indexPath, void (^completionHandler)(_Nullable PrefetchContentType item, NSError *_Nullable error));
+@property (nullable, copy, nonatomic) void (^prefetchCompletionHandler)(CellType cell, _Nullable PrefetchContentType item, NSIndexPath *indexPath, NSError *_Nullable error);
+
+@end
+
 NS_ASSUME_NONNULL_END
 
 
@@ -35,6 +46,13 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface RSTArrayCollectionViewDataSource<ContentType> : RSTArrayDataSource<ContentType, UICollectionViewCell *, UICollectionView *, id<UICollectionViewDataSource>> <UICollectionViewDataSource>
+@end
+
+
+@interface RSTArrayTableViewPrefetchingDataSource<ContentType, PrefetchContentType> : RSTArrayPrefetchingDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>, PrefetchContentType> <UITableViewDataSource, UITableViewDataSourcePrefetching>
+@end
+
+@interface RSTArrayCollectionViewPrefetchingDataSource<ContentType, PrefetchContentType> : RSTArrayPrefetchingDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>, PrefetchContentType> <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching>
 @end
 
 NS_ASSUME_NONNULL_END

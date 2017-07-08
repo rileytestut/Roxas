@@ -7,17 +7,18 @@
 //
 
 #import "RSTCellContentDataSource.h"
+#import "RSTCellContentPrefetchingDataSource.h"
 
 @class RSTSearchValue;
 
 NS_ASSUME_NONNULL_BEGIN
 
 // Privately declare conformance to DataSource protocols so clients must use a concrete subclass (which provides correct generic parameters to superclass).
-@interface RSTCellContentDataSource () <UITableViewDataSource, UICollectionViewDataSource>
+@interface RSTCellContentDataSource () <RSTCellContentPrefetchingDataSource, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
 
 // Defaults to synchronously setting RSTCellContentDataSource's predicate to searchValue.predicate.
 // Subclasses can customize if needed, such as by returning an NSOperation inside handler to enable asynchronous RSTSearchController search results.
-@property (copy, nonatomic) NSOperation * (^defaultSearchHandler)(RSTSearchValue *searchValue, RSTSearchValue *_Nullable previousSearchValue);
+@property (copy, nonatomic) NSOperation *_Nullable (^defaultSearchHandler)(RSTSearchValue *searchValue, RSTSearchValue *_Nullable previousSearchValue);
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;

@@ -61,6 +61,16 @@
     }
 }
 
+- (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self cellForRowAtIndexPath:indexPath];
+}
+
+- (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
+{
+    return [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+}
+
 #pragma mark - Getters/Setters -
 
 - (Protocol *)dataSourceProtocol

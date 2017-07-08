@@ -41,6 +41,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTCellContentChangeOperation.h>
 
 // Cell Content - Data Sources
+#import <Roxas/RSTCellContentPrefetchingDataSource.h>
 #import <Roxas/RSTCellContentDataSource.h>
 #import <Roxas/RSTArrayDataSource.h>
 #import <Roxas/RSTFetchedResultsDataSource.h>
