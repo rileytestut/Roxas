@@ -249,6 +249,23 @@ NS_ASSUME_NONNULL_END
     }
 }
 
+#pragma mark Validation
+
+- (BOOL)isValidIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section >= [self numberOfSectionsInContentView:self.contentView])
+    {
+        return NO;
+    }
+    
+    if (indexPath.item >= [self contentView:self.contentView numberOfItemsInSection:indexPath.section])
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - RSTCellContentDataSource Subclass Methods -
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath
@@ -358,6 +375,11 @@ NS_ASSUME_NONNULL_END
 {
     for (NSIndexPath *indexPath in indexPaths)
     {
+        if (![self isValidIndexPath:indexPath])
+        {
+            continue;
+        }
+        
         [self prefetchItemAtIndexPath:indexPath completionHandler:nil];
     }
 }
@@ -366,6 +388,11 @@ NS_ASSUME_NONNULL_END
 {
     for (NSIndexPath *indexPath in indexPaths)
     {
+        if (![self isValidIndexPath:indexPath])
+        {
+            continue;
+        }
+        
         id item = [self itemAtIndexPath:indexPath];
         
         NSOperation *operation = self.prefetchOperationQueue[item];
