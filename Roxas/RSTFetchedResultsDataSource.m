@@ -162,10 +162,10 @@ NS_ASSUME_NONNULL_END
     }
     
     NSPredicate *predicate = change[NSKeyValueChangeNewKey];
-    self.externalPredicate = predicate;
-    
     if (![predicate isKindOfClass:[RSTProxyPredicate class]])
     {
+        self.externalPredicate = predicate;
+        
         RSTProxyPredicate *proxyPredicate = [[RSTProxyPredicate alloc] initWithPredicate:self.predicate externalPredicate:self.externalPredicate];
         [[(NSFetchedResultsController *)object fetchRequest] setPredicate:proxyPredicate];
     }
