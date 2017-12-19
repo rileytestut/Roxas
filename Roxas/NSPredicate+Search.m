@@ -48,7 +48,7 @@
                                                                         rightExpression:rhs
                                                                                modifier:NSDirectPredicateModifier
                                                                                    type:NSContainsPredicateOperatorType
-                                                                                options:NSCaseInsensitivePredicateOption | NSDiacriticInsensitiveSearch];
+                                                                                options:NSCaseInsensitivePredicateOption | NSDiacriticInsensitivePredicateOption];
             
             [andPredicates addObject:predicate];
         }
