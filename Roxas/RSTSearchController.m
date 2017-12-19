@@ -89,7 +89,7 @@
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    NSString *searchText = searchController.searchBar.text ?: @"";
+    NSString *searchText = [searchController.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ?: @"";
     NSPredicate *searchPredicate = [NSPredicate predicateForSearchingForText:searchText inValuesForKeyPaths:self.searchableKeyPaths];
     
     RSTSearchValue *searchValue = [[RSTSearchValue alloc] initWithText:searchText predicate:searchPredicate];
