@@ -37,7 +37,7 @@ RST_EXTERN NSString *RSTCellContentGenericCellIdentifier;
 
 // Block to determine the cell reuse identifier to use for a given index path.
 // Defaults to using RSTCellContentGenericCellIdentifier for all index paths.
-@property (copy, nonatomic) NSString * (^cellIdentifierHandler)(NSIndexPath *);
+@property (copy, nonatomic) NSString * (^cellIdentifierHandler)(NSIndexPath *indexPath);
 
 // Block to configure a cell before it is displayed.
 // Defaults to setting textLabel.text to item.description if CellType is UITableViewCell.

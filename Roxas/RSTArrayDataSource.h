@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RSTArrayTableViewPrefetchingDataSource<ContentType, PrefetchContentType> : RSTArrayPrefetchingDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>, PrefetchContentType> <UITableViewDataSource, UITableViewDataSourcePrefetching>
 @end
 
-@interface RSTArrayCollectionViewPrefetchingDataSource<ContentType, PrefetchContentType> : RSTArrayPrefetchingDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>, PrefetchContentType> <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching>
+@interface RSTArrayCollectionViewPrefetchingDataSource<ContentType, PrefetchContentType> : RSTArrayPrefetchingDataSource<ContentType, UICollectionViewCell *, UICollectionView *, id<UICollectionViewDataSource>, PrefetchContentType> <UICollectionViewDataSource, UICollectionViewDataSourcePrefetching>
 @end
 
 NS_ASSUME_NONNULL_END
