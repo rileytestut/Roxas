@@ -65,6 +65,11 @@
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
     
+    if (context == NULL)
+    {
+        return nil;
+    }
+    
     CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
     
     CGContextDrawImage(context, rect, self.CGImage);
@@ -134,6 +139,11 @@
                                                  0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
                                                  CGImageGetColorSpace(self.CGImage),
                                                  CGImageGetBitmapInfo(self.CGImage));
+    
+    if (context == NULL)
+    {
+        return nil;
+    }
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:clippedRect cornerRadius:cornerRadius * imageScale];
     

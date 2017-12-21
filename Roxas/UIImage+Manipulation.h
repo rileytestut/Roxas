@@ -28,13 +28,13 @@ RST_EXTERN UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageM
 @interface UIImage (Manipulation)
 
 // Resizing
-- (UIImage *)imageByResizingToSize:(CGSize)size;
-- (UIImage *)imageByResizingToFitSize:(CGSize)size;
-- (UIImage *)imageByResizingToFillSize:(CGSize)size;
+- (nullable UIImage *)imageByResizingToSize:(CGSize)size;
+- (nullable UIImage *)imageByResizingToFitSize:(CGSize)size;
+- (nullable UIImage *)imageByResizingToFillSize:(CGSize)size;
 
 // Rounded Corners
-- (UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius;
-- (UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius inset:(UIEdgeInsets)inset;
+- (nullable UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius;
+- (nullable UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius inset:(UIEdgeInsets)inset;
 
 @end
 
