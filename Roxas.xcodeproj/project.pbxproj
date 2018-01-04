@@ -49,6 +49,8 @@
 		BF5B423B1C7D87F800835FEF /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
 		BF6C2E2D1E52521400EABBC9 /* RSTArrayDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF6C2E2B1E52521400EABBC9 /* RSTArrayDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6C2E2E1E52521400EABBC9 /* RSTArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6C2E2C1E52521400EABBC9 /* RSTArrayDataSource.m */; };
+		BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF71CF8F1FE912D1001F1613 /* RSTCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */; };
 		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
 		BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
@@ -140,6 +142,8 @@
 		BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsTests.m; sourceTree = "<group>"; };
 		BF6C2E2B1E52521400EABBC9 /* RSTArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTArrayDataSource.h; sourceTree = "<group>"; };
 		BF6C2E2C1E52521400EABBC9 /* RSTArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTArrayDataSource.m; sourceTree = "<group>"; };
+		BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTCompositeDataSource.h; sourceTree = "<group>"; };
+		BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTCompositeDataSource.m; sourceTree = "<group>"; };
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
 		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		BF8624801BB742E700C12EEE /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +275,15 @@
 				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		BF71CF8B1FE91214001F1613 /* Composite */ = {
+			isa = PBXGroup;
+			children = (
+				BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */,
+				BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */,
+			);
+			name = Composite;
 			sourceTree = "<group>";
 		};
 		BF8D822C1E53F66D00756F08 /* Changes */ = {
@@ -430,6 +443,7 @@
 				BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */,
 				BFAD9D0B1E52845C0051F340 /* Array */,
 				BFE8F03B1E4AF31000A64745 /* Fetched Results Controller */,
+				BF71CF8B1FE91214001F1613 /* Composite */,
 			);
 			name = "Data Sources";
 			sourceTree = "<group>";
@@ -505,6 +519,7 @@
 				BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */,
 				BFAFF4E81E5CBBE600C67FF3 /* RSTLoadOperation.h in Headers */,
 				BFDB50621EB942F50084C58A /* NSLayoutConstraint+Edges.h in Headers */,
+				BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */,
 				BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
 				BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */,
 				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
@@ -709,6 +724,7 @@
 				BF6C2E2E1E52521400EABBC9 /* RSTArrayDataSource.m in Sources */,
 				BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */,
 				BF0FB4471C017DF600D26616 /* RSTPlaceholderView.m in Sources */,
+				BF71CF8F1FE912D1001F1613 /* RSTCompositeDataSource.m in Sources */,
 				BFAFF4E91E5CBBE600C67FF3 /* RSTLoadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
