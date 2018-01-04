@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 // Privately declare conformance to DataSource protocols so clients must use a concrete subclass (which provides correct generic parameters to superclass).
 @interface RSTCellContentDataSource () <RSTCellContentPrefetchingDataSource, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
 
+@property (nullable, weak, readwrite) UIScrollView<RSTCellContentView> *contentView;
+
 // Defaults to synchronously setting RSTCellContentDataSource's predicate to searchValue.predicate.
 // Subclasses can customize if needed, such as by returning an NSOperation inside handler to enable asynchronous RSTSearchController search results.
 @property (copy, nonatomic) NSOperation *_Nullable (^defaultSearchHandler)(RSTSearchValue *searchValue, RSTSearchValue *_Nullable previousSearchValue);
@@ -23,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;
 
-- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate refreshContent:(BOOL)refreshContent;
+- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate;
 
 @end
 

@@ -133,7 +133,7 @@ NS_ASSUME_NONNULL_END
     return sectionInfo.numberOfObjects;
 }
 
-- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate refreshContent:(BOOL)refreshContent
+- (void)filterContentWithPredicate:(nullable NSPredicate *)predicate
 {
     RSTProxyPredicate *proxyPredicate = [[RSTProxyPredicate alloc] initWithPredicate:predicate externalPredicate:self.externalPredicate];
     self.fetchedResultsController.fetchRequest.predicate = proxyPredicate;
@@ -142,13 +142,6 @@ NS_ASSUME_NONNULL_END
     if (![self.fetchedResultsController performFetch:&error])
     {
         ELog(error);
-    }
-    
-    if (refreshContent)
-    {
-        rst_dispatch_sync_on_main_thread(^{
-            [self.contentView reloadData];
-        });
     }
 }
 

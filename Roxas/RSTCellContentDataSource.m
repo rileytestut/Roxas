@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTCellContentDataSource ()
 
-@property (nullable, weak, readwrite) UIScrollView<RSTCellContentView> *contentView;
 @property (nonatomic, getter=isPlaceholderViewVisible) BOOL placeholderViewVisible;
 
 @property (nonatomic, readonly) RSTOperationQueue *prefetchOperationQueue;
@@ -266,18 +265,21 @@ NS_ASSUME_NONNULL_END
     return YES;
 }
 
-#pragma mark - RSTCellContentDataSource Subclass Methods -
-
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self doesNotRecognizeSelector:_cmd];
-    return nil;
-}
+#pragma mark Filtering
 
 - (void)filterContentWithPredicate:(NSPredicate *)predicate refreshContent:(BOOL)refreshContent
 {
-    [self doesNotRecognizeSelector:_cmd];
+    [self filterContentWithPredicate:predicate];
+    
+    if (refreshContent)
+    {
+        rst_dispatch_sync_on_main_thread(^{
+            [self.contentView reloadData];
+        });
+    }
 }
+
+#pragma mark - RSTCellContentDataSource Subclass Methods -
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIView *)contentView
 {
@@ -289,6 +291,17 @@ NS_ASSUME_NONNULL_END
 {
     [self doesNotRecognizeSelector:_cmd];
     return 0;
+}
+
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
+- (void)filterContentWithPredicate:(NSPredicate *)predicate
+{
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 #pragma mark - Data Source -
