@@ -32,6 +32,8 @@
 		BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */ = {isa = PBXBuildFile; fileRef = BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */; };
 		BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF57C0281D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */ = {isa = PBXBuildFile; fileRef = BF57C0261D726016000132D2 /* UIView+AnimatedHide.m */; };
@@ -54,6 +56,7 @@
 		BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF71CF8F1FE912D1001F1613 /* RSTCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */; };
 		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7FF097207312E5003A921A /* RSTActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
 		BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
@@ -135,6 +138,8 @@
 		BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitionState.m"; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
+		BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKit+ActivityIndicating.h"; sourceTree = "<group>"; };
+		BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIKit+ActivityIndicating.m"; sourceTree = "<group>"; };
 		BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimatedHide.h"; sourceTree = "<group>"; };
 		BF57C0261D726016000132D2 /* UIView+AnimatedHide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AnimatedHide.m"; sourceTree = "<group>"; };
 		BF58BC0C1D51A027008FC1A3 /* UICollectionView+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellContent.h"; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTCompositeDataSource.m; sourceTree = "<group>"; };
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
 		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		BF7FF097207312E5003A921A /* RSTActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTActivityIndicating.h; sourceTree = "<group>"; };
 		BF8624801BB742E700C12EEE /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8D82241E53CFEE00756F08 /* NSPredicate+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+Search.h"; sourceTree = "<group>"; };
 		BF8D82251E53CFEE00756F08 /* NSPredicate+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+Search.m"; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 		BF36F1CE1A1459720057FF07 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				BF53E98A207B469F00A57BCE /* RSTActivityIndicating */,
 				BF8FD1C51E5BBB9C00820F2C /* Cell Content */,
 				BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */,
 				BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */,
@@ -279,6 +286,16 @@
 				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		BF53E98A207B469F00A57BCE /* RSTActivityIndicating */ = {
+			isa = PBXGroup;
+			children = (
+				BF7FF097207312E5003A921A /* RSTActivityIndicating.h */,
+				BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */,
+				BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */,
+			);
+			name = RSTActivityIndicating;
 			sourceTree = "<group>";
 		};
 		BF6A2D411FFC2A5E00A6B924 /* Dynamic */ = {
@@ -538,7 +555,9 @@
 				BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
 				BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */,
 				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
+				BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */,
 				BFDF04D81D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */,
+				BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */,
 				BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */,
 				BFAD9D0A1E5283970051F340 /* RSTCellContentView.h in Headers */,
 				BFE8F0461E4AF8A200A64745 /* RSTSearchController.h in Headers */,
@@ -721,6 +740,7 @@
 				BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
 				BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
+				BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
