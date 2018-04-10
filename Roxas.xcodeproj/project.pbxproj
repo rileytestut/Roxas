@@ -92,6 +92,8 @@
 		BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */; };
 		BFAFF4E81E5CBBE600C67FF3 /* RSTLoadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAFF4E61E5CBBE600C67FF3 /* RSTLoadOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFAFF4E91E5CBBE600C67FF3 /* RSTLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */; };
+		BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB228392066FBBF00F08151 /* RSTLaunchViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */; };
 		BFBDEA341EC274D20034D65E /* UIAlertAction+Actions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */; };
 		BFC2BC641D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -181,6 +183,8 @@
 		BFAFF4E31E5C233500C67FF3 /* RSTBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTBlockOperation.m; sourceTree = "<group>"; };
 		BFAFF4E61E5CBBE600C67FF3 /* RSTLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTLoadOperation.h; sourceTree = "<group>"; };
 		BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTLoadOperation.m; sourceTree = "<group>"; };
+		BFB228392066FBBF00F08151 /* RSTLaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTLaunchViewController.h; sourceTree = "<group>"; };
+		BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTLaunchViewController.m; sourceTree = "<group>"; };
 		BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+Actions.h"; sourceTree = "<group>"; };
 		BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+Actions.m"; sourceTree = "<group>"; };
 		BFBDEA411EC2C5AC0034D65E /* Roxas.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Roxas.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -229,9 +233,8 @@
 		BF0FB4421C017DD600D26616 /* Visual Components */ = {
 			isa = PBXGroup;
 			children = (
-				BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */,
-				BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */,
-				BF0FB4491C017F1300D26616 /* RSTPlaceholderView.xib */,
+				BFB228382066FB9C00F08151 /* Launch View Controller */,
+				BFB228372066FB9000F08151 /* Placeholder View */,
 			);
 			name = "Visual Components";
 			sourceTree = "<group>";
@@ -443,6 +446,25 @@
 			name = "Load Operations";
 			sourceTree = "<group>";
 		};
+		BFB228372066FB9000F08151 /* Placeholder View */ = {
+			isa = PBXGroup;
+			children = (
+				BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */,
+				BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */,
+				BF0FB4491C017F1300D26616 /* RSTPlaceholderView.xib */,
+			);
+			name = "Placeholder View";
+			sourceTree = "<group>";
+		};
+		BFB228382066FB9C00F08151 /* Launch View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BFB228392066FBBF00F08151 /* RSTLaunchViewController.h */,
+				BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */,
+			);
+			name = "Launch View Controller";
+			sourceTree = "<group>";
+		};
 		BFC6B5CF1A0A100E00BECAB5 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +560,7 @@
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
+				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */,
 				BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
@@ -748,6 +771,7 @@
 				BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */,
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
+				BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */,
 				BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,
 				BF2DF14C1C96B56000F9FDD8 /* RSTOperation.m in Sources */,
