@@ -57,13 +57,23 @@
     
     CGRect rect = CGRectIntegral(CGRectMake(0, 0, size.width * self.scale, size.height * self.scale));
     
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(self.CGImage);
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
+    
+    if (bitmapInfo & kCGImageAlphaLast)
+    {
+        bitmapInfo &= ~(kCGImageAlphaLast);
+        bitmapInfo |= kCGImageAlphaNoneSkipLast;
+    }
+    
     CGContextRef context = CGBitmapContextCreate(NULL,
-                                                 rect.size.width,
-                                                 rect.size.height,
-                                                 CGImageGetBitsPerComponent(self.CGImage),
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
-                                                 CGImageGetColorSpace(self.CGImage),
-                                                 CGImageGetBitmapInfo(self.CGImage));
+                                                 CGRectGetWidth(rect),
+                                                 CGRectGetHeight(rect),
+                                                 bitsPerComponent,
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
+                                                 colorSpace,
+                                                 bitmapInfo);
     
     if (context == NULL)
     {
@@ -132,13 +142,23 @@
     clippedRect = CGRectApplyAffineTransform(clippedRect, CGAffineTransformMakeScale(imageScale, imageScale));
     drawingRect = CGRectApplyAffineTransform(drawingRect, CGAffineTransformMakeScale(imageScale, imageScale));
     
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(self.CGImage);
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
+    
+    if (bitmapInfo & kCGImageAlphaLast)
+    {
+        bitmapInfo &= ~(kCGImageAlphaLast);
+        bitmapInfo |= kCGImageAlphaNoneSkipLast;
+    }
+    
     CGContextRef context = CGBitmapContextCreate(NULL,
                                                  CGRectGetWidth(clippedRect),
                                                  CGRectGetHeight(clippedRect),
-                                                 CGImageGetBitsPerComponent(self.CGImage),
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on misformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
-                                                 CGImageGetColorSpace(self.CGImage),
-                                                 CGImageGetBitmapInfo(self.CGImage));
+                                                 bitsPerComponent,
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
+                                                 colorSpace,
+                                                 bitmapInfo);
     
     if (context == NULL)
     {
@@ -247,9 +267,3 @@ UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageMetadataOrie
     
     return imageOrientation;
 }
-
-
-
-
-
-
