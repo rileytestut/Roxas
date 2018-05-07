@@ -474,6 +474,14 @@
 			name = Containers;
 			sourceTree = "<group>";
 		};
+		BFD40E94209E5B7C00A0D15F /* Prefetching */ = {
+			isa = PBXGroup;
+			children = (
+				BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */,
+			);
+			name = Prefetching;
+			sourceTree = "<group>";
+		};
 		BFDF04D51D51172A00091747 /* Cell Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,10 +497,10 @@
 		BFE8F03A1E4AF30900A64745 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */,
 				BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */,
 				BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */,
 				BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */,
+				BFD40E94209E5B7C00A0D15F /* Prefetching */,
 				BFAD9D0B1E52845C0051F340 /* Array */,
 				BFE8F03B1E4AF31000A64745 /* Fetched Results Controller */,
 				BF6A2D411FFC2A5E00A6B924 /* Dynamic */,

@@ -279,6 +279,40 @@ NS_ASSUME_NONNULL_END
     }
 }
 
+#pragma mark Changes
+
+- (void)addChange:(RSTCellContentChange *)change
+{
+    RSTCellContentChange *transformedChange = nil;
+    
+    if (change.sectionIndex == RSTUnknownSectionIndex)
+    {
+        NSIndexPath *currentIndexPath = change.currentIndexPath;
+        if (currentIndexPath != nil)
+        {
+            currentIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:currentIndexPath] ?: currentIndexPath;
+        }
+        
+        NSIndexPath *destinationIndexPath = change.destinationIndexPath;
+        if (destinationIndexPath != nil)
+        {
+            destinationIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:destinationIndexPath] ?: destinationIndexPath;
+        }
+        
+        transformedChange = [[RSTCellContentChange alloc] initWithType:change.type currentIndexPath:currentIndexPath destinationIndexPath:destinationIndexPath];
+       
+    }
+    else
+    {
+        NSIndexPath *sectionIndexPath = [NSIndexPath indexPathForItem:0 inSection:change.sectionIndex];
+        NSIndexPath *indexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:sectionIndexPath] ?: sectionIndexPath;
+        
+        transformedChange = [[RSTCellContentChange alloc] initWithType:change.type sectionIndex:indexPath.section];
+    }
+    
+    [self.contentView addChange:transformedChange];
+}
+
 #pragma mark - RSTCellContentDataSource Subclass Methods -
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIView *)contentView

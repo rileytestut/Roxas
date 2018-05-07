@@ -16,7 +16,7 @@ typedef struct __attribute__((objc_boxable)) _NSRange NSRange;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RSTCompositeDataSource ()
+@interface RSTCompositeDataSource () <RSTCellContentIndexPathTranslating>
 
 @property (nonatomic, readonly) NSMapTable<RSTCellContentDataSource *, NSValue *> *dataSourceSectionRanges;
 
@@ -34,6 +34,11 @@ NS_ASSUME_NONNULL_END
         _dataSources = [dataSources copy];
         _dataSourceSectionRanges = [NSMapTable strongToStrongObjectsMapTable];
         
+        for (RSTCellContentDataSource *dataSource in _dataSources)
+        {
+            dataSource.indexPathTranslator = self;
+        }
+        
         __weak RSTCompositeDataSource *weakSelf = self;
         
         self.cellIdentifierHandler = ^NSString * _Nonnull(NSIndexPath *_Nonnull indexPath) {
@@ -43,9 +48,9 @@ NS_ASSUME_NONNULL_END
                 return RSTCellContentGenericCellIdentifier;
             }
             
-            NSIndexPath *internalIndexPath = [weakSelf internalIndexPathForIndexPath:indexPath dataSource:dataSource];
+            NSIndexPath *localIndexPath = [weakSelf dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
             
-            NSString *identifier = dataSource.cellIdentifierHandler(internalIndexPath);
+            NSString *identifier = dataSource.cellIdentifierHandler(localIndexPath);
             return identifier;
         };
         
@@ -56,8 +61,8 @@ NS_ASSUME_NONNULL_END
                 return;
             }
             
-            NSIndexPath *internalIndexPath = [weakSelf internalIndexPathForIndexPath:indexPath dataSource:dataSource];
-            dataSource.cellConfigurationHandler(cell, item, internalIndexPath);
+            NSIndexPath *localIndexPath = [weakSelf dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
+            dataSource.cellConfigurationHandler(cell, item, localIndexPath);
         };
         
         self.prefetchHandler = ^NSOperation * _Nullable(id  _Nonnull item, NSIndexPath * _Nonnull indexPath, void (^ _Nonnull completionHandler)(id _Nullable, NSError * _Nullable)) {
@@ -67,9 +72,9 @@ NS_ASSUME_NONNULL_END
                 return nil;
             }
             
-            NSIndexPath *internalIndexPath = [weakSelf internalIndexPathForIndexPath:indexPath dataSource:dataSource];
+            NSIndexPath *localIndexPath = [weakSelf dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
             
-            NSOperation *operation = dataSource.prefetchHandler(item, internalIndexPath, completionHandler);
+            NSOperation *operation = dataSource.prefetchHandler(item, localIndexPath, completionHandler);
             return operation;
         };
         
@@ -80,8 +85,8 @@ NS_ASSUME_NONNULL_END
                 return;
             }
             
-            NSIndexPath *internalIndexPath = [weakSelf internalIndexPathForIndexPath:indexPath dataSource:dataSource];
-            dataSource.prefetchCompletionHandler(cell, item, internalIndexPath, error);
+            NSIndexPath *localIndexPath = [weakSelf dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
+            dataSource.prefetchCompletionHandler(cell, item, localIndexPath, error);
         };
     }
     
@@ -105,14 +110,6 @@ NS_ASSUME_NONNULL_END
     }
     
     return dataSource;
-}
-
-- (NSIndexPath *)internalIndexPathForIndexPath:(NSIndexPath *)indexPath dataSource:(RSTCellContentDataSource *)dataSource
-{
-    NSRange range = [[self.dataSourceSectionRanges objectForKey:dataSource] rangeValue];
-    
-    NSIndexPath *internalIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section - range.location];
-    return internalIndexPath;
 }
 
 #pragma mark - RSTCellContentDataSource -
@@ -143,9 +140,9 @@ NS_ASSUME_NONNULL_END
         return 0;
     }
     
-    NSIndexPath *internalIndexPath = [self internalIndexPathForIndexPath:indexPath dataSource:dataSource];
+    NSIndexPath *localIndexPath = [self dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
     
-    NSInteger numberOfItems = [dataSource contentView:contentView numberOfItemsInSection:internalIndexPath.section];
+    NSInteger numberOfItems = [dataSource contentView:contentView numberOfItemsInSection:localIndexPath.section];
     return numberOfItems;
 }
 
@@ -157,9 +154,9 @@ NS_ASSUME_NONNULL_END
         @throw [NSException exceptionWithName:NSRangeException reason:nil userInfo:nil];
     }
     
-    NSIndexPath *internalIndexPath = [self internalIndexPathForIndexPath:indexPath dataSource:dataSource];
+    NSIndexPath *localIndexPath = [self dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
     
-    id item = [dataSource itemAtIndexPath:internalIndexPath];
+    id item = [dataSource itemAtIndexPath:localIndexPath];
     return item;
 }
 
@@ -169,6 +166,36 @@ NS_ASSUME_NONNULL_END
     {
         [dataSource filterContentWithPredicate:predicate];
     }
+}
+
+#pragma mark - <RSTCellContentIndexPathTranslating> -
+
+- (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource localIndexPathForGlobalIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSValue *rangeValue = [self.dataSourceSectionRanges objectForKey:dataSource];
+    if (rangeValue == nil)
+    {
+        return nil;
+    }
+    
+    NSRange range = [rangeValue rangeValue];
+    
+    NSIndexPath *localIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section - range.location];
+    return localIndexPath;
+}
+
+- (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource globalIndexPathForLocalIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSValue *rangeValue = [self.dataSourceSectionRanges objectForKey:dataSource];
+    if (rangeValue == nil)
+    {
+        return nil;
+    }
+    
+    NSRange range = [rangeValue rangeValue];
+    
+    NSIndexPath *globalIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section + range.location];
+    return globalIndexPath;
 }
 
 #pragma mark - Getters/Setters -

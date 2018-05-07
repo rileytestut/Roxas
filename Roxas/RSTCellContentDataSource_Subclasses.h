@@ -13,6 +13,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol RSTCellContentIndexPathTranslating <NSObject>
+
+- (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource localIndexPathForGlobalIndexPath:(NSIndexPath *)indexPath;
+- (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource globalIndexPathForLocalIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+
+NS_ASSUME_NONNULL_BEGIN
+
 // Privately declare conformance to DataSource protocols so clients must use a concrete subclass (which provides correct generic parameters to superclass).
 @interface RSTCellContentDataSource () <RSTCellContentPrefetchingDataSource, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching>
 
@@ -22,10 +34,14 @@ NS_ASSUME_NONNULL_BEGIN
 // Subclasses can customize if needed, such as by returning an NSOperation inside handler to enable asynchronous RSTSearchController search results.
 @property (copy, nonatomic) NSOperation *_Nullable (^defaultSearchHandler)(RSTSearchValue *searchValue, RSTSearchValue *_Nullable previousSearchValue);
 
+@property (nullable, weak, nonatomic) id<RSTCellContentIndexPathTranslating> indexPathTranslator;
+
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;
 
 - (void)filterContentWithPredicate:(nullable NSPredicate *)predicate;
+
+- (void)addChange:(RSTCellContentChange *)change;
 
 @end
 
