@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RSTCellContentIndexPathTranslating <NSObject>
 
-- (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource localIndexPathForGlobalIndexPath:(NSIndexPath *)indexPath;
 - (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource globalIndexPathForLocalIndexPath:(NSIndexPath *)indexPath;
 
 @end
@@ -35,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSOperation *_Nullable (^defaultSearchHandler)(RSTSearchValue *searchValue, RSTSearchValue *_Nullable previousSearchValue);
 
 @property (nullable, weak, nonatomic) id<RSTCellContentIndexPathTranslating> indexPathTranslator;
+
+@property (nonatomic, readonly) NSUInteger itemCount;
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;

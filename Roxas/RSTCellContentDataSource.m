@@ -588,4 +588,19 @@ NS_ASSUME_NONNULL_END
     }
 }
 
+- (NSUInteger)itemCount
+{
+    NSUInteger itemCount = 0;
+    
+    for (int section = 0; section < [self numberOfSectionsInContentView:self.contentView]; section++)
+    {
+        for (int item = 0; item < [self contentView:self.contentView numberOfItemsInSection:section]; item++)
+        {
+            itemCount++;
+        }
+    }
+    
+    return itemCount;
+}
+
 @end

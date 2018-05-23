@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTCompositeDataSource () <RSTCellContentIndexPathTranslating>
 
-@property (nonatomic, readonly) NSMapTable<RSTCellContentDataSource *, NSValue *> *dataSourceSectionRanges;
+@property (nonatomic, readonly) NSMapTable<RSTCellContentDataSource *, NSValue *> *dataSourceRanges;
 
 @end
 
@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_END
     if (self)
     {
         _dataSources = [dataSources copy];
-        _dataSourceSectionRanges = [NSMapTable strongToStrongObjectsMapTable];
+        _dataSourceRanges = [NSMapTable strongToStrongObjectsMapTable];
         
         for (RSTCellContentDataSource *dataSource in _dataSources)
         {
@@ -97,32 +97,57 @@ NS_ASSUME_NONNULL_END
 
 - (RSTCellContentDataSource *)dataSourceForIndexPath:(NSIndexPath *)indexPath
 {
-    __block RSTCellContentDataSource *dataSource = nil;
-    
-    for (RSTCellContentDataSource *key in self.dataSourceSectionRanges.copy)
+    for (RSTCellContentDataSource *key in self.dataSourceRanges.copy)
     {
-        NSRange range = [[self.dataSourceSectionRanges objectForKey:key] rangeValue];
-        if (NSLocationInRange(indexPath.section, range))
+        NSRange range = [[self.dataSourceRanges objectForKey:key] rangeValue];
+        
+        NSInteger index = [self shouldFlattenSections] ? indexPath.item : indexPath.section;
+        if (NSLocationInRange(index, range))
         {
-            dataSource = key;
+            return key;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSInteger)sectionForItem:(NSInteger)item dataSource:(RSTCellContentDataSource *)dataSource
+{
+    NSInteger section = 0;
+    
+    NSInteger itemCount = 0;
+    
+    for (int i = 0; i < [dataSource numberOfSectionsInContentView:self.contentView]; i++)
+    {
+        NSInteger count = [dataSource contentView:self.contentView numberOfItemsInSection:i];
+        itemCount += count;
+        
+        if (itemCount > item)
+        {
+            section = i;
             break;
         }
     }
     
-    return dataSource;
+    return section;
 }
 
 #pragma mark - RSTCellContentDataSource -
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIView<RSTCellContentView> *)contentView
 {
+    if ([self shouldFlattenSections])
+    {
+        return 1;
+    }
+    
     NSInteger numberOfSections = 0;
     for (RSTCellContentDataSource *dataSource in self.dataSources)
     {
         NSInteger sections = [dataSource numberOfSectionsInContentView:contentView];
         
         NSRange range = NSMakeRange(numberOfSections, sections);
-        [self.dataSourceSectionRanges setObject:@(range) forKey:dataSource];
+        [self.dataSourceRanges setObject:@(range) forKey:dataSource];
         
         numberOfSections += sections;
     }
@@ -132,18 +157,35 @@ NS_ASSUME_NONNULL_END
 
 - (NSInteger)contentView:(__kindof UIView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
-    
-    RSTCellContentDataSource *dataSource = [self dataSourceForIndexPath:indexPath];
-    if (dataSource == nil)
+    if ([self shouldFlattenSections])
     {
-        return 0;
+        NSInteger itemCount = 0;
+        
+        for (RSTCellContentDataSource *dataSource in self.dataSources)
+        {
+            NSRange range = NSMakeRange(itemCount, dataSource.itemCount);
+            [self.dataSourceRanges setObject:@(range) forKey:dataSource];
+            
+            itemCount += range.length;
+        }
+        
+        return itemCount;
     }
-    
-    NSIndexPath *localIndexPath = [self dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
-    
-    NSInteger numberOfItems = [dataSource contentView:contentView numberOfItemsInSection:localIndexPath.section];
-    return numberOfItems;
+    else
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:section];
+        
+        RSTCellContentDataSource *dataSource = [self dataSourceForIndexPath:indexPath];
+        if (dataSource == nil)
+        {
+            return 0;
+        }
+        
+        NSIndexPath *localIndexPath = [self dataSource:dataSource localIndexPathForGlobalIndexPath:indexPath];
+        
+        NSInteger numberOfItems = [dataSource contentView:contentView numberOfItemsInSection:localIndexPath.section];
+        return numberOfItems;
+    }
 }
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath
@@ -172,7 +214,7 @@ NS_ASSUME_NONNULL_END
 
 - (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource localIndexPathForGlobalIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSValue *rangeValue = [self.dataSourceSectionRanges objectForKey:dataSource];
+    NSValue *rangeValue = [self.dataSourceRanges objectForKey:dataSource];
     if (rangeValue == nil)
     {
         return nil;
@@ -180,13 +222,32 @@ NS_ASSUME_NONNULL_END
     
     NSRange range = [rangeValue rangeValue];
     
-    NSIndexPath *localIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section - range.location];
+    NSIndexPath *localIndexPath = nil;
+    
+    if ([self shouldFlattenSections])
+    {
+        NSInteger item = indexPath.item - range.location;
+        NSInteger section = [self sectionForItem:item dataSource:dataSource];
+        
+        for (int i = 0; i < section; i++)
+        {
+            NSInteger count = [dataSource contentView:self.contentView numberOfItemsInSection:i];
+            item -= count;
+        }
+        
+        localIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+    }
+    else
+    {
+        localIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section - range.location];
+    }
+    
     return localIndexPath;
 }
 
 - (nullable NSIndexPath *)dataSource:(RSTCellContentDataSource *)dataSource globalIndexPathForLocalIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSValue *rangeValue = [self.dataSourceSectionRanges objectForKey:dataSource];
+    NSValue *rangeValue = [self.dataSourceRanges objectForKey:dataSource];
     if (rangeValue == nil)
     {
         return nil;
@@ -194,7 +255,31 @@ NS_ASSUME_NONNULL_END
     
     NSRange range = [rangeValue rangeValue];
     
-    NSIndexPath *globalIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section + range.location];
+    NSIndexPath *globalIndexPath = nil;
+    
+    if ([self shouldFlattenSections])
+    {
+        NSInteger item = indexPath.item + range.location;
+        
+        NSInteger localSection = [self sectionForItem:item dataSource:dataSource];
+        for (int i = 0; i < localSection; i++)
+        {
+            NSInteger count = [dataSource contentView:self.contentView numberOfItemsInSection:i];
+            item += count;
+        }
+        
+        globalIndexPath = [NSIndexPath indexPathForItem:item inSection:0];
+    }
+    else
+    {
+        globalIndexPath = [NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section + range.location];
+    }
+    
+    if (self.indexPathTranslator != nil)
+    {
+        globalIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:globalIndexPath];
+    }
+    
     return globalIndexPath;
 }
 
@@ -208,6 +293,18 @@ NS_ASSUME_NONNULL_END
     {
         dataSource.contentView = contentView;
     }
+}
+
+- (void)setShouldFlattenSections:(BOOL)shouldFlattenSections
+{
+    if (shouldFlattenSections == _shouldFlattenSections)
+    {
+        return;
+    }
+    
+    _shouldFlattenSections = shouldFlattenSections;
+    
+    [self.contentView reloadData];
 }
 
 @end
