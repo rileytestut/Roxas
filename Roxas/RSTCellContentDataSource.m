@@ -9,6 +9,7 @@
 #import "RSTCellContentDataSource_Subclasses.h"
 #import "RSTSearchController.h"
 #import "RSTOperationQueue.h"
+#import "RSTBlockOperation.h"
 
 #import "RSTHelperFile.h"
 
@@ -235,11 +236,21 @@ NS_ASSUME_NONNULL_END
     {
         // Prefetch item has not been cached, so perform operation to retrieve it.
         
+        __weak __block NSOperation *weakOperation = nil;
+        
         NSOperation *operation = self.prefetchHandler(item, indexPath, ^(id prefetchItem, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 prefetchCompletionHandler(prefetchItem, error);
+                
+                if ([weakOperation isKindOfClass:[RSTAsyncBlockOperation class]])
+                {
+                    // Automatically call finish for RSTAsyncBlockOperations.
+                    [(RSTAsyncBlockOperation *)weakOperation finish];
+                }
             });
         });
+        
+        weakOperation = operation;
         
         if (operation)
         {

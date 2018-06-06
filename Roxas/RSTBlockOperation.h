@@ -16,10 +16,26 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RSTBlockOperation : RSTOperation
 
 @property (copy, nonatomic, readonly) void (^executionBlock)(__weak RSTBlockOperation *);
+@property (nullable, copy, nonatomic) void (^cancellationBlock)(void);
 
 + (instancetype)blockOperationWithExecutionBlock:(void (^)(__weak RSTBlockOperation *))executionBlock;
 
 - (instancetype)init NS_UNAVAILABLE;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface RSTAsyncBlockOperation : RSTBlockOperation
+
+@property (copy, nonatomic, readonly) void (^executionBlock)(__weak RSTAsyncBlockOperation *);
+
++ (instancetype)blockOperationWithExecutionBlock:(void (^)(__weak RSTAsyncBlockOperation *))executionBlock;
+
+- (void)finish;
 
 @end
 

@@ -30,13 +30,44 @@
 
 + (instancetype)blockOperationWithExecutionBlock:(void (^)(__weak RSTBlockOperation * _Nonnull))executionBlock
 {
-    RSTBlockOperation *operation = [[RSTBlockOperation alloc] initWithExecutionBlock:executionBlock];
+    RSTBlockOperation *operation = [[self.class alloc] initWithExecutionBlock:executionBlock];
     return operation;
 }
 
 - (void)main
 {
     self.executionBlock(self);
+}
+
+- (void)cancel
+{
+    [super cancel];
+    
+    if (self.cancellationBlock)
+    {
+        self.cancellationBlock();
+    }
+}
+
+@end
+
+
+@implementation RSTAsyncBlockOperation
+@dynamic executionBlock;
+
+- (BOOL)isAsynchronous
+{
+    return YES;
+}
+
++ (instancetype)blockOperationWithExecutionBlock:(void (^)(__weak RSTAsyncBlockOperation * _Nonnull))executionBlock
+{
+    return [super blockOperationWithExecutionBlock:(void(^_Nonnull)(RSTBlockOperation *_Nonnull __weak))executionBlock];
+}
+
+- (void)finish
+{
+    [super finish];
 }
 
 @end
