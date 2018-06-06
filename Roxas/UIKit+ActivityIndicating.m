@@ -47,7 +47,24 @@ NS_ASSUME_NONNULL_END
 
 @implementation RSTActivityIndicatingHelper
 @synthesize activityCount = _activityCount;
+@synthesize indicatingActivity = _indicatingActivity;
 @synthesize activityIndicatorView = _activityIndicatorView;
+
++ (instancetype)activityIndicatingHelperForIndicatingObject:(id<_RSTActivityIndicating>)object
+{
+    @synchronized(object)
+    {
+        RSTActivityIndicatingHelper *helper = objc_getAssociatedObject(object, @selector(activityIndicatingHelperForIndicatingObject:));
+        if (helper == nil)
+        {
+            helper = [[RSTActivityIndicatingHelper alloc] initWithIndicatingObject:object];
+            
+            objc_setAssociatedObject(object, @selector(activityIndicatingHelperForIndicatingObject:), helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+        
+        return helper;
+    }
+}
 
 - (instancetype)initWithIndicatingObject:(id<_RSTActivityIndicating>)indicatingObject
 {
@@ -72,7 +89,7 @@ NS_ASSUME_NONNULL_END
         if (_activityCount == 1)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.indicatingObject startIndicatingActivity];
+                self.indicatingActivity = YES;
             });
         }
     });
@@ -91,27 +108,13 @@ NS_ASSUME_NONNULL_END
         if (_activityCount == 0)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.indicatingObject stopIndicatingActivity];
+                self.indicatingActivity = NO;
             });
         }
     });
 }
 
-+ (instancetype)activityIndicatingHelperForIndicatingObject:(id<_RSTActivityIndicating>)object
-{
-    @synchronized(object)
-    {
-        RSTActivityIndicatingHelper *helper = objc_getAssociatedObject(object, @selector(activityIndicatingHelperForIndicatingObject:));
-        if (helper == nil)
-        {
-            helper = [[RSTActivityIndicatingHelper alloc] initWithIndicatingObject:object];
-            
-            objc_setAssociatedObject(object, @selector(activityIndicatingHelperForIndicatingObject:), helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-        
-        return helper;
-    }
-}
+#pragma mark - Getters/Setters -
 
 - (UIActivityIndicatorView *)activityIndicatorView
 {
@@ -121,10 +124,39 @@ NS_ASSUME_NONNULL_END
         {
             _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
-            [_activityIndicatorView startAnimating];
         }
         
         return _activityIndicatorView;
+    }
+}
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    // Always start/stop animation regardless of whether indicatingActivity is a new value.
+    // This is in case the animation has been started/stopped externally (such as when reusing table/collection view cells).
+    if (indicatingActivity)
+    {
+        [self.activityIndicatorView startAnimating];
+    }
+    else
+    {
+        [self.activityIndicatorView stopAnimating];
+    }
+    
+    if (indicatingActivity == _indicatingActivity)
+    {
+        return;
+    }
+    
+    _indicatingActivity = indicatingActivity;
+    
+    if (indicatingActivity)
+    {
+        [self.indicatingObject startIndicatingActivity];
+    }
+    else
+    {
+        [self.indicatingObject stopIndicatingActivity];
     }
 }
 
@@ -183,11 +215,6 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - <RSTActivityIndicating> -
 
-- (NSUInteger)activityCount
-{
-    return self.activityIndicatingHelper.activityCount;
-}
-
 - (void)incrementActivityCount
 {
     [self.activityIndicatingHelper incrementActivityCount];
@@ -199,6 +226,21 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - Getters/Setters -
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    self.activityIndicatingHelper.indicatingActivity = indicatingActivity;
+}
+
+- (BOOL)isIndicatingActivity
+{
+    return [self.activityIndicatingHelper isIndicatingActivity];
+}
+
+- (NSUInteger)activityCount
+{
+    return self.activityIndicatingHelper.activityCount;
+}
 
 - (RSTActivityIndicatingHelper *)activityIndicatingHelper
 {
@@ -256,11 +298,6 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - <RSTActivityIndicating> -
 
-- (NSUInteger)activityCount
-{
-    return self.activityIndicatingHelper.activityCount;
-}
-
 - (void)incrementActivityCount
 {
     [self.activityIndicatingHelper incrementActivityCount];
@@ -272,6 +309,21 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - Getters/Setters -
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    self.activityIndicatingHelper.indicatingActivity = indicatingActivity;
+}
+
+- (BOOL)isIndicatingActivity
+{
+    return [self.activityIndicatingHelper isIndicatingActivity];
+}
+
+- (NSUInteger)activityCount
+{
+    return self.activityIndicatingHelper.activityCount;
+}
 
 - (RSTActivityIndicatingHelper *)activityIndicatingHelper
 {
@@ -312,11 +364,6 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - <RSTActivityIndicating> -
 
-- (NSUInteger)activityCount
-{
-    return self.activityIndicatingHelper.activityCount;
-}
-
 - (void)incrementActivityCount
 {
     [self.activityIndicatingHelper incrementActivityCount];
@@ -328,6 +375,21 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - Getters/Setters -
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    self.activityIndicatingHelper.indicatingActivity = indicatingActivity;
+}
+
+- (BOOL)isIndicatingActivity
+{
+    return [self.activityIndicatingHelper isIndicatingActivity];
+}
+
+- (NSUInteger)activityCount
+{
+    return self.activityIndicatingHelper.activityCount;
+}
 
 - (RSTActivityIndicatingHelper *)activityIndicatingHelper
 {
@@ -365,11 +427,6 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - <RSTActivityIndicating> -
 
-- (NSUInteger)activityCount
-{
-    return self.activityIndicatingHelper.activityCount;
-}
-
 - (void)incrementActivityCount
 {
     [self.activityIndicatingHelper incrementActivityCount];
@@ -381,6 +438,21 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - Getters/Setters -
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    self.activityIndicatingHelper.indicatingActivity = indicatingActivity;
+}
+
+- (BOOL)isIndicatingActivity
+{
+    return [self.activityIndicatingHelper isIndicatingActivity];
+}
+
+- (NSUInteger)activityCount
+{
+    return self.activityIndicatingHelper.activityCount;
+}
 
 - (RSTActivityIndicatingHelper *)activityIndicatingHelper
 {
