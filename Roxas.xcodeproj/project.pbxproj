@@ -243,7 +243,6 @@
 		BF0FB4421C017DD600D26616 /* Visual Components */ = {
 			isa = PBXGroup;
 			children = (
-				BFB88BDC20A04CD40067A545 /* New Group */,
 				BFB228382066FB9C00F08151 /* Launch View Controller */,
 				BFB228372066FB9000F08151 /* Placeholder View */,
 			);
@@ -474,13 +473,6 @@
 				BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */,
 			);
 			name = "Launch View Controller";
-			sourceTree = "<group>";
-		};
-		BFB88BDC20A04CD40067A545 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		BFB88BDD20A04CE20067A545 /* Collection View Layouts */ = {
