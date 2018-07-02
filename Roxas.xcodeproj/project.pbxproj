@@ -32,6 +32,8 @@
 		BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF3AC2C920E686EE00F7DD99 /* RSTSeparatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */; };
 		BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */ = {isa = PBXBuildFile; fileRef = BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */; };
 		BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,6 +147,8 @@
 		BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitionState.m"; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
+		BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTSeparatorView.h; sourceTree = "<group>"; };
+		BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTSeparatorView.m; sourceTree = "<group>"; };
 		BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKit+ActivityIndicating.h"; sourceTree = "<group>"; };
 		BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIKit+ActivityIndicating.m"; sourceTree = "<group>"; };
 		BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimatedHide.h"; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 		BF0FB4421C017DD600D26616 /* Visual Components */ = {
 			isa = PBXGroup;
 			children = (
+				BF3AC2C620E686A100F7DD99 /* Separator */,
 				BFB228382066FB9C00F08151 /* Launch View Controller */,
 				BFB228372066FB9000F08151 /* Placeholder View */,
 			);
@@ -299,6 +304,15 @@
 				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		BF3AC2C620E686A100F7DD99 /* Separator */ = {
+			isa = PBXGroup;
+			children = (
+				BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */,
+				BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */,
+			);
+			name = Separator;
 			sourceTree = "<group>";
 		};
 		BF53E98A207B469F00A57BCE /* RSTActivityIndicating */ = {
@@ -622,6 +636,7 @@
 				BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */,
 				BFDF04D81D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */,
 				BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */,
+				BF3AC2C920E686EE00F7DD99 /* RSTSeparatorView.h in Headers */,
 				BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */,
 				BFAD9D0A1E5283970051F340 /* RSTCellContentView.h in Headers */,
 				BFE8F0461E4AF8A200A64745 /* RSTSearchController.h in Headers */,
@@ -797,6 +812,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */,
 				BFE35D841DBED4D700F77C10 /* UITableView+CellContent.m in Sources */,
 				BF8D82271E53CFEE00756F08 /* NSPredicate+Search.m in Sources */,
 				BFE8F0471E4AF8A200A64745 /* RSTSearchController.m in Sources */,
