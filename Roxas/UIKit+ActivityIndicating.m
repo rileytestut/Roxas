@@ -9,10 +9,11 @@
 #import "UIKit+ActivityIndicating.h"
 
 typedef NSString *RSTActivityIndicatingHelperUserInfoKey NS_TYPED_EXTENSIBLE_ENUM;
-RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyTextColor = @"RSTActivityIndicatingHelperUserInfoKeyTextColor";
+RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyTitle = @"RSTActivityIndicatingHelperUserInfoKeyTitle";
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyImage = @"RSTActivityIndicatingHelperUserInfoKeyImage";
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyEnabled = @"RSTActivityIndicatingHelperUserInfoKeyEnabled";
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyCustomView = @"RSTActivityIndicatingHelperUserInfoKeyCustomView";
+RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyWidthConstraint = @"RSTActivityIndicatingHelperUserInfoKeyWidthConstraint";
 
 @import ObjectiveC;
 
@@ -176,8 +177,8 @@ NS_ASSUME_NONNULL_END
 
 - (void)startIndicatingActivity
 {
-    UIColor *textColor = [self titleColorForState:UIControlStateNormal];
-    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTextColor] = textColor;
+    NSString *title = [self titleForState:UIControlStateNormal];
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTitle] = title;
     
     UIImage *image = [self imageForState:UIControlStateNormal];
     self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyImage] = image;
@@ -185,7 +186,14 @@ NS_ASSUME_NONNULL_END
     BOOL enabled = [self isUserInteractionEnabled];
     self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] = @(enabled);
     
-    [self setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+    if (!self.translatesAutoresizingMaskIntoConstraints)
+    {
+        NSLayoutConstraint *widthConstraint = [self.widthAnchor constraintEqualToConstant:CGRectGetWidth(self.bounds)];
+        widthConstraint.active = YES;
+        self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyWidthConstraint] = widthConstraint;
+    }
+    
+    [self setTitle:nil forState:UIControlStateNormal];
     [self setImage:nil forState:UIControlStateNormal];
     [self setUserInteractionEnabled:NO];
     
@@ -199,8 +207,8 @@ NS_ASSUME_NONNULL_END
 {
     [self.activityIndicatingHelper.activityIndicatorView removeFromSuperview];
     
-    UIColor *textColor = self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTextColor];
-    [self setTitleColor:textColor forState:UIControlStateNormal];
+    NSString *title = self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTitle];
+    [self setTitle:title forState:UIControlStateNormal];
     
     UIImage *image = self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyImage];
     [self setImage:image forState:UIControlStateNormal];
@@ -208,9 +216,13 @@ NS_ASSUME_NONNULL_END
     BOOL enabled = [self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] boolValue];
     [self setUserInteractionEnabled:enabled];
     
-    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTextColor] = nil;
+    NSLayoutConstraint *widthConstraint = self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyWidthConstraint];
+    widthConstraint.active = NO;
+    
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyTitle] = nil;
     self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyImage] = nil;
     self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] = nil;
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyWidthConstraint] = nil;
 }
 
 #pragma mark - <RSTActivityIndicating> -
