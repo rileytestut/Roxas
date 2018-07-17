@@ -11,11 +11,8 @@
 
 @implementation RSTPersistentContainer
 
-- (instancetype)initWithName:(NSString *)name
+- (instancetype)initWithName:(NSString *)name bundle:(NSBundle *)bundle
 {
-    // Reimplement initWithName: so we can override initWithName: in Swift instead of just initWithName:managedObjectModel:.
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    
     NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
     
     self = [super initWithName:name managedObjectModel:managedObjectModel];

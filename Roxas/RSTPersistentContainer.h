@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSMergePolicy *preferredMergePolicy;
 
-- (instancetype)initWithName:(NSString *)name;
+- (instancetype)initWithName:(NSString *)name bundle:(NSBundle *)bundle;
 - (instancetype)initWithName:(NSString *)name managedObjectModel:(NSManagedObjectModel *)model;
 
 @end
