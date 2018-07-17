@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString *)name bundle:(NSBundle *)bundle;
 - (instancetype)initWithName:(NSString *)name managedObjectModel:(NSManagedObjectModel *)model;
 
+- (NSManagedObjectContext *)newBackgroundSavingViewContext;
+- (NSManagedObjectContext *)newBackgroundContextWithParent:(NSManagedObjectContext *)parent;
+
 @end
 
 NS_ASSUME_NONNULL_END
