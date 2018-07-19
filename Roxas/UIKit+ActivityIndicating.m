@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTActivityIndicatingHelper : NSObject <RSTActivityIndicating>
 
+@property (nonatomic, readwrite) NSUInteger activityCount;
+
 @property (nonatomic, readonly) id<_RSTActivityIndicating> indicatingObject;
 
 @property (nonatomic, readonly) dispatch_queue_t activityCountQueue;
@@ -85,9 +87,9 @@ NS_ASSUME_NONNULL_END
 - (void)incrementActivityCount
 {
     dispatch_sync(self.activityCountQueue, ^{
-        _activityCount++;
+        self.activityCount++;
         
-        if (_activityCount == 1)
+        if (self.activityCount == 1)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.indicatingActivity = YES;
@@ -99,14 +101,14 @@ NS_ASSUME_NONNULL_END
 - (void)decrementActivityCount
 {
     dispatch_sync(self.activityCountQueue, ^{
-        if (_activityCount == 0)
+        if (self.activityCount == 0)
         {
             return;
         }
         
-        _activityCount--;
+        self.activityCount--;
         
-        if (_activityCount == 0)
+        if (self.activityCount == 0)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.indicatingActivity = NO;
