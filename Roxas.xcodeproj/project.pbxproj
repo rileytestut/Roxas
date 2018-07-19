@@ -30,6 +30,10 @@
 		BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF14E1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */; };
+		BF357B4420FD115A00A4A1A0 /* RSTPersistentContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF357B4520FD115A00A4A1A0 /* RSTPersistentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */; };
+		BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF357B5320FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF3AC2C920E686EE00F7DD99 /* RSTSeparatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,6 +149,10 @@
 		BF2DF14E1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTOperation_Subclasses.h; sourceTree = "<group>"; };
 		BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TransitionState.h"; sourceTree = "<group>"; };
 		BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitionState.m"; sourceTree = "<group>"; };
+		BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTPersistentContainer.h; sourceTree = "<group>"; };
+		BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTPersistentContainer.m; sourceTree = "<group>"; };
+		BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTRelationshipPreservingMergePolicy.h; sourceTree = "<group>"; };
+		BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTRelationshipPreservingMergePolicy.m; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
 		BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTSeparatorView.h; sourceTree = "<group>"; };
@@ -277,6 +285,17 @@
 			name = Operations;
 			sourceTree = "<group>";
 		};
+		BF357B4120FD113700A4A1A0 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */,
+				BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */,
+				BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */,
+				BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		BF36F1CE1A1459720057FF07 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +424,7 @@
 				BFADB01519AE7C4E0050CF31 /* Generic */,
 				BF2DF1481C96ABA400F9FDD8 /* Operations */,
 				BFDF04D51D51172A00091747 /* Cell Content */,
+				BF357B4120FD113700A4A1A0 /* Core Data */,
 				BF0FB4421C017DD600D26616 /* Visual Components */,
 				BFC6B5CF1A0A100E00BECAB5 /* Containers */,
 				BF36F1CE1A1459720057FF07 /* Categories */,
@@ -611,9 +631,11 @@
 				BF6A2D4C1FFC2BCC00A6B924 /* RSTDynamicDataSource.h in Headers */,
 				BF2DF14B1C96B56000F9FDD8 /* RSTOperation.h in Headers */,
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
+				BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
+				BF357B4420FD115A00A4A1A0 /* RSTPersistentContainer.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */,
 				BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
@@ -821,7 +843,9 @@
 				BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
 				BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
+				BF357B5320FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m in Sources */,
 				BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */,
+				BF357B4520FD115A00A4A1A0 /* RSTPersistentContainer.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
