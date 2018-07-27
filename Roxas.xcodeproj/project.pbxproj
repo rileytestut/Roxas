@@ -30,8 +30,14 @@
 		BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF14E1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */; };
+		BF357B4420FD115A00A4A1A0 /* RSTPersistentContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF357B4520FD115A00A4A1A0 /* RSTPersistentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */; };
+		BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF357B5320FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */; };
 		BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
 		BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF3AC2C920E686EE00F7DD99 /* RSTSeparatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */; };
 		BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */ = {isa = PBXBuildFile; fileRef = BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */; };
 		BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +61,7 @@
 		BF6C2E2E1E52521400EABBC9 /* RSTArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6C2E2C1E52521400EABBC9 /* RSTArrayDataSource.m */; };
 		BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF71CF8F1FE912D1001F1613 /* RSTCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */; };
+		BF749F2320A10E5D00915B16 /* RSTCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF749F2220A10E5D00915B16 /* RSTCollectionViewCell.xib */; };
 		BF7A4FDF1A33B947007697D1 /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7FF097207312E5003A921A /* RSTActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
@@ -94,12 +101,16 @@
 		BFAFF4E91E5CBBE600C67FF3 /* RSTLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */; };
 		BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB228392066FBBF00F08151 /* RSTLaunchViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */; };
+		BFB88BE020A04D680067A545 /* RSTCollectionViewGridLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB88BDE20A04D680067A545 /* RSTCollectionViewGridLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB88BE120A04D680067A545 /* RSTCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB88BDF20A04D680067A545 /* RSTCollectionViewGridLayout.m */; };
 		BFBDEA341EC274D20034D65E /* UIAlertAction+Actions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */; };
 		BFC2BC641D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC651D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
 		BFC2BC671D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
+		BFC5B07F20A0F25A0085B6A3 /* RSTCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC5B07D20A0F25A0085B6A3 /* RSTCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFC5B08020A0F25A0085B6A3 /* RSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC5B07E20A0F25A0085B6A3 /* RSTCollectionViewCell.m */; };
 		BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC6B5D31A0A10A900BECAB5 /* RSTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */; };
 		BFDB50621EB942F50084C58A /* NSLayoutConstraint+Edges.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDB50601EB942F50084C58A /* NSLayoutConstraint+Edges.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -138,8 +149,14 @@
 		BF2DF14E1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTOperation_Subclasses.h; sourceTree = "<group>"; };
 		BF2DF1501C97484A00F9FDD8 /* UIViewController+TransitionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TransitionState.h"; sourceTree = "<group>"; };
 		BF2DF1511C97484A00F9FDD8 /* UIViewController+TransitionState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TransitionState.m"; sourceTree = "<group>"; };
+		BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTPersistentContainer.h; sourceTree = "<group>"; };
+		BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTPersistentContainer.m; sourceTree = "<group>"; };
+		BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTRelationshipPreservingMergePolicy.h; sourceTree = "<group>"; };
+		BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTRelationshipPreservingMergePolicy.m; sourceTree = "<group>"; };
 		BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Manipulation.m"; sourceTree = "<group>"; };
 		BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Manipulation.h"; sourceTree = "<group>"; };
+		BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTSeparatorView.h; sourceTree = "<group>"; };
+		BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTSeparatorView.m; sourceTree = "<group>"; };
 		BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKit+ActivityIndicating.h"; sourceTree = "<group>"; };
 		BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIKit+ActivityIndicating.m"; sourceTree = "<group>"; };
 		BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimatedHide.h"; sourceTree = "<group>"; };
@@ -155,6 +172,7 @@
 		BF6C2E2C1E52521400EABBC9 /* RSTArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTArrayDataSource.m; sourceTree = "<group>"; };
 		BF71CF8C1FE912D1001F1613 /* RSTCompositeDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTCompositeDataSource.h; sourceTree = "<group>"; };
 		BF71CF8D1FE912D1001F1613 /* RSTCompositeDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTCompositeDataSource.m; sourceTree = "<group>"; };
+		BF749F2220A10E5D00915B16 /* RSTCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSTCollectionViewCell.xib; sourceTree = "<group>"; };
 		BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTDefines.h; sourceTree = "<group>"; };
 		BF7A4FE01A33BA66007697D1 /* Roxas-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roxas-Prefix.pch"; path = "Roxas/Roxas-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		BF7FF097207312E5003A921A /* RSTActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTActivityIndicating.h; sourceTree = "<group>"; };
@@ -185,11 +203,15 @@
 		BFAFF4E71E5CBBE600C67FF3 /* RSTLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTLoadOperation.m; sourceTree = "<group>"; };
 		BFB228392066FBBF00F08151 /* RSTLaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTLaunchViewController.h; sourceTree = "<group>"; };
 		BFB2283A2066FBBF00F08151 /* RSTLaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTLaunchViewController.m; sourceTree = "<group>"; };
+		BFB88BDE20A04D680067A545 /* RSTCollectionViewGridLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTCollectionViewGridLayout.h; sourceTree = "<group>"; };
+		BFB88BDF20A04D680067A545 /* RSTCollectionViewGridLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTCollectionViewGridLayout.m; sourceTree = "<group>"; };
 		BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+Actions.h"; sourceTree = "<group>"; };
 		BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+Actions.m"; sourceTree = "<group>"; };
 		BFBDEA411EC2C5AC0034D65E /* Roxas.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Roxas.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CellContent.h"; sourceTree = "<group>"; };
 		BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CellContent.m"; sourceTree = "<group>"; };
+		BFC5B07D20A0F25A0085B6A3 /* RSTCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTCollectionViewCell.h; sourceTree = "<group>"; };
+		BFC5B07E20A0F25A0085B6A3 /* RSTCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTCollectionViewCell.m; sourceTree = "<group>"; };
 		BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTNavigationController.h; sourceTree = "<group>"; };
 		BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTNavigationController.m; sourceTree = "<group>"; };
 		BFDB50601EB942F50084C58A /* NSLayoutConstraint+Edges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Edges.h"; sourceTree = "<group>"; };
@@ -233,6 +255,7 @@
 		BF0FB4421C017DD600D26616 /* Visual Components */ = {
 			isa = PBXGroup;
 			children = (
+				BF3AC2C620E686A100F7DD99 /* Separator */,
 				BFB228382066FB9C00F08151 /* Launch View Controller */,
 				BFB228372066FB9000F08151 /* Placeholder View */,
 			);
@@ -262,6 +285,17 @@
 			name = Operations;
 			sourceTree = "<group>";
 		};
+		BF357B4120FD113700A4A1A0 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				BF357B4220FD115A00A4A1A0 /* RSTPersistentContainer.h */,
+				BF357B4320FD115A00A4A1A0 /* RSTPersistentContainer.m */,
+				BF357B5020FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h */,
+				BF357B5120FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		BF36F1CE1A1459720057FF07 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +323,15 @@
 				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		BF3AC2C620E686A100F7DD99 /* Separator */ = {
+			isa = PBXGroup;
+			children = (
+				BF3AC2C720E686EE00F7DD99 /* RSTSeparatorView.h */,
+				BF3AC2C820E686EE00F7DD99 /* RSTSeparatorView.m */,
+			);
+			name = Separator;
 			sourceTree = "<group>";
 		};
 		BF53E98A207B469F00A57BCE /* RSTActivityIndicating */ = {
@@ -381,6 +424,7 @@
 				BFADB01519AE7C4E0050CF31 /* Generic */,
 				BF2DF1481C96ABA400F9FDD8 /* Operations */,
 				BFDF04D51D51172A00091747 /* Cell Content */,
+				BF357B4120FD113700A4A1A0 /* Core Data */,
 				BF0FB4421C017DD600D26616 /* Visual Components */,
 				BFC6B5CF1A0A100E00BECAB5 /* Containers */,
 				BF36F1CE1A1459720057FF07 /* Categories */,
@@ -465,6 +509,25 @@
 			name = "Launch View Controller";
 			sourceTree = "<group>";
 		};
+		BFB88BDD20A04CE20067A545 /* Collection View Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				BFB88BDE20A04D680067A545 /* RSTCollectionViewGridLayout.h */,
+				BFB88BDF20A04D680067A545 /* RSTCollectionViewGridLayout.m */,
+			);
+			name = "Collection View Layouts";
+			sourceTree = "<group>";
+		};
+		BFC5B07C20A0F2100085B6A3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BFC5B07D20A0F25A0085B6A3 /* RSTCollectionViewCell.h */,
+				BFC5B07E20A0F25A0085B6A3 /* RSTCollectionViewCell.m */,
+				BF749F2220A10E5D00915B16 /* RSTCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		BFC6B5CF1A0A100E00BECAB5 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,14 +537,24 @@
 			name = Containers;
 			sourceTree = "<group>";
 		};
+		BFD40E94209E5B7C00A0D15F /* Prefetching */ = {
+			isa = PBXGroup;
+			children = (
+				BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */,
+			);
+			name = Prefetching;
+			sourceTree = "<group>";
+		};
 		BFDF04D51D51172A00091747 /* Cell Content */ = {
 			isa = PBXGroup;
 			children = (
 				BF8FD1C61E5BBE1400820F2C /* RSTCellContentCell.h */,
 				BFAD9D091E5283970051F340 /* RSTCellContentView.h */,
-				BF8D822C1E53F66D00756F08 /* Changes */,
 				BFE8F03A1E4AF30900A64745 /* Data Sources */,
+				BF8D822C1E53F66D00756F08 /* Changes */,
 				BFE8F0431E4AF84000A64745 /* Search */,
+				BFB88BDD20A04CE20067A545 /* Collection View Layouts */,
+				BFC5B07C20A0F2100085B6A3 /* Cells */,
 			);
 			name = "Cell Content";
 			sourceTree = "<group>";
@@ -489,10 +562,10 @@
 		BFE8F03A1E4AF30900A64745 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */,
 				BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */,
 				BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */,
 				BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */,
+				BFD40E94209E5B7C00A0D15F /* Prefetching */,
 				BFAD9D0B1E52845C0051F340 /* Array */,
 				BFE8F03B1E4AF31000A64745 /* Fetched Results Controller */,
 				BF6A2D411FFC2A5E00A6B924 /* Dynamic */,
@@ -558,15 +631,18 @@
 				BF6A2D4C1FFC2BCC00A6B924 /* RSTDynamicDataSource.h in Headers */,
 				BF2DF14B1C96B56000F9FDD8 /* RSTOperation.h in Headers */,
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
+				BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
+				BF357B4420FD115A00A4A1A0 /* RSTPersistentContainer.h in Headers */,
 				BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */,
 				BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */,
 				BF36F1D21A1459B90057FF07 /* UIImage+Manipulation.h in Headers */,
 				BF0FB4451C017DF600D26616 /* RSTPlaceholderView.h in Headers */,
 				BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */,
 				BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */,
+				BFB88BE020A04D680067A545 /* RSTCollectionViewGridLayout.h in Headers */,
 				BF6C2E2D1E52521400EABBC9 /* RSTArrayDataSource.h in Headers */,
 				BFAFF4E41E5C233500C67FF3 /* RSTBlockOperation.h in Headers */,
 				BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */,
@@ -576,11 +652,13 @@
 				BFDB50621EB942F50084C58A /* NSLayoutConstraint+Edges.h in Headers */,
 				BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */,
 				BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
+				BFC5B07F20A0F25A0085B6A3 /* RSTCollectionViewCell.h in Headers */,
 				BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */,
 				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
 				BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */,
 				BFDF04D81D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */,
 				BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */,
+				BF3AC2C920E686EE00F7DD99 /* RSTSeparatorView.h in Headers */,
 				BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */,
 				BFAD9D0A1E5283970051F340 /* RSTCellContentView.h in Headers */,
 				BFE8F0461E4AF8A200A64745 /* RSTSearchController.h in Headers */,
@@ -656,7 +734,7 @@
 		BFADAFEF19AE7BB70050CF31 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Riley Testut";
 				TargetAttributes = {
 					BFADAFF719AE7BB70050CF31 = {
@@ -700,6 +778,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF749F2320A10E5D00915B16 /* RSTCollectionViewCell.xib in Resources */,
 				BF0FB44A1C017F1300D26616 /* RSTPlaceholderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,6 +834,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */,
 				BFE35D841DBED4D700F77C10 /* UITableView+CellContent.m in Sources */,
 				BF8D82271E53CFEE00756F08 /* NSPredicate+Search.m in Sources */,
 				BFE8F0471E4AF8A200A64745 /* RSTSearchController.m in Sources */,
@@ -763,7 +843,9 @@
 				BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
 				BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
+				BF357B5320FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m in Sources */,
 				BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */,
+				BF357B4520FD115A00A4A1A0 /* RSTPersistentContainer.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
@@ -773,6 +855,7 @@
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
 				BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */,
 				BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */,
+				BFC5B08020A0F25A0085B6A3 /* RSTCollectionViewCell.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,
 				BF2DF14C1C96B56000F9FDD8 /* RSTOperation.m in Sources */,
 				BF2DF1531C97484A00F9FDD8 /* UIViewController+TransitionState.m in Sources */,
@@ -783,6 +866,7 @@
 				BF8FD1C41E5BADE300820F2C /* RSTFetchedResultsDataSource.m in Sources */,
 				BF6C2E2E1E52521400EABBC9 /* RSTArrayDataSource.m in Sources */,
 				BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */,
+				BFB88BE120A04D680067A545 /* RSTCollectionViewGridLayout.m in Sources */,
 				BF0FB4471C017DF600D26616 /* RSTPlaceholderView.m in Sources */,
 				BF71CF8F1FE912D1001F1613 /* RSTCompositeDataSource.m in Sources */,
 				BFAFF4E91E5CBBE600C67FF3 /* RSTLoadOperation.m in Sources */,
@@ -871,12 +955,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -953,12 +1039,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1012,12 +1100,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

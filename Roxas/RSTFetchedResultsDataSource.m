@@ -177,7 +177,7 @@ NS_ASSUME_NONNULL_END
     
     RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:changeType sectionIndex:sectionIndex];
     change.rowAnimation = self.rowAnimation;
-    [self.contentView addChange:change];
+    [self addChange:change];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
@@ -186,7 +186,7 @@ NS_ASSUME_NONNULL_END
     
     RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:changeType currentIndexPath:indexPath destinationIndexPath:newIndexPath];
     change.rowAnimation = self.rowAnimation;
-    [self.contentView addChange:change];
+    [self addChange:change];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller

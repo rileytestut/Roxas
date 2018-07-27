@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSArray<RSTCellContentDataSource<ContentType, CellType, ViewType, DataSourceType> *> *dataSources;
 
+@property (nonatomic) BOOL shouldFlattenSections;
+
 - (instancetype)initWithDataSources:(NSArray<RSTCellContentDataSource<ContentType, CellType, ViewType, DataSourceType> *> *)dataSources;
 
 - (nullable RSTCellContentDataSource<ContentType, CellType, ViewType, DataSourceType> *)dataSourceForIndexPath:(NSIndexPath *)indexPath;

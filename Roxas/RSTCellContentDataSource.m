@@ -9,6 +9,7 @@
 #import "RSTCellContentDataSource_Subclasses.h"
 #import "RSTSearchController.h"
 #import "RSTOperationQueue.h"
+#import "RSTBlockOperation.h"
 
 #import "RSTHelperFile.h"
 
@@ -235,11 +236,21 @@ NS_ASSUME_NONNULL_END
     {
         // Prefetch item has not been cached, so perform operation to retrieve it.
         
+        __weak __block NSOperation *weakOperation = nil;
+        
         NSOperation *operation = self.prefetchHandler(item, indexPath, ^(id prefetchItem, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 prefetchCompletionHandler(prefetchItem, error);
+                
+                if ([weakOperation isKindOfClass:[RSTAsyncBlockOperation class]])
+                {
+                    // Automatically call finish for RSTAsyncBlockOperations.
+                    [(RSTAsyncBlockOperation *)weakOperation finish];
+                }
             });
         });
+        
+        weakOperation = operation;
         
         if (operation)
         {
@@ -277,6 +288,40 @@ NS_ASSUME_NONNULL_END
             [self.contentView reloadData];
         });
     }
+}
+
+#pragma mark Changes
+
+- (void)addChange:(RSTCellContentChange *)change
+{
+    RSTCellContentChange *transformedChange = nil;
+    
+    if (change.sectionIndex == RSTUnknownSectionIndex)
+    {
+        NSIndexPath *currentIndexPath = change.currentIndexPath;
+        if (currentIndexPath != nil)
+        {
+            currentIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:currentIndexPath] ?: currentIndexPath;
+        }
+        
+        NSIndexPath *destinationIndexPath = change.destinationIndexPath;
+        if (destinationIndexPath != nil)
+        {
+            destinationIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:destinationIndexPath] ?: destinationIndexPath;
+        }
+        
+        transformedChange = [[RSTCellContentChange alloc] initWithType:change.type currentIndexPath:currentIndexPath destinationIndexPath:destinationIndexPath];
+       
+    }
+    else
+    {
+        NSIndexPath *sectionIndexPath = [NSIndexPath indexPathForItem:0 inSection:change.sectionIndex];
+        NSIndexPath *indexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:sectionIndexPath] ?: sectionIndexPath;
+        
+        transformedChange = [[RSTCellContentChange alloc] initWithType:change.type sectionIndex:indexPath.section];
+    }
+    
+    [self.contentView addChange:transformedChange];
 }
 
 #pragma mark - RSTCellContentDataSource Subclass Methods -
@@ -552,6 +597,21 @@ NS_ASSUME_NONNULL_END
             [self hidePlaceholderView];
         }
     }
+}
+
+- (NSUInteger)itemCount
+{
+    NSUInteger itemCount = 0;
+    
+    for (int section = 0; section < [self numberOfSectionsInContentView:self.contentView]; section++)
+    {
+        for (int item = 0; item < [self contentView:self.contentView numberOfItemsInSection:section]; item++)
+        {
+            itemCount++;
+        }
+    }
+    
+    return itemCount;
 }
 
 @end

@@ -51,9 +51,20 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Cell Content - Search
 #import <Roxas/RSTSearchController.h>
 
+// Cell Content - Collection View Layouts
+#import <Roxas/RSTCollectionViewGridLayout.h>
+
+// Cell Content - Cells
+#import <Roxas/RSTCollectionViewCell.h>
+
+// Core Data
+#import <Roxas/RSTPersistentContainer.h>
+#import <Roxas/RSTRelationshipPreservingMergePolicy.h>
+
 // Visual Components
 #import <Roxas/RSTPlaceholderView.h>
 #import <Roxas/RSTLaunchViewController.h>
+#import <Roxas/RSTSeparatorView.h>
 
 // Containers
 #import <Roxas/RSTNavigationController.h>

@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_END
             
             for (RSTCellContentChange *change in changes)
             {
-                [self.contentView addChange:change];
+                [self addChange:change];
             }
             
             [self.contentView endUpdates];

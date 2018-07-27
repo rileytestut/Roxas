@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RSTActivityIndicating <NSObject>
 
+@property (nonatomic, getter=isIndicatingActivity) BOOL indicatingActivity;
+
 @property (nonatomic, readonly) NSUInteger activityCount;
 
 - (void)incrementActivityCount;
