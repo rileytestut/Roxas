@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) UIActivityIndicatorView *rst_activityIndicatorView NS_SWIFT_NAME(activityIndicatorView);
 @end
 
+@interface UITextField (ActivityIndicating) <RSTActivityIndicating>
+@property (nonatomic, readonly) UIActivityIndicatorView *rst_activityIndicatorView NS_SWIFT_NAME(activityIndicatorView);
+@end
+
 @interface UIApplication (ActivityIndicating) <RSTActivityIndicating>
 @end
 
