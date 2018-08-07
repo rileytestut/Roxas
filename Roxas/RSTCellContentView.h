@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RSTCellContentView <NSObject>
 
 @property (nonatomic, nullable) id dataSource;
+@property (nonatomic, nullable) id prefetchDataSource;
+
 @property (nonatomic, readonly) Protocol *dataSourceProtocol;
 
 @property (nonatomic, nullable) UIView *backgroundView;

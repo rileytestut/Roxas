@@ -555,6 +555,17 @@ NS_ASSUME_NONNULL_END
         contentView.dataSource = nil;
         contentView.dataSource = self;
     }
+    
+    if (self.contentView != nil)
+    {
+        if ([self conformsToProtocol:@protocol(UITableViewDataSourcePrefetching)] || [self conformsToProtocol:@protocol(UICollectionViewDataSourcePrefetching)])
+        {
+            if (self.contentView.prefetchDataSource == nil)
+            {
+                NSLog(@"%@ is a prefetching data source, but its content view's prefetchDataSource is nil. Did you forget to assign it?", self);
+            }
+        }
+    }
 }
 
 - (void)setPredicate:(NSPredicate *)predicate
