@@ -189,6 +189,12 @@ NS_ASSUME_NONNULL_END
     
     id item = [self itemAtIndexPath:indexPath];
     
+    // Disable prefetching for NSProxy items to prevent obscure crashes.
+    if ([item isProxy])
+    {
+        return;
+    }
+    
     if (completionHandler)
     {
         // Each completionHandler is mapped to an item, and then to the indexPath originally requested.
