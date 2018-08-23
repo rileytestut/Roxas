@@ -14,6 +14,7 @@ RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfo
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyEnabled = @"RSTActivityIndicatingHelperUserInfoKeyEnabled";
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyCustomView = @"RSTActivityIndicatingHelperUserInfoKeyCustomView";
 RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyWidthConstraint = @"RSTActivityIndicatingHelperUserInfoKeyWidthConstraint";
+RSTActivityIndicatingHelperUserInfoKey const RSTActivityIndicatingHelperUserInfoKeyViewMode = @"RSTActivityIndicatingHelperUserInfoKeyViewMode";
 
 @import ObjectiveC;
 
@@ -374,6 +375,97 @@ NS_ASSUME_NONNULL_END
 - (void)stopIndicatingActivity
 {
     [self.activityIndicatingHelper.activityIndicatorView removeFromSuperview];
+}
+
+#pragma mark - <RSTActivityIndicating> -
+
+- (void)incrementActivityCount
+{
+    [self.activityIndicatingHelper incrementActivityCount];
+}
+
+- (void)decrementActivityCount
+{
+    [self.activityIndicatingHelper decrementActivityCount];
+}
+
+#pragma mark - Getters/Setters -
+
+- (void)setIndicatingActivity:(BOOL)indicatingActivity
+{
+    self.activityIndicatingHelper.indicatingActivity = indicatingActivity;
+}
+
+- (BOOL)isIndicatingActivity
+{
+    return [self.activityIndicatingHelper isIndicatingActivity];
+}
+
+- (NSUInteger)activityCount
+{
+    return self.activityIndicatingHelper.activityCount;
+}
+
+- (RSTActivityIndicatingHelper *)activityIndicatingHelper
+{
+    return [RSTActivityIndicatingHelper activityIndicatingHelperForIndicatingObject:self];
+}
+
+- (UIActivityIndicatorView *)rst_activityIndicatorView
+{
+    return self.activityIndicatingHelper.activityIndicatorView;
+}
+
+@end
+
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface UITextField (_ActivityIndicating) <_RSTActivityIndicating>
+@property (nonatomic, readonly) RSTActivityIndicatingHelper *activityIndicatingHelper;
+@end
+
+NS_ASSUME_NONNULL_END
+
+
+@implementation UITextField (_ActivityIndicating)
+
+- (void)startIndicatingActivity
+{
+    UIView *customView = self.rightView;
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyCustomView] = customView;
+    
+    UITextFieldViewMode viewMode = self.rightViewMode;
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyViewMode] = @(viewMode);
+    
+    BOOL enabled = [self isUserInteractionEnabled];
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] = @(enabled);
+    
+    self.rightView = self.activityIndicatingHelper.activityIndicatorView;
+    self.rightViewMode = UITextFieldViewModeAlways;
+    self.userInteractionEnabled = NO;
+    
+    // Layout twice to fix bug where setting self.rightView to the same UIActivityIndicatorView instance multiple times results in incorrect placement.
+    [self layoutIfNeeded];
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
+- (void)stopIndicatingActivity
+{
+    UIView *customView = self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyCustomView];
+    self.rightView = customView;
+    
+    UITextFieldViewMode viewMode = [self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyViewMode] integerValue];
+    self.rightViewMode = viewMode;
+    
+    BOOL enabled = [self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] boolValue];
+    self.userInteractionEnabled = enabled;
+    
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyCustomView] = nil;
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyViewMode] = nil;
+    self.activityIndicatingHelper.userInfo[RSTActivityIndicatingHelperUserInfoKeyEnabled] = nil;
 }
 
 #pragma mark - <RSTActivityIndicating> -

@@ -189,6 +189,12 @@ NS_ASSUME_NONNULL_END
     
     id item = [self itemAtIndexPath:indexPath];
     
+    // Disable prefetching for NSProxy items to prevent obscure crashes.
+    if ([item isProxy])
+    {
+        return;
+    }
+    
     if (completionHandler)
     {
         // Each completionHandler is mapped to an item, and then to the indexPath originally requested.
@@ -548,6 +554,17 @@ NS_ASSUME_NONNULL_END
         // Must set ourselves as dataSource again to refresh respondsToSelector: cache.
         contentView.dataSource = nil;
         contentView.dataSource = self;
+    }
+    
+    if (self.contentView != nil)
+    {
+        if ([self conformsToProtocol:@protocol(UITableViewDataSourcePrefetching)] || [self conformsToProtocol:@protocol(UICollectionViewDataSourcePrefetching)])
+        {
+            if (self.contentView.prefetchDataSource == nil)
+            {
+                NSLog(@"%@ is a prefetching data source, but its content view's prefetchDataSource is nil. Did you forget to assign it?", self);
+            }
+        }
     }
 }
 
