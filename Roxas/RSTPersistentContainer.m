@@ -91,6 +91,13 @@ NS_ASSUME_NONNULL_END
     return context;
 }
 
+- (NSManagedObjectContext *)newViewContextWithParent:(NSManagedObjectContext *)parentContext
+{
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [self configureManagedObjectContext:context parent:parentContext];
+    return context;
+}
+
 - (NSManagedObjectContext *)newBackgroundContextWithParent:(NSManagedObjectContext *)parentContext
 {
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
