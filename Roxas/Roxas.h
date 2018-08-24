@@ -65,6 +65,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTPlaceholderView.h>
 #import <Roxas/RSTLaunchViewController.h>
 #import <Roxas/RSTSeparatorView.h>
+#import <Roxas/RSTNibView.h>
 
 // Containers
 #import <Roxas/RSTNavigationController.h>

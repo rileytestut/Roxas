@@ -128,6 +128,8 @@
 		BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */; };
 		BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */; };
+		D55E1226212F44710095CA4F /* RSTNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = D55E1224212F44710095CA4F /* RSTNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D55E1227212F44710095CA4F /* RSTNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D55E1225212F44710095CA4F /* RSTNibView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +227,8 @@
 		BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource.h; sourceTree = "<group>"; };
 		BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTCellContentDataSource.m; sourceTree = "<group>"; };
 		BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource_Subclasses.h; sourceTree = "<group>"; };
+		D55E1224212F44710095CA4F /* RSTNibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTNibView.h; sourceTree = "<group>"; };
+		D55E1225212F44710095CA4F /* RSTNibView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTNibView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,9 +259,10 @@
 		BF0FB4421C017DD600D26616 /* Visual Components */ = {
 			isa = PBXGroup;
 			children = (
-				BF3AC2C620E686A100F7DD99 /* Separator */,
-				BFB228382066FB9C00F08151 /* Launch View Controller */,
 				BFB228372066FB9000F08151 /* Placeholder View */,
+				BFB228382066FB9C00F08151 /* Launch View Controller */,
+				BF3AC2C620E686A100F7DD99 /* Separator */,
+				D55E1223212F444C0095CA4F /* Nib View */,
 			);
 			name = "Visual Components";
 			sourceTree = "<group>";
@@ -592,6 +597,15 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		D55E1223212F444C0095CA4F /* Nib View */ = {
+			isa = PBXGroup;
+			children = (
+				D55E1224212F44710095CA4F /* RSTNibView.h */,
+				D55E1225212F44710095CA4F /* RSTNibView.m */,
+			);
+			name = "Nib View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -632,6 +646,7 @@
 				BF2DF14B1C96B56000F9FDD8 /* RSTOperation.h in Headers */,
 				BF2DF14F1C96B6EE00F9FDD8 /* RSTOperation_Subclasses.h in Headers */,
 				BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */,
+				D55E1226212F44710095CA4F /* RSTNibView.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
@@ -847,6 +862,7 @@
 				BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */,
 				BF357B4520FD115A00A4A1A0 /* RSTPersistentContainer.m in Sources */,
 				BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */,
+				D55E1227212F44710095CA4F /* RSTNibView.m in Sources */,
 				BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,

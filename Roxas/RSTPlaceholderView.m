@@ -44,13 +44,6 @@
 
 - (void)initialize
 {
-    NSArray *views = [[NSBundle bundleForClass:self.class] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil];
-    
-    UIView *nibView = [views firstObject];
-    nibView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-    nibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self addSubview:nibView];
-    
     self.activityIndicatorView.hidden = YES;
     self.imageView.hidden = YES;
     

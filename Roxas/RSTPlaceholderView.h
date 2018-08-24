@@ -6,9 +6,12 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
+#import <Roxas/RSTNibView.h>
+
 @import UIKit;
 
-@interface RSTPlaceholderView : UIView
+IB_DESIGNABLE
+@interface RSTPlaceholderView : RSTNibView
 
 // Visible by default
 @property (nonnull, nonatomic, readonly) UILabel *textLabel;
