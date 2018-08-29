@@ -81,6 +81,12 @@
 @dynamic prefetchItemCache;
 @dynamic prefetchHandler;
 @dynamic prefetchCompletionHandler;
+
+- (BOOL)isPrefetchingDataSource
+{
+    return YES;
+}
+
 @end
 
 @implementation RSTDynamicTableViewPrefetchingDataSource

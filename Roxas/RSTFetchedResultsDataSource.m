@@ -242,6 +242,12 @@ NS_ASSUME_NONNULL_END
 @dynamic prefetchItemCache;
 @dynamic prefetchHandler;
 @dynamic prefetchCompletionHandler;
+
+- (BOOL)isPrefetchingDataSource
+{
+    return YES;
+}
+
 @end
 
 @implementation RSTFetchedResultsTableViewPrefetchingDataSource

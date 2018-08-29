@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSUInteger itemCount;
 
+@property (nonatomic, readonly, getter=isPrefetchingDataSource) BOOL prefetchingDataSource;
+
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;
 

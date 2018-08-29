@@ -558,7 +558,7 @@ NS_ASSUME_NONNULL_END
     
     if (self.contentView != nil)
     {
-        if ([self conformsToProtocol:@protocol(UITableViewDataSourcePrefetching)] || [self conformsToProtocol:@protocol(UICollectionViewDataSourcePrefetching)])
+        if ([self isPrefetchingDataSource])
         {
             if (self.contentView.prefetchDataSource == nil)
             {
@@ -629,6 +629,11 @@ NS_ASSUME_NONNULL_END
     }
     
     return itemCount;
+}
+
+- (BOOL)isPrefetchingDataSource
+{
+    return NO;
 }
 
 @end
