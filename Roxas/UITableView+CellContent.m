@@ -47,7 +47,12 @@
         {
             // According to documentation:
             // Move is reported when an object changes in a manner that affects its position in the results.  An update of the object is assumed in this case, no separate update message is sent to the delegate.
-            [self reloadRowsAtIndexPaths:@[change.currentIndexPath] withRowAnimation:change.rowAnimation];
+            
+            // Therefore, we need to manually send another update message to items that moved after move is complete on the next run loop.
+            // (because it may crash if you try to update an item that is moving in the same batch updates...)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self reloadRowsAtIndexPaths:@[change.destinationIndexPath] withRowAnimation:change.rowAnimation];
+            });
             
             [self moveRowAtIndexPath:change.currentIndexPath toIndexPath:change.destinationIndexPath];
             break;

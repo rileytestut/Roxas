@@ -184,7 +184,20 @@ NS_ASSUME_NONNULL_END
 {
     RSTCellContentChangeType changeType = RSTCellContentChangeTypeFromFetchedResultsChangeType(type);
     
-    RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:changeType currentIndexPath:indexPath destinationIndexPath:newIndexPath];
+    RSTCellContentChange *change = nil;
+    
+    if (type == NSFetchedResultsChangeUpdate && ![indexPath isEqual:newIndexPath])
+    {
+        // Sometimes NSFetchedResultsController incorrectly reports moves as updates with different index paths.
+        // This can cause assertion failures and strange UI issues.
+        // To compensate, we manually check for these "updates" and turn them into moves.
+        change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeMove currentIndexPath:indexPath destinationIndexPath:newIndexPath];
+    }
+    else
+    {
+        change = [[RSTCellContentChange alloc] initWithType:changeType currentIndexPath:indexPath destinationIndexPath:newIndexPath];
+    }
+
     change.rowAnimation = self.rowAnimation;
     [self addChange:change];
 }
