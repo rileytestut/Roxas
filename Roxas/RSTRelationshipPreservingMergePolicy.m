@@ -8,6 +8,8 @@
 
 #import "RSTRelationshipPreservingMergePolicy.h"
 
+#import "NSConstraintConflict+Conveniences.h"
+
 @implementation RSTRelationshipPreservingMergePolicy
 
 - (instancetype)init
@@ -18,73 +20,79 @@
 
 - (BOOL)resolveConstraintConflicts:(NSArray<NSConstraintConflict *> *)conflicts error:(NSError * _Nullable __autoreleasing *)error
 {
-    NSMutableDictionary<NSManagedObjectID *, NSDictionary<NSString *, NSManagedObject *> *> *relationshipsByObjectID = [NSMutableDictionary dictionary];
+    BOOL success = [super resolveConstraintConflicts:conflicts error:error];
     
     for (NSConstraintConflict *conflict in conflicts)
     {
-        NSManagedObject *databaseObject = conflict.databaseObject;
-        if (databaseObject == nil)
+        NSManagedObject *persistingObject = conflict.persistingObject;
+        NSManagedObject *temporaryObject = conflict.temporaryObject;
+
+        NSDictionary<NSString *, id> *persistedSnapshot = conflict.persistedObjectSnapshot;
+        NSDictionary<NSString *, id> *temporarySnapshot = conflict.temporaryObjectSnapshot;
+        
+        if (persistingObject == nil || temporaryObject == nil || persistedSnapshot == nil || temporarySnapshot == nil)
         {
-            // Limit merge policy logic to database-level violations.
             continue;
         }
         
-        NSMutableDictionary<NSString *, NSManagedObject *> *relationships = [NSMutableDictionary dictionary];
-        
-        NSManagedObject *managedObject = conflict.conflictingObjects.firstObject;
-        [managedObject.entity.relationshipsByName enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
+        [persistingObject.entity.relationshipsByName enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
             if ([relationship isToMany])
             {
                 // Superclass already handles to-many relationships correctly, so ignore this relationship.
                 return;
             }
             
-            if (managedObject.changedValues[name] != nil)
+            if ([persistingObject valueForKey:name] != nil)
             {
-                // If this relationship has been explicitly changed, we will let the superclass logic handle it.
+                // We only need to fix relationships that have become nil after merging, so ignore this relationship.
                 return;
             }
             
-            NSManagedObject *relationshipObject = [databaseObject valueForKey:name];
-            relationships[name] = relationshipObject;
-        }];
-        
-        relationshipsByObjectID[databaseObject.objectID] = relationships;
-    }
-    
-    BOOL success = [super resolveConstraintConflicts:conflicts error:error];
-    
-    for (NSConstraintConflict *conflict in conflicts)
-    {
-        NSManagedObject *databaseObject = conflict.databaseObject;
-        if (databaseObject == nil)
-        {
-            // Limit merge policy logic to database-level violations.
-            continue;
-        }
-        
-        NSManagedObject *managedObject = conflict.databaseObject;
-        [managedObject.entity.relationshipsByName enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSRelationshipDescription *relationship, BOOL *stop) {
-            NSManagedObject *relationshipObject = relationshipsByObjectID[databaseObject.objectID][name];
-            if (relationshipObject == nil)
-            {
-                return;
-            }
+            NSManagedObject *relationshipObject = nil;
             
-            if ([relationshipObject isEqual:[NSNull null]])
-            {
-                [databaseObject setValue:nil forKey:name];
+            NSManagedObject *previousRelationshipObject = persistedSnapshot[name];
+            if (previousRelationshipObject != nil && ![previousRelationshipObject isEqual:[NSNull null]])
+            {                
+                if (temporarySnapshot[name] == nil)
+                {
+                    if (temporaryObject.changedValues[name] == nil)
+                    {
+                        // Previously non-nil, updated to nil, but was _not_ explicitly set to nil, so restore previous relationship.
+                        relationshipObject = previousRelationshipObject;
+                    }
+                    else
+                    {
+                        // Same as above, but _was_ explicitly set to nil, so no need to fix anything.
+                    }
+                }
+                else
+                {
+                    // Previously non-nil, updated to non-nil, so restore previous relationship (since the new relationship has been deleted).
+                    relationshipObject = previousRelationshipObject;
+                }
             }
             else
             {
-                [databaseObject setValue:relationshipObject forKey:name];
-                
-                NSRelationshipDescription *inverseRelationship = relationship.inverseRelationship;
-                if (inverseRelationship != nil && ![inverseRelationship isToMany])
+                NSManagedObject *object = temporarySnapshot[name];
+                if (object != nil)
                 {
-                    // We need to also update to-one inverse relationships.
-                    [relationshipObject setValue:databaseObject forKey:inverseRelationship.name];
+                    // Previously nil, updated to non-nil, so restore updated relationship.
+                    relationshipObject = object;
                 }
+            }
+            
+            if (relationshipObject == nil || [relationshipObject isEqual:[NSNull null]])
+            {
+                return;
+            }
+            
+            [persistingObject setValue:relationshipObject forKey:name];
+            
+            NSRelationshipDescription *inverseRelationship = relationship.inverseRelationship;
+            if (inverseRelationship != nil && ![inverseRelationship isToMany])
+            {
+                // We need to also update to-one inverse relationships.
+                [relationshipObject setValue:persistingObject forKey:inverseRelationship.name];
             }
         }];
     }
