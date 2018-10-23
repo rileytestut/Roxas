@@ -12,14 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSConstraintConflict (Conveniences)
 
-// The NSManagedObject instance that will be persisted to disk.
-@property (nullable, nonatomic, readonly) NSManagedObject *persistingObject;
+@property (nonatomic, readonly) NSSet<NSManagedObject *> *allObjects;
 
-@property (nullable, nonatomic, readonly) NSManagedObject *persistedObject;
-@property (nullable, nonatomic, readonly) NSManagedObject *temporaryObject;
+@property (nonatomic, readonly) NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *snapshots;
 
-@property (nullable, nonatomic, readonly) NSDictionary<NSString *, id> *persistedObjectSnapshot;
-@property (nullable, nonatomic, readonly) NSDictionary<NSString *, id> *temporaryObjectSnapshot;
++ (NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *)cacheSnapshotsForConflicts:(NSArray<NSConstraintConflict *> *)conflicts;
 
 @end
 

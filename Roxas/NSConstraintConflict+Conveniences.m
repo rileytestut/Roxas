@@ -8,114 +8,83 @@
 
 #import "NSConstraintConflict+Conveniences.h"
 
-@interface NSManagedObject (Persisted)
+@import ObjectiveC.runtime;
+
+@interface NSManagedObject (ConstraintConflict)
 @end
 
-@implementation NSManagedObject (Persisted)
+@implementation NSManagedObject (ConstraintConflict)
 
-- (BOOL)isPersisted
+- (NSDictionary<NSString *, id> *)rst_snapshot
 {
-    BOOL isPersisted = ![self.objectID isTemporaryID] && ![self isInserted];
-    return isPersisted;
+    NSArray<NSString *> *keys = self.entity.propertiesByName.allKeys;
+    
+    NSDictionary *snapshot = [self dictionaryWithValuesForKeys:keys];
+    return snapshot;
 }
 
 @end
 
 @implementation NSConstraintConflict (Conveniences)
 
-- (NSManagedObject *)persistingObject
+- (NSSet<NSManagedObject *> *)allObjects
 {
-    NSManagedObject *persistingObject = self.databaseObject;
-    
-    if (persistingObject == nil)
+    NSMutableSet<NSManagedObject *> *allObjects = [NSMutableSet setWithArray:self.conflictingObjects];
+    if (self.databaseObject != nil)
     {
-        for (NSManagedObject *object in self.conflictingObjects)
-        {
-            if (object.managedObjectContext != nil && ![object isDeleted])
-            {
-                persistingObject = object;
-                break;
-            }
-        }
+        [allObjects addObject:self.databaseObject];
     }
     
-    return persistingObject;
+    return allObjects;
 }
 
-- (NSManagedObject *)persistedObject
+- (NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *)snapshots
 {
-    NSManagedObject *persistedObject = self.databaseObject;
-    
-    if (persistedObject == nil)
+    NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *snapshots = objc_getAssociatedObject(self, @selector(snapshots));
+    if (snapshots != nil)
     {
-        for (NSManagedObject *object in self.conflictingObjects)
-        {
-            if ([object isPersisted])
-            {
-                persistedObject = object;
-                break;
-            }
-        }
+        return snapshots;
     }
     
-    return persistedObject;
-}
-
-- (NSManagedObject *)temporaryObject
-{
-    NSManagedObject *temporaryObject = nil;
+    snapshots = [NSMapTable strongToStrongObjectsMapTable];
     
-    for (NSManagedObject *object in self.conflictingObjects)
+    for (NSManagedObject *managedObject in self.allObjects)
     {
-        if (![object isPersisted])
+        NSMutableDictionary<NSString *, id> *snapshot = [NSMutableDictionary dictionary];
+        
+        for (NSPropertyDescription *property in managedObject.entity.properties)
         {
-            temporaryObject = object;
-            break;
-        }
-    }
-    
-    return temporaryObject;
-}
-
-- (NSDictionary<NSString *, id> *)persistedObjectSnapshot
-{
-    __block NSDictionary<NSString *, id> *persistedObjectSnapshot = self.databaseSnapshot;
-    
-    if (persistedObjectSnapshot == nil)
-    {
-        [self.conflictingObjects enumerateObjectsUsingBlock:^(NSManagedObject * _Nonnull object, NSUInteger index, BOOL * _Nonnull stop) {
-            if ([object isPersisted])
+            if ([property isTransient] || [property isKindOfClass:[NSFetchedPropertyDescription class]])
             {
-                NSDictionary<NSString *, id> *snapshot = self.conflictingSnapshots[index];
-                persistedObjectSnapshot = snapshot;
-                
-                *stop = YES;
-            }
-        }];
-    }
-    
-    return persistedObjectSnapshot;
-}
-
-- (NSDictionary<NSString *, id> *)temporaryObjectSnapshot
-{
-    __block NSDictionary<NSString *, id> *temporaryObjectSnapshot = nil;
-    
-    [self.conflictingObjects enumerateObjectsUsingBlock:^(NSManagedObject * _Nonnull object, NSUInteger index, BOOL * _Nonnull stop) {
-        if (![object isPersisted])
-        {
-            NSDictionary<NSString *, id> *snapshot = self.conflictingSnapshots[index];
-            
-            if (![snapshot isEqual:[NSNull null]])
-            {
-                temporaryObjectSnapshot = snapshot;
+                continue;
             }
             
-            *stop = YES;
+            snapshot[property.name] = [managedObject valueForKey:property.name];
         }
-    }];
+        
+        [snapshots setObject:snapshot forKey:managedObject];
+    }
     
-    return temporaryObjectSnapshot;
+    objc_setAssociatedObject(self, @selector(snapshots), snapshots, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    return snapshots;
+}
+
++ (NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *)cacheSnapshotsForConflicts:(NSArray<NSConstraintConflict *> *)conflicts
+{
+    NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *snapshots = [NSMapTable strongToStrongObjectsMapTable];
+    
+    for (NSConstraintConflict *conflict in conflicts)
+    {
+        NSMapTable<NSManagedObject *, NSDictionary<NSString *, id> *> *conflictSnapshots = conflict.snapshots;
+        for (NSManagedObject *managedObject in conflictSnapshots)
+        {
+            NSDictionary<NSString *, id> *snapshot = [conflictSnapshots objectForKey:managedObject];
+            [snapshots setObject:snapshot forKey:managedObject];
+        }
+    }
+    
+    return snapshots;
 }
 
 @end
