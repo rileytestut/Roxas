@@ -71,6 +71,9 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Containers
 #import <Roxas/RSTNavigationController.h>
 
+// Functionality
+#import <Roxas/RSTHasher.h>
+
 // Categories
 #import <Roxas/UIImage+Manipulation.h>
 #import <Roxas/NSBundle+Extensions.h>
