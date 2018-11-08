@@ -53,8 +53,8 @@ NS_ASSUME_NONNULL_END
     _parentBackgroundContexts = [NSHashTable weakObjectsHashTable];
     _pendingSaveParentBackgroundContexts = [NSHashTable weakObjectsHashTable];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextWillSave:) name:NSManagedObjectContextWillSaveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rst_managedObjectContextWillSave:) name:NSManagedObjectContextWillSaveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rst_managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
 
 - (void)loadPersistentStoresWithCompletionHandler:(void (^)(NSPersistentStoreDescription * _Nonnull, NSError * _Nullable))completionHandler
@@ -118,7 +118,8 @@ NS_ASSUME_NONNULL_END
 
 #pragma mark - NSNotifications -
 
-- (void)managedObjectContextWillSave:(NSNotification *)notification
+// Use rst_ prefix to prevent collisions with subclasses.
+- (void)rst_managedObjectContextWillSave:(NSNotification *)notification
 {
     NSManagedObjectContext *context = notification.object;
     if (![self.parentBackgroundContexts containsObject:context.parentContext])
@@ -129,7 +130,8 @@ NS_ASSUME_NONNULL_END
     [self.pendingSaveParentBackgroundContexts addObject:context.parentContext];
 }
 
-- (void)managedObjectContextObjectsDidChange:(NSNotification *)notification
+// Use rst_ prefix to prevent collisions with subclasses.
+- (void)rst_managedObjectContextObjectsDidChange:(NSNotification *)notification
 {
     NSManagedObjectContext *context = notification.object;
     if (![self.pendingSaveParentBackgroundContexts containsObject:context])
