@@ -132,6 +132,8 @@
 		BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */; };
 		BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */; };
+		BFF2D106219CEC3B00191AB4 /* RSTToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF2D104219CEC3B00191AB4 /* RSTToastView.m */; };
+		BFF2D107219CEC3B00191AB4 /* RSTToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF2D105219CEC3B00191AB4 /* RSTToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFF2D10A219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */; };
 		BFF2D10B219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D55E1226212F44710095CA4F /* RSTNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = D55E1224212F44710095CA4F /* RSTNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -239,6 +241,8 @@
 		BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource.h; sourceTree = "<group>"; };
 		BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTCellContentDataSource.m; sourceTree = "<group>"; };
 		BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource_Subclasses.h; sourceTree = "<group>"; };
+		BFF2D104219CEC3B00191AB4 /* RSTToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTToastView.m; sourceTree = "<group>"; };
+		BFF2D105219CEC3B00191AB4 /* RSTToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTToastView.h; sourceTree = "<group>"; };
 		BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISpringTimingParameters+Conveniences.m"; sourceTree = "<group>"; };
 		BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISpringTimingParameters+Conveniences.h"; sourceTree = "<group>"; };
 		D55E1224212F44710095CA4F /* RSTNibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTNibView.h; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				BF3AC2C620E686A100F7DD99 /* Separator */,
 				D55E1223212F444C0095CA4F /* Nib View */,
 				D581E69C213730EA00789E1D /* Tinted Image View */,
+				BFF2D103219CEC1400191AB4 /* Toast View */,
 			);
 			name = "Visual Components";
 			sourceTree = "<group>";
@@ -628,6 +633,15 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		BFF2D103219CEC1400191AB4 /* Toast View */ = {
+			isa = PBXGroup;
+			children = (
+				BFF2D105219CEC3B00191AB4 /* RSTToastView.h */,
+				BFF2D104219CEC3B00191AB4 /* RSTToastView.m */,
+			);
+			name = "Toast View";
+			sourceTree = "<group>";
+		};
 		D55E1223212F444C0095CA4F /* Nib View */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +705,7 @@
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
 				BFF2D10B219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h in Headers */,
 				BF7A759D2166B72900797D91 /* NSConstraintConflict+Conveniences.h in Headers */,
+				BFF2D107219CEC3B00191AB4 /* RSTToastView.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
 				BF357B4420FD115A00A4A1A0 /* RSTPersistentContainer.h in Headers */,
@@ -916,6 +931,7 @@
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
 				BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */,
+				BFF2D106219CEC3B00191AB4 /* RSTToastView.m in Sources */,
 				BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */,
 				BFC5B08020A0F25A0085B6A3 /* RSTCollectionViewCell.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,
