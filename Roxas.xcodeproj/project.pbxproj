@@ -132,6 +132,8 @@
 		BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */; };
 		BFE8F0511E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */; };
+		BFF2D10A219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */; };
+		BFF2D10B219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D55E1226212F44710095CA4F /* RSTNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = D55E1224212F44710095CA4F /* RSTNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D55E1227212F44710095CA4F /* RSTNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D55E1225212F44710095CA4F /* RSTNibView.m */; };
 		D581E69F2137310600789E1D /* RSTTintedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D581E69D2137310600789E1D /* RSTTintedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -237,6 +239,8 @@
 		BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource.h; sourceTree = "<group>"; };
 		BFE8F0491E4AF9F400A64745 /* RSTCellContentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTCellContentDataSource.m; sourceTree = "<group>"; };
 		BFE8F0501E4B04ED00A64745 /* RSTCellContentDataSource_Subclasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTCellContentDataSource_Subclasses.h; sourceTree = "<group>"; };
+		BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISpringTimingParameters+Conveniences.m"; sourceTree = "<group>"; };
+		BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISpringTimingParameters+Conveniences.h"; sourceTree = "<group>"; };
 		D55E1224212F44710095CA4F /* RSTNibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTNibView.h; sourceTree = "<group>"; };
 		D55E1225212F44710095CA4F /* RSTNibView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTNibView.m; sourceTree = "<group>"; };
 		D581E69D2137310600789E1D /* RSTTintedImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTTintedImageView.h; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 				BFDB50611EB942F50084C58A /* NSLayoutConstraint+Edges.m */,
 				BF7A759B2166B72900797D91 /* NSConstraintConflict+Conveniences.h */,
 				BF7A759C2166B72900797D91 /* NSConstraintConflict+Conveniences.m */,
+				BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */,
+				BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -683,6 +689,7 @@
 				BF357B5220FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.h in Headers */,
 				D55E1226212F44710095CA4F /* RSTNibView.h in Headers */,
 				BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
+				BFF2D10B219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h in Headers */,
 				BF7A759D2166B72900797D91 /* NSConstraintConflict+Conveniences.h in Headers */,
 				BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */,
 				BFB2283B2066FBBF00F08151 /* RSTLaunchViewController.h in Headers */,
@@ -886,6 +893,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF2D10A219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m in Sources */,
 				BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */,
 				BFE35D841DBED4D700F77C10 /* UITableView+CellContent.m in Sources */,
 				BF8D82271E53CFEE00756F08 /* NSPredicate+Search.m in Sources */,

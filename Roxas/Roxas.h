@@ -86,6 +86,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/UIAlertAction+Actions.h>
 #import <Roxas/NSLayoutConstraint+Edges.h>
 #import <Roxas/NSConstraintConflict+Conveniences.h>
+#import <Roxas/UISpringTimingParameters+Conveniences.h>
 
 // Categories - RSTActivityIndicating
 #import <Roxas/RSTActivityIndicating.h>
