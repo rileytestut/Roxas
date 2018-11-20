@@ -317,7 +317,31 @@ NS_ASSUME_NONNULL_END
         }
         
         transformedChange = [[RSTCellContentChange alloc] initWithType:change.type currentIndexPath:currentIndexPath destinationIndexPath:destinationIndexPath];
-       
+        
+        NSIndexPath *indexPathForRemovingFromCache = nil;
+        switch (change.type)
+        {
+            case RSTCellContentChangeUpdate:
+                indexPathForRemovingFromCache = change.currentIndexPath;
+                break;
+                
+            case RSTCellContentChangeMove:
+                // At this point, the data source has already changed index paths of objects.
+                // So to remove the old cached item, we need to get the item at the _new_ index path.
+                indexPathForRemovingFromCache = change.destinationIndexPath;
+                break;
+                
+            case RSTCellContentChangeDelete:
+            case RSTCellContentChangeInsert:
+                break;
+        }
+        
+        if (indexPathForRemovingFromCache != nil)
+        {
+            // Remove cached prefetched item since the object has been changed.
+            id item = [self itemAtIndexPath:indexPathForRemovingFromCache];
+            [self.prefetchItemCache removeObjectForKey:item];
+        }
     }
     else
     {
