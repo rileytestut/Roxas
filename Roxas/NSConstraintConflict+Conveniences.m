@@ -59,7 +59,17 @@
                 continue;
             }
             
-            snapshot[property.name] = [managedObject valueForKey:property.name];
+            id value = [managedObject valueForKey:property.name];
+            
+            if ([property isKindOfClass:[NSRelationshipDescription class]] && [(NSRelationshipDescription *)property isToMany])
+            {
+                NSSet *relationshipObjects = [[NSSet alloc] initWithSet:value];
+                snapshot[property.name] = relationshipObjects;
+            }
+            else
+            {
+                snapshot[property.name] = value;
+            }
         }
         
         [snapshots setObject:snapshot forKey:managedObject];
