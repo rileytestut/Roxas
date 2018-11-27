@@ -259,10 +259,9 @@ NS_ASSUME_NONNULL_END
     
     if ([self shouldFlattenSections])
     {
-        NSInteger item = indexPath.item + range.location;
+        NSInteger item = indexPath.item;
         
-        NSInteger localSection = [self sectionForItem:item dataSource:dataSource];
-        for (int i = 0; i < localSection; i++)
+        for (int i = 0; i < indexPath.section; i++)
         {
             NSInteger count = [dataSource contentView:self.contentView numberOfItemsInSection:i];
             item += count;
