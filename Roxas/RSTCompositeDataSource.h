@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RSTCompositeTableViewDataSource<ContentType> : RSTCompositeDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>> <UITableViewDataSource>
 @end
 
-@interface RSTCompositeCollectionViewDataSource<ContentType> : RSTCompositeDataSource<ContentType, UITableViewCell *, UITableView *, id<UITableViewDataSource>> <UITableViewDataSource>
+@interface RSTCompositeCollectionViewDataSource<ContentType> : RSTCompositeDataSource<ContentType, UICollectionViewCell *, UICollectionView *, id<UICollectionViewDataSource>> <UICollectionViewDataSource>
 @end
 
 
