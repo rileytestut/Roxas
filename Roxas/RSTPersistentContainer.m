@@ -9,6 +9,8 @@
 #import "RSTPersistentContainer.h"
 #import "RSTRelationshipPreservingMergePolicy.h"
 
+#import "RSTError.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTPersistentContainer ()
@@ -59,19 +61,54 @@ NS_ASSUME_NONNULL_END
 
 - (void)loadPersistentStoresWithCompletionHandler:(void (^)(NSPersistentStoreDescription * _Nonnull, NSError * _Nullable))completionHandler
 {
-    if (self.shouldAddStoresAsynchronously)
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+    
+    for (NSPersistentStoreDescription *description in self.persistentStoreDescriptions)
     {
-        for (NSPersistentStoreDescription *description in self.persistentStoreDescriptions)
+        description.shouldAddStoreAsynchronously = self.shouldAddStoresAsynchronously;
+        
+        NSDictionary *metadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:description.type URL:description.URL options:description.options error:nil];
+        if (metadata == nil)
         {
-            description.shouldAddStoreAsynchronously = YES;
+            continue;
+        }
+        
+        if (![self.managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:metadata] && description.shouldMigrateStoreAutomatically)
+        {
+            // Migrate database if incompatible with managed object model.
+            
+            dispatch_group_enter(dispatchGroup);
+            
+            [self progressivelyMigratePersistentStoreToModel:self.managedObjectModel
+                                              isAsynchronous:description.shouldAddStoreAsynchronously
+                                           completionHandler:^(NSError * _Nullable error) {
+                                               if (error != nil)
+                                               {
+                                                   ELog(error);
+                                               }
+                                               
+                                               dispatch_group_leave(dispatchGroup);
+                                           }];
         }
     }
     
-    [super loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *description, NSError *error) {
+    void (^finish)(NSPersistentStoreDescription *, NSError *) = ^(NSPersistentStoreDescription *description, NSError *error) {
         [self configureManagedObjectContext:self.viewContext parent:nil];
-        
         completionHandler(description, error);
-    }];
+    };
+    
+    if (self.shouldAddStoresAsynchronously)
+    {
+        dispatch_group_notify(dispatchGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [super loadPersistentStoresWithCompletionHandler:finish];
+        });
+    }
+    else
+    {
+        dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER);
+        
+        [super loadPersistentStoresWithCompletionHandler:finish];
+    }
 }
 
 - (NSManagedObjectContext *)newBackgroundContext
@@ -114,6 +151,174 @@ NS_ASSUME_NONNULL_END
     
     context.automaticallyMergesChangesFromParent = YES;
     context.mergePolicy = self.preferredMergePolicy;
+}
+
+#pragma mark - Migrations -
+
+// Migration logic based off of https://www.objc.io/issues/4-core-data/core-data-migration/
+
+- (void)progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model isAsynchronous:(BOOL)asynchronous completionHandler:(void (^)(NSError * _Nullable))completionHandler
+{
+    void (^migrate)(void) = ^(void) {
+        NSError *error = nil;
+        BOOL success = [self _progressivelyMigratePersistentStoreToModel:model error:&error];
+        
+        if (success)
+        {
+            completionHandler(nil);
+        }
+        else
+        {
+            completionHandler(error);
+        }
+    };
+    
+    if (asynchronous)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            migrate();
+        });
+    }
+    else
+    {
+        migrate();
+    }
+}
+
+- (BOOL)_progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model error:(NSError * _Nonnull *)error
+{
+    NSPersistentStoreDescription *description = self.persistentStoreDescriptions.firstObject;
+    if (description == nil)
+    {
+        *error = [NSError errorWithDomain:RoxasErrorDomain code:RSTErrorMissingPersistentStore userInfo:nil];
+        return NO;
+    }
+    
+    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:description.type URL:description.URL options:description.options error:error];
+    if (sourceMetadata == nil)
+    {
+        return NO;
+    }
+    
+    NSDictionary<NSString *, NSData *> *currentHashes = sourceMetadata[NSStoreModelVersionHashesKey];
+    
+    for (NSString *configuration in model.configurations)
+    {
+        // -[NSManagedObjectModel isConfiguration:compatibleWithStoreMetadata:] does not work properly with configurations.
+        // As a workaround, we manually compare the hashes of entities in each configuration to see if any configurations are compatible.
+        // If there is a compatible configuration, Core Data can then perform a final lightweight migration to finish if necessary.
+        // This can occur when migrating a persistent store that has configurations and doesn't have mapping for all model objects.
+        // (For example, using Harmony to sync Core Data results in a persistent store with configurations).
+        NSMutableDictionary<NSString *, NSData *> *previousHashes = [NSMutableDictionary dictionary];
+        
+        for (NSEntityDescription *entity in [model entitiesForConfiguration:configuration])
+        {
+            NSData *hash = model.entityVersionHashesByName[entity.name];
+            previousHashes[entity.name] = hash;
+        }
+        
+        if ([previousHashes isEqualToDictionary:currentHashes])
+        {
+            // The store is now compatible with the managed object model, so we're done.
+            return YES;
+        }
+    }
+
+    NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:NSBundle.allBundles forStoreMetadata:sourceMetadata];
+    if (sourceModel == nil)
+    {
+        *error = [NSError errorWithDomain:RoxasErrorDomain code:RSTErrorMissingManagedObjectModel userInfo:nil];
+        return NO;
+    }
+    
+    NSMappingModel *mappingModel = nil;
+    NSMigrationManager *migrationManager = [self progressiveMigrationManagerForSourceModel:sourceModel mappingModel:&mappingModel];
+    if (migrationManager == nil)
+    {
+        *error = [NSError errorWithDomain:RoxasErrorDomain code:RSTErrorMissingMappingModel userInfo:nil];
+        return NO;
+    }
+    
+    NSString *temporaryFilename = [[[NSUUID UUID] UUIDString] stringByAppendingFormat:@".%@", description.URL.pathExtension];
+    NSURL *temporaryDestinationURL = [NSFileManager.defaultManager.temporaryDirectory URLByAppendingPathComponent:temporaryFilename];
+    
+    BOOL success = [migrationManager migrateStoreFromURL:description.URL
+                                                    type:description.type
+                                                 options:description.options
+                                        withMappingModel:mappingModel // migrationManager.mappingModel is nil for some reason
+                                        toDestinationURL:temporaryDestinationURL
+                                         destinationType:description.type
+                                      destinationOptions:description.options
+                                                   error:error];
+    if (!success)
+    {
+        return NO;
+    }
+    
+    BOOL replacementSuccess = [self.persistentStoreCoordinator replacePersistentStoreAtURL:description.URL
+                                                                        destinationOptions:description.options
+                                                                withPersistentStoreFromURL:temporaryDestinationURL
+                                                                             sourceOptions:description.options
+                                                                                 storeType:description.type
+                                                                                     error:error];
+    if (!replacementSuccess)
+    {
+        return NO;
+    }
+    
+    NSError *deletionError = nil;
+    if (![self.persistentStoreCoordinator destroyPersistentStoreAtURL:temporaryDestinationURL withType:description.type options:description.options error:&deletionError])
+    {
+        ELog(deletionError);
+    }
+    
+    return [self _progressivelyMigratePersistentStoreToModel:model error:error];
+}
+
+- (nullable NSMigrationManager *)progressiveMigrationManagerForSourceModel:(NSManagedObjectModel *)sourceModel mappingModel:(NSMappingModel **)outMappingModel
+{
+    NSArray<NSURL *> *managedObjectModelURLs = [self managedObjectModelURLs];
+    for (NSURL *modelURL in managedObjectModelURLs)
+    {
+        NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+        
+        NSMappingModel *mappingModel = [NSMappingModel mappingModelFromBundles:NSBundle.allBundles
+                                                                forSourceModel:sourceModel
+                                                              destinationModel:model];
+        if (mappingModel == nil)
+        {
+            continue;
+        }
+        
+        *outMappingModel = mappingModel;
+        
+        NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel destinationModel:model];
+        return migrationManager;
+    }
+    
+    return nil;
+}
+
+- (NSArray<NSURL *> *)managedObjectModelURLs
+{
+    NSMutableArray *modelURLs = [NSMutableArray array];
+    
+    for (NSBundle *bundle in NSBundle.allBundles)
+    {
+        NSArray *momdURLs = [bundle URLsForResourcesWithExtension:@"momd" subdirectory:nil];
+        for (NSURL *URL in momdURLs)
+        {
+            NSString *resourceDirectory = [URL lastPathComponent];
+            
+            NSArray *momURLs = [bundle URLsForResourcesWithExtension:@"mom" subdirectory:resourceDirectory];
+            [modelURLs addObjectsFromArray:momURLs];
+        }
+        
+        NSArray *momURLs = [bundle URLsForResourcesWithExtension:@"mom" subdirectory:nil];
+        [modelURLs addObjectsFromArray:momURLs];
+    }
+    
+    return modelURLs;
 }
 
 #pragma mark - NSNotifications -

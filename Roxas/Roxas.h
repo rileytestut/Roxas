@@ -20,6 +20,7 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 #import <Roxas/RSTDefines.h>
 #import <Roxas/RSTConstants.h>
 #import <Roxas/RSTHelperFile.h>
+#import <Roxas/RSTError.h>
 
 // Operations
 #import <Roxas/RSTOperationQueue.h>
