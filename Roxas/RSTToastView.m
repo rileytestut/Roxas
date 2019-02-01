@@ -313,8 +313,8 @@ NS_ASSUME_NONNULL_END
     [view addSubview:self];
     [view layoutIfNeeded];
     
-    self.axisConstraint.active = YES;
     self.hiddenAxisConstraint.active = NO;
+    self.axisConstraint.active = YES;
     
     CGFloat distance = 0;
     CGFloat overshoot = 10;
