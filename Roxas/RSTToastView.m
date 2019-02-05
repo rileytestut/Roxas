@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_END
     _dimmingView.hidden = YES;
     [self addSubview:_dimmingView pinningEdgesWithInsets:UIEdgeInsetsZero];
     
-    UIFontDescriptor *detailTextLabelFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleFootnote];
+    UIFontDescriptor *detailTextLabelFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline];
     UIFontDescriptor *textLabelFontDescriptor = [detailTextLabelFontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
     
     _textLabel = [[UILabel alloc] init];
