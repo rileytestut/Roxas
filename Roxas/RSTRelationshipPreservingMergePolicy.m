@@ -77,6 +77,11 @@
                         // Previously non-nil, updated to non-nil, but resulted in nil, so restore previous relationship (since the new relationship has been deleted).
                         relationshipObject = previousRelationshipObject;
                     }
+                    else if (updatedRelationshipObject.managedObjectContext == nil)
+                    {
+                        // Previously non-nil, updated to non-nil, but the updated snapshot points to an outdated relationship object, so restore previous relationship.
+                        relationshipObject = previousRelationshipObject;
+                    }
                     else
                     {
                         // Previously non-nil, updated to non-nil, so ensure relationship object is the updated relationship object.
