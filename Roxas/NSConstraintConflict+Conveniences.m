@@ -63,7 +63,15 @@
             
             if ([property isKindOfClass:[NSRelationshipDescription class]] && [(NSRelationshipDescription *)property isToMany])
             {
-                NSSet *relationshipObjects = [[NSSet alloc] initWithSet:value];
+                // Must create a mutable set then add objects to it to prevent rare crash when relationship is still a fault.
+                NSMutableSet *relationshipObjects = [[NSMutableSet alloc] init];
+                
+                NSSet *set = (NSSet *)value;
+                for (id value in set)
+                {
+                    [relationshipObjects addObject:value];
+                }
+                
                 snapshot[property.name] = relationshipObjects;
             }
             else
