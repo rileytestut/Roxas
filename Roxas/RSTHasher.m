@@ -42,6 +42,26 @@
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1_Final(digest, &context);
     
+    NSString *hashString = [RSTHasher hashStringFromDigest:digest];
+    return hashString;
+}
+
++ (NSString *)sha1HashOfData:(NSData *)data
+{
+    CC_SHA1_CTX context;
+    CC_SHA1_Init(&context);
+    
+    CC_SHA1_Update(&context, [data bytes], (unsigned int)data.length);
+    
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1_Final(digest, &context);
+    
+    NSString *hashString = [RSTHasher hashStringFromDigest:digest];
+    return hashString;
+}
+
++ (NSString *)hashStringFromDigest:(unsigned char[CC_SHA1_DIGEST_LENGTH])digest
+{
     NSMutableString *hashString = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     
     for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
@@ -49,7 +69,7 @@
         [hashString appendFormat:@"%02x", digest[i]];
     }
     
-    return hashString;
+    return [hashString copy];
 }
 
 @end

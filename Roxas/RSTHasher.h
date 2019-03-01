@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RSTHasher : NSObject
 
 + (nullable NSString *)sha1HashOfFileAtURL:(NSURL *)fileURL error:(NSError **)error;
++ (NSString *)sha1HashOfData:(NSData *)data;
 
 - (instancetype)init NS_UNAVAILABLE;
 
