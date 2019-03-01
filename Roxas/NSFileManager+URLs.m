@@ -32,6 +32,44 @@
     }
 }
 
+- (BOOL)copyItemAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL shouldReplace:(BOOL)shouldReplace error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (!shouldReplace)
+    {
+        return [self copyItemAtURL:sourceURL toURL:destinationURL error:error];
+    }
+    
+    NSURL *temporaryDirectory = [self URLForDirectory:NSItemReplacementDirectory inDomain:NSUserDomainMask appropriateForURL:destinationURL create:YES error:error];
+    if (temporaryDirectory == nil)
+    {
+        return NO;
+    }
+    
+    void (^removeDirectory)(void) = ^{
+        NSError *error = nil;
+        if (![self removeItemAtURL:temporaryDirectory error:&error])
+        {
+            ELog(error);
+        }
+    };
+    
+    NSURL *temporaryURL = [temporaryDirectory URLByAppendingPathComponent:[[NSUUID UUID] UUIDString]];
+    if (![self copyItemAtURL:sourceURL toURL:temporaryURL error:error])
+    {
+        removeDirectory();
+        return NO;
+    }
+    
+    if (![self replaceItemAtURL:destinationURL withItemAtURL:temporaryURL backupItemName:nil options:0 resultingItemURL:nil error:error])
+    {
+        removeDirectory();
+        return NO;
+    }
+    
+    removeDirectory();
+    return YES;
+}
+
 #pragma mark - Getters/Setters -
 
 - (NSURL *)uniqueTemporaryURL

@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 // Automatically removes item at temporaryURL upon returning from block. Synchronous.
 - (void)prepareTemporaryURL:(void(^)(NSURL *temporaryURL))fileHandlingBlock;
 
+- (BOOL)copyItemAtURL:(NSURL *)sourceURL toURL:(NSURL *)destinationURL shouldReplace:(BOOL)shouldReplace error:(NSError *__autoreleasing  _Nullable *)error;
+
 @end
 
 NS_ASSUME_NONNULL_END
