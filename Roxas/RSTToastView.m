@@ -365,8 +365,11 @@ NS_ASSUME_NONNULL_END
     // Set to NO immediately to prevent potential concurrent dismissals.
     self.shown = NO;
     
-    self.axisConstraint.active = NO;
-    self.hiddenAxisConstraint.active = YES;
+    if (self.superview != nil)
+    {
+        self.axisConstraint.active = NO;
+        self.hiddenAxisConstraint.active = YES;
+    }
     
     UISpringTimingParameters *timingParameters = [[UISpringTimingParameters alloc] initWithStiffness:RSTSpringStiffnessDefault dampingRatio:1.0];
     
