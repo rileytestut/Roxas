@@ -18,6 +18,8 @@ NSNotificationName const RSTToastViewDidDismissNotification = @"RSTToastViewDidD
 
 RSTToastViewUserInfoKey const RSTToastViewUserInfoKeyPropertyAnimator = @"RSTToastViewUserInfoKeyPropertyAnimator";
 
+static void *RSTToastViewContext = &RSTToastViewContext;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTToastView ()
@@ -99,12 +101,14 @@ NS_ASSUME_NONNULL_END
     _textLabel.textColor = [UIColor whiteColor];
     _textLabel.minimumScaleFactor = 0.75;
     _textLabel.numberOfLines = 0;
+    [_textLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(text)) options:NSKeyValueObservingOptionOld context:RSTToastViewContext];
     
     _detailTextLabel = [[UILabel alloc] init];
     _detailTextLabel.font = [UIFont fontWithDescriptor:detailTextLabelFontDescriptor size:0.0];
     _detailTextLabel.textColor = [UIColor whiteColor];
     _detailTextLabel.minimumScaleFactor = 0.75;
     _detailTextLabel.numberOfLines = 0;
+    [_detailTextLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(text)) options:NSKeyValueObservingOptionOld context:RSTToastViewContext];
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     _activityIndicatorView.hidesWhenStopped = YES;
@@ -121,7 +125,6 @@ NS_ASSUME_NONNULL_END
     _stackView.alignment = UIStackViewAlignmentCenter;
     _stackView.spacing = 8.0;
     _stackView.layoutMarginsRelativeArrangement = YES;
-    _stackView.preservesSuperviewLayoutMargins = YES;
     _stackView.insetsLayoutMarginsFromSafeArea = NO;
     [self addSubview:_stackView];
     
@@ -172,18 +175,23 @@ NS_ASSUME_NONNULL_END
     
     CGFloat cornerRadius = MIN(10, CGRectGetMidY(self.bounds));
     self.layer.cornerRadius = cornerRadius;
+    
+    self.textLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.superview.bounds) - self.superview.safeAreaInsets.left - self.superview.safeAreaInsets.right - self.edgeOffset.horizontal * 2;
+    self.detailTextLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.superview.bounds) - self.superview.safeAreaInsets.left - self.superview.safeAreaInsets.right - self.edgeOffset.horizontal * 2;
+    
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)updateConstraints
 {
     if (self.axisConstraint != nil || self.alignmentConstraint != nil)
     {
-        return;
+        return [super updateConstraints];
     }
     
     if (self.superview == nil)
     {
-        return;
+        return [super updateConstraints];
     }
     
     // Axis Constraints
@@ -203,7 +211,7 @@ NS_ASSUME_NONNULL_END
             self.axisConstraint = [self.topAnchor constraintEqualToAnchor:self.superview.safeAreaLayoutGuide.topAnchor constant:self.edgeOffset.vertical];
             self.hiddenAxisConstraint = [self.superview.topAnchor constraintEqualToAnchor:self.bottomAnchor];
             break;
-        
+            
         case RSTViewEdgeBottom:
         case RSTViewEdgeNone:
             self.axisConstraint = [self.superview.safeAreaLayoutGuide.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:self.edgeOffset.vertical];
@@ -226,7 +234,7 @@ NS_ASSUME_NONNULL_END
                 case RSTViewEdgeBottom:
                     self.alignmentConstraint = [self.superview.safeAreaLayoutGuide.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:self.edgeOffset.vertical];
                     break;
-                
+                    
                 case RSTViewEdgeLeft:
                 case RSTViewEdgeRight:
                 case RSTViewEdgeNone:
@@ -260,9 +268,8 @@ NS_ASSUME_NONNULL_END
             
             break;
         }
-            
     }
-
+    
     self.widthConstraint = [self.widthAnchor constraintLessThanOrEqualToAnchor:self.superview.safeAreaLayoutGuide.widthAnchor constant:-(self.edgeOffset.horizontal * 2)];
     self.heightConstraint = [self.heightAnchor constraintLessThanOrEqualToAnchor:self.superview.safeAreaLayoutGuide.heightAnchor constant:-(self.edgeOffset.vertical * 2)];
     
@@ -309,7 +316,7 @@ NS_ASSUME_NONNULL_END
     // self.widthConstraint will ensure labels wrap to stay within superview safe area inset by self.edgeOffset.
     self.textLabel.preferredMaxLayoutWidth = CGRectGetWidth(view.bounds);
     self.detailTextLabel.preferredMaxLayoutWidth = CGRectGetWidth(view.bounds);
-
+    
     [view addSubview:self];
     [view layoutIfNeeded];
     
@@ -395,6 +402,46 @@ NS_ASSUME_NONNULL_END
     [[NSNotificationCenter defaultCenter] postNotificationName:RSTToastViewWillDismissNotification object:self userInfo:@{RSTToastViewUserInfoKeyPropertyAnimator: animator}];
 }
 
+#pragma mark - KVO -
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (context != RSTToastViewContext)
+    {
+        return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+    
+    [self invalidateIntrinsicContentSize];
+    
+    UILabel *label = (UILabel *)object;
+    NSString *previousText = change[NSKeyValueChangeOldKey];
+    
+    if (self.superview != nil)
+    {
+        CGFloat initialAlpha = 1.0;
+        CGFloat finalAlpha = 1.0;
+        
+        if (previousText.length == 0 && label.text.length != 0)
+        {
+            initialAlpha = 0.0;
+            finalAlpha = 1.0;
+        }
+        else if (previousText.length != 0 && label.text.length == 0)
+        {
+            initialAlpha = 1.0;
+            finalAlpha = 0.0;
+        }
+        
+        label.alpha = initialAlpha;
+        
+        UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithSpringTimingParameters:[UISpringTimingParameters new] animations:^{
+            label.alpha = finalAlpha;
+            [self.superview layoutIfNeeded];
+        }];
+        [animator startAnimation];
+    }
+}
+
 #pragma mark - Notifications -
 
 - (void)toastViewWillShow:(NSNotification *)notification
@@ -431,6 +478,16 @@ NS_ASSUME_NONNULL_END
     }
     
     _presentationEdge = presentationEdge;
+}
+
+- (void)setLayoutMargins:(UIEdgeInsets)layoutMargins
+{
+    [super setLayoutMargins:layoutMargins];
+    
+    // For some reason, setting stackView.preservesSuperviewLayoutMargins to YES might result
+    // in some insets becoming zero when re-laying out (such as after updating label text).
+    // We compensate by overriding setLayoutMargins: and manually updating stackView's margins.
+    self.stackView.layoutMargins = layoutMargins;
 }
 
 @end
