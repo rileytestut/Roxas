@@ -42,13 +42,48 @@
 
 - (UIImage *)imageByResizingToSize:(CGSize)size
 {
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
     switch (self.imageOrientation)
     {
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+            
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, size.width, size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
-            size = CGSizeMake(size.height, size.width);
+            transform = CGAffineTransformTranslate(transform, 0, size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+            
+        default:
+            break;
+    }
+    
+    switch (self.imageOrientation)
+    {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
             break;
             
         default:
@@ -79,6 +114,8 @@
     {
         return nil;
     }
+    
+    CGContextConcatCTM(context, transform);
     
     CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
     
