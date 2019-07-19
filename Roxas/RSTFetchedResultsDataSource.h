@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTFetchedResultsDataSource<ContentType: NSManagedObject *, CellType: UIView<RSTCellContentCell> *, ViewType: UIScrollView<RSTCellContentView> *, DataSourceType> : RSTCellContentDataSource<ContentType, CellType, ViewType, DataSourceType> <NSFetchedResultsControllerDelegate>
 
+@property (nonatomic) NSInteger liveFetchLimit;
+
 @property (nonatomic) NSFetchedResultsController<ContentType> *fetchedResultsController;
 
 - (instancetype)initWithFetchRequest:(NSFetchRequest<ContentType> *)fetchRequest managedObjectContext:(NSManagedObjectContext *)managedObjectContext;
