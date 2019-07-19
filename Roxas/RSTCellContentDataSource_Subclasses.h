@@ -35,8 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, weak, nonatomic) id<RSTCellContentIndexPathTranslating> indexPathTranslator;
 
-@property (nonatomic, readonly) NSUInteger itemCount;
-
 @property (nonatomic, readonly, getter=isPrefetchingDataSource) BOOL prefetchingDataSource;
 
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
