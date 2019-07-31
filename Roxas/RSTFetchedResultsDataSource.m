@@ -343,7 +343,7 @@ NS_ASSUME_NONNULL_END
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
                         
             RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:indexPath];
-            [self.contentView addChange:change];
+            [self addChange:change];
         }
     }
     else
@@ -353,7 +353,7 @@ NS_ASSUME_NONNULL_END
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
             
             RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeDelete currentIndexPath:indexPath destinationIndexPath:nil];
-            [self.contentView addChange:change];
+            [self addChange:change];
         }
     }
     
