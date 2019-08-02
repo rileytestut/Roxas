@@ -55,6 +55,9 @@ RST_EXTERN NSString *RSTCellContentGenericCellIdentifier;
 // Animation to use when animating changes in a UITableView.
 @property (nonatomic) UITableViewRowAnimation rowAnimation;
 
+// Total number of items to be displayed in contentView.
+@property (nonatomic, readonly) NSUInteger itemCount;
+
 // Returns content item at indexPath. Performs no bounds-checking.
 - (ContentType)itemAtIndexPath:(NSIndexPath *)indexPath;
 
