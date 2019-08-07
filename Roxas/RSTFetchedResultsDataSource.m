@@ -360,7 +360,7 @@ NS_ASSUME_NONNULL_END
     [self.contentView endUpdates];
 }
 
-- (NSUInteger)itemCount
+- (NSInteger)itemCount
 {
     if (self.fetchedResultsController.fetchedObjects == nil)
     {

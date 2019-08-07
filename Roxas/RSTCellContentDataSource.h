@@ -56,7 +56,7 @@ RST_EXTERN NSString *RSTCellContentGenericCellIdentifier;
 @property (nonatomic) UITableViewRowAnimation rowAnimation;
 
 // Total number of items to be displayed in contentView.
-@property (nonatomic, readonly) NSUInteger itemCount;
+@property (nonatomic, readonly) NSInteger itemCount;
 
 // Returns content item at indexPath. Performs no bounds-checking.
 - (ContentType)itemAtIndexPath:(NSIndexPath *)indexPath;

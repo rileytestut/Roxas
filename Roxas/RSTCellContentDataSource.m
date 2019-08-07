@@ -640,9 +640,9 @@ NS_ASSUME_NONNULL_END
     }
 }
 
-- (NSUInteger)itemCount
+- (NSInteger)itemCount
 {
-    NSUInteger itemCount = 0;
+    NSInteger itemCount = 0;
     
     for (int section = 0; section < [self numberOfSectionsInContentView:self.contentView]; section++)
     {
