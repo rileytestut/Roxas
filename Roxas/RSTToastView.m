@@ -162,6 +162,15 @@ NS_ASSUME_NONNULL_END
 
 - (CGSize)intrinsicContentSize
 {
+    if (self.superview != nil)
+    {
+        CGFloat width = CGRectGetWidth(self.superview.bounds);
+        CGFloat preferredMaxLayoutWidth = width - (self.edgeOffset.horizontal * 2) - (self.layoutMargins.left + self.layoutMargins.right);
+        
+        self.textLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
+        self.detailTextLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
+    }
+    
     CGSize intrinsicContentSize = [self.stackView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return intrinsicContentSize;
 }
