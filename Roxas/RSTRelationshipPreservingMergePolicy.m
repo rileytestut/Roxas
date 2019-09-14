@@ -108,6 +108,11 @@
                 return;
             }
             
+            if (relationshipObject.managedObjectContext == nil)
+            {
+                return;
+            }
+            
             [databaseObject setValue:relationshipObject forKey:name];
             
             NSRelationshipDescription *inverseRelationship = relationship.inverseRelationship;
