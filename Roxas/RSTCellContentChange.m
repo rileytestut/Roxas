@@ -66,6 +66,33 @@ NSFetchedResultsChangeType NSFetchedResultsChangeTypeFromCellContentChangeType(R
     return self;
 }
 
+#pragma mark - NSObject -
+
+- (NSString *)description
+{
+    NSString *type = nil;
+    switch (self.type)
+    {
+        case RSTCellContentChangeInsert:
+            type = @"Insert";
+            break;
+            
+        case RSTCellContentChangeDelete:
+            type = @"Delete";
+            break;
+            
+        case RSTCellContentChangeUpdate:
+            type = @"Update";
+            break;
+            
+        case RSTCellContentChangeMove:
+            type = @"Move";
+            break;
+    }
+    
+    return [NSString stringWithFormat:@"<%@: %p, Type: %@, Index Path: %@, New Index Path: %@>", NSStringFromClass([self class]), self, type, self.currentIndexPath, self.destinationIndexPath];
+}
+
 #pragma mark - <NSCopying> -
 
 - (instancetype)copyWithZone:(NSZone *)zone
