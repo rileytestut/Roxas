@@ -9,18 +9,13 @@
 /* Begin PBXBuildFile section */
 		BF0FB2121F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB2111F0EA90E007460E0 /* RSTCellContentPrefetchingDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0FB4451C017DF600D26616 /* RSTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF0FB4461C017DF600D26616 /* RSTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF0FB4431C017DF600D26616 /* RSTPlaceholderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF0FB4471C017DF600D26616 /* RSTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */; };
-		BF0FB4481C017DF600D26616 /* RSTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0FB4441C017DF600D26616 /* RSTPlaceholderView.m */; };
 		BF0FB44A1C017F1300D26616 /* RSTPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0FB4491C017F1300D26616 /* RSTPlaceholderView.xib */; };
-		BF0FB44B1C017F1300D26616 /* RSTPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0FB4491C017F1300D26616 /* RSTPlaceholderView.xib */; };
 		BF18B6131E2967D400F70067 /* NSString+Localization.h in Headers */ = {isa = PBXBuildFile; fileRef = BF18B6111E2967D400F70067 /* NSString+Localization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF18B6141E2967D400F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
-		BF18B6151E2967D800F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
 		BF18B6171E2970B800F70067 /* NSStringLocalizationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6161E2970B800F70067 /* NSStringLocalizationTests.m */; };
 		BF18B6181E2975C800F70067 /* NSString+Localization.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B6121E2967D400F70067 /* NSString+Localization.m */; };
 		BF18B61B1E297E0100F70067 /* RSTSilentAssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF18B61A1E297E0100F70067 /* RSTSilentAssertionHandler.m */; };
-		BF18B61D1E2981DF00F70067 /* NSString+Localization.h in Headers */ = {isa = PBXBuildFile; fileRef = BF18B6111E2967D400F70067 /* NSString+Localization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF28F0F11B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF28F0F21B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
 		BF2DF1461C96ABA100F9FDD8 /* RSTOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DF1441C96ABA100F9FDD8 /* RSTOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,17 +36,11 @@
 		BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF53E98B207B46EE00A57BCE /* UIKit+ActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF53E98E207B46EE00A57BCE /* UIKit+ActivityIndicating.m in Sources */ = {isa = PBXBuildFile; fileRef = BF53E98C207B46EE00A57BCE /* UIKit+ActivityIndicating.m */; };
 		BF57C0271D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF57C0281D726016000132D2 /* UIView+AnimatedHide.h in Headers */ = {isa = PBXBuildFile; fileRef = BF57C0251D726016000132D2 /* UIView+AnimatedHide.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF57C0291D726016000132D2 /* UIView+AnimatedHide.m in Sources */ = {isa = PBXBuildFile; fileRef = BF57C0261D726016000132D2 /* UIView+AnimatedHide.m */; };
-		BF57C02A1D726016000132D2 /* UIView+AnimatedHide.m in Sources */ = {isa = PBXBuildFile; fileRef = BF57C0261D726016000132D2 /* UIView+AnimatedHide.m */; };
 		BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF58BC0C1D51A027008FC1A3 /* UICollectionView+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF58BC0F1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF58BC0C1D51A027008FC1A3 /* UICollectionView+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF58BC101D51A027008FC1A3 /* UICollectionView+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58BC0D1D51A027008FC1A3 /* UICollectionView+CellContent.m */; };
-		BF58BC111D51A027008FC1A3 /* UICollectionView+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58BC0D1D51A027008FC1A3 /* UICollectionView+CellContent.m */; };
 		BF58BC131D51A5AC008FC1A3 /* RSTCellContentChange.h in Headers */ = {isa = PBXBuildFile; fileRef = BF58BC121D51A5AC008FC1A3 /* RSTCellContentChange.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF58BC141D51A5AC008FC1A3 /* RSTCellContentChange.h in Headers */ = {isa = PBXBuildFile; fileRef = BF58BC121D51A5AC008FC1A3 /* RSTCellContentChange.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF58BC161D51A5C9008FC1A3 /* RSTCellContentChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58BC151D51A5C9008FC1A3 /* RSTCellContentChange.m */; };
-		BF58BC171D51A5C9008FC1A3 /* RSTCellContentChange.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58BC151D51A5C9008FC1A3 /* RSTCellContentChange.m */; };
 		BF5B42391C7D828900835FEF /* NSUserDefaultsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5B42381C7D828900835FEF /* NSUserDefaultsTests.m */; };
 		BF5B423A1C7D84C800835FEF /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
 		BF5B423B1C7D87F800835FEF /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
@@ -68,20 +57,6 @@
 		BF7FF099207312E5003A921A /* RSTActivityIndicating.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7FF097207312E5003A921A /* RSTActivityIndicating.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8422212193715F0035340B /* RSTHasher.h in Headers */ = {isa = PBXBuildFile; fileRef = BF84221F2193715F0035340B /* RSTHasher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8422222193715F0035340B /* RSTHasher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8422202193715F0035340B /* RSTHasher.m */; };
-		BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BFADB01219AE7C4A0050CF31 /* RSTHelperFile.m */; };
-		BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF36F1CF1A1459B90057FF07 /* UIImage+Manipulation.m */; };
-		BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BF28F0F01B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.m */; };
-		BF86246E1BB742E700C12EEE /* NSFileManager+URLs.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */; };
-		BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA0E4281A3E956300DA1EC2 /* NSBundle+Extensions.m */; };
-		BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC6B5D11A0A10A900BECAB5 /* RSTNavigationController.m */; };
-		BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADB01119AE7C4A0050CF31 /* RSTHelperFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BF28F0EF1B3F36B4003C1D41 /* NSUserDefaults+DynamicProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624751BB742E700C12EEE /* NSFileManager+URLs.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF36F1D01A1459B90057FF07 /* UIImage+Manipulation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8624791BB742E700C12EEE /* Roxas.h in Headers */ = {isa = PBXBuildFile; fileRef = BFADAFFD19AE7BB70050CF31 /* Roxas.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A4FDE1A33B89C007697D1 /* RSTDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8D82261E53CFEE00756F08 /* NSPredicate+Search.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8D82241E53CFEE00756F08 /* NSPredicate+Search.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8D82271E53CFEE00756F08 /* NSPredicate+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D82251E53CFEE00756F08 /* NSPredicate+Search.m */; };
 		BF8FD1C31E5BADE300820F2C /* RSTFetchedResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8FD1C11E5BADE300820F2C /* RSTFetchedResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -90,7 +65,6 @@
 		BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8FD1CA1E5BBFB100820F2C /* UITableViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8FD1CB1E5BBFB100820F2C /* UITableViewCell+CellContent.m */; };
 		BF9A87F81C5381B3008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9A87F71C538187008927B8 /* RSTConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D11A477FF4007DFEFF /* NSFileManager+URLs.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9AB7CF1A477FF4007DFEFF /* NSFileManager+URLs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB7D01A477FF4007DFEFF /* NSFileManager+URLs.m */; };
 		BFA0E4291A3E956300DA1EC2 /* NSBundle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA0E4271A3E956300DA1EC2 /* NSBundle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,9 +84,7 @@
 		BFBDEA341EC274D20034D65E /* UIAlertAction+Actions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBDEA321EC274D20034D65E /* UIAlertAction+Actions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBDEA331EC274D20034D65E /* UIAlertAction+Actions.m */; };
 		BFC2BC641D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFC2BC651D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC2BC621D52DC6700C30751 /* UICollectionViewCell+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC2BC661D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
-		BFC2BC671D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC2BC631D52DC6700C30751 /* UICollectionViewCell+CellContent.m */; };
 		BFC5B07F20A0F25A0085B6A3 /* RSTCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC5B07D20A0F25A0085B6A3 /* RSTCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFC5B08020A0F25A0085B6A3 /* RSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC5B07E20A0F25A0085B6A3 /* RSTCollectionViewCell.m */; };
 		BFC6B5D21A0A10A900BECAB5 /* RSTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFC6B5D01A0A10A900BECAB5 /* RSTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -122,13 +94,9 @@
 		BFDC6F14220248DB00CA3153 /* RSTError.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDC6F12220248DB00CA3153 /* RSTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFDC6F15220248DB00CA3153 /* RSTError.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDC6F13220248DB00CA3153 /* RSTError.m */; };
 		BFDF04D81D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDF04D61D51193B00091747 /* RSTCellContentChangeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFDF04D91D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFDF04D61D51193B00091747 /* RSTCellContentChangeOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDF04D71D51193B00091747 /* RSTCellContentChangeOperation.m */; };
-		BFDF04DB1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BFDF04D71D51193B00091747 /* RSTCellContentChangeOperation.m */; };
 		BFE35D821DBED4D700F77C10 /* UITableView+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D801DBED4D700F77C10 /* UITableView+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFE35D831DBED4D700F77C10 /* UITableView+CellContent.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE35D801DBED4D700F77C10 /* UITableView+CellContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE35D841DBED4D700F77C10 /* UITableView+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D811DBED4D700F77C10 /* UITableView+CellContent.m */; };
-		BFE35D851DBED4D700F77C10 /* UITableView+CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE35D811DBED4D700F77C10 /* UITableView+CellContent.m */; };
 		BFE8F0461E4AF8A200A64745 /* RSTSearchController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0441E4AF8A200A64745 /* RSTSearchController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE8F0471E4AF8A200A64745 /* RSTSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE8F0451E4AF8A200A64745 /* RSTSearchController.m */; };
 		BFE8F04A1E4AF9F400A64745 /* RSTCellContentDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE8F0481E4AF9F400A64745 /* RSTCellContentDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -194,7 +162,6 @@
 		BF7FF097207312E5003A921A /* RSTActivityIndicating.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTActivityIndicating.h; sourceTree = "<group>"; };
 		BF84221F2193715F0035340B /* RSTHasher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTHasher.h; sourceTree = "<group>"; };
 		BF8422202193715F0035340B /* RSTHasher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTHasher.m; sourceTree = "<group>"; };
-		BF8624801BB742E700C12EEE /* Roxas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8D82241E53CFEE00756F08 /* NSPredicate+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+Search.h"; sourceTree = "<group>"; };
 		BF8D82251E53CFEE00756F08 /* NSPredicate+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+Search.m"; sourceTree = "<group>"; };
 		BF8FD1C11E5BADE300820F2C /* RSTFetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTFetchedResultsDataSource.h; sourceTree = "<group>"; };
@@ -256,13 +223,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BF8624711BB742E700C12EEE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFADAFF419AE7BB70050CF31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,7 +416,6 @@
 			children = (
 				BFADAFF819AE7BB70050CF31 /* Roxas.framework */,
 				BFADB00319AE7BB80050CF31 /* RoxasTests.xctest */,
-				BF8624801BB742E700C12EEE /* Roxas.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,30 +628,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		BF8624721BB742E700C12EEE /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF58BC0F1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
-				BF8624731BB742E700C12EEE /* RSTHelperFile.h in Headers */,
-				BF8624741BB742E700C12EEE /* NSUserDefaults+DynamicProperties.h in Headers */,
-				BF9A87F91C5381B6008927B8 /* RSTConstants.h in Headers */,
-				BF8624751BB742E700C12EEE /* NSFileManager+URLs.h in Headers */,
-				BF8624761BB742E700C12EEE /* UIImage+Manipulation.h in Headers */,
-				BF0FB4461C017DF600D26616 /* RSTPlaceholderView.h in Headers */,
-				BFE35D831DBED4D700F77C10 /* UITableView+CellContent.h in Headers */,
-				BF8624771BB742E700C12EEE /* RSTNavigationController.h in Headers */,
-				BF57C0281D726016000132D2 /* UIView+AnimatedHide.h in Headers */,
-				BF58BC141D51A5AC008FC1A3 /* RSTCellContentChange.h in Headers */,
-				BFC2BC651D52DC6700C30751 /* UICollectionViewCell+CellContent.h in Headers */,
-				BF8624781BB742E700C12EEE /* NSBundle+Extensions.h in Headers */,
-				BF8624791BB742E700C12EEE /* Roxas.h in Headers */,
-				BF18B61D1E2981DF00F70067 /* NSString+Localization.h in Headers */,
-				BFDF04D91D51193B00091747 /* RSTCellContentChangeOperation.h in Headers */,
-				BF86247A1BB742E700C12EEE /* RSTDefines.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFADAFF519AE7BB70050CF31 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -755,25 +690,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BF8624691BB742E700C12EEE /* RoxasTV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF86247C1BB742E700C12EEE /* Build configuration list for PBXNativeTarget "RoxasTV" */;
-			buildPhases = (
-				BF86246A1BB742E700C12EEE /* Sources */,
-				BF8624711BB742E700C12EEE /* Frameworks */,
-				BF8624721BB742E700C12EEE /* Headers */,
-				BF86247B1BB742E700C12EEE /* Resources */,
-				BF0FB44C1C01801700D26616 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RoxasTV;
-			productName = Roxas;
-			productReference = BF8624801BB742E700C12EEE /* Roxas.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		BFADAFF719AE7BB70050CF31 /* Roxas */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFADB00B19AE7BB80050CF31 /* Build configuration list for PBXNativeTarget "Roxas" */;
@@ -842,21 +758,12 @@
 			projectRoot = "";
 			targets = (
 				BFADAFF719AE7BB70050CF31 /* Roxas */,
-				BF8624691BB742E700C12EEE /* RoxasTV */,
 				BFADB00219AE7BB80050CF31 /* RoxasTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BF86247B1BB742E700C12EEE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF0FB44B1C017F1300D26616 /* RSTPlaceholderView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFADAFF619AE7BB70050CF31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -875,44 +782,7 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		BF0FB44C1C01801700D26616 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		BF86246A1BB742E700C12EEE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFE35D851DBED4D700F77C10 /* UITableView+CellContent.m in Sources */,
-				BFDF04DB1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
-				BF57C02A1D726016000132D2 /* UIView+AnimatedHide.m in Sources */,
-				BF86246B1BB742E700C12EEE /* RSTHelperFile.m in Sources */,
-				BF58BC171D51A5C9008FC1A3 /* RSTCellContentChange.m in Sources */,
-				BF86246C1BB742E700C12EEE /* UIImage+Manipulation.m in Sources */,
-				BF86246D1BB742E700C12EEE /* NSUserDefaults+DynamicProperties.m in Sources */,
-				BF86246E1BB742E700C12EEE /* NSFileManager+URLs.m in Sources */,
-				BF18B6151E2967D800F70067 /* NSString+Localization.m in Sources */,
-				BF86246F1BB742E700C12EEE /* NSBundle+Extensions.m in Sources */,
-				BF8624701BB742E700C12EEE /* RSTNavigationController.m in Sources */,
-				BF0FB4481C017DF600D26616 /* RSTPlaceholderView.m in Sources */,
-				BF58BC111D51A027008FC1A3 /* UICollectionView+CellContent.m in Sources */,
-				BFC2BC671D52DC6700C30751 /* UICollectionViewCell+CellContent.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFADAFF319AE7BB70050CF31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -979,60 +849,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BF86247D1BB742E700C12EEE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Roxas/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		BF86247E1BB742E700C12EEE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Roxas/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
-		BF86247F1BB742E700C12EEE /* Ad Hoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Roxas/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = "Ad Hoc";
-		};
 		BFA7210E1A412F71008A0A21 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1103,6 +919,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1250,6 +1067,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -1271,6 +1089,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1303,16 +1122,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF86247C1BB742E700C12EEE /* Build configuration list for PBXNativeTarget "RoxasTV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF86247D1BB742E700C12EEE /* Debug */,
-				BF86247E1BB742E700C12EEE /* Release */,
-				BF86247F1BB742E700C12EEE /* Ad Hoc */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BFADAFF219AE7BB70050CF31 /* Build configuration list for PBXProject "Roxas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

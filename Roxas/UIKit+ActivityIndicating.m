@@ -126,7 +126,11 @@ NS_ASSUME_NONNULL_END
     {
         if (_activityIndicatorView == nil)
         {
+            #if TARGET_OS_IOS
             _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            #else
+            _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+            #endif
             _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
@@ -523,12 +527,16 @@ NS_ASSUME_NONNULL_END
 
 - (void)startIndicatingActivity
 {
+    #if TARGET_OS_IOS
     self.networkActivityIndicatorVisible = YES;
+    #endif
 }
 
 - (void)stopIndicatingActivity
 {
+    #if TARGET_OS_IOS
     self.networkActivityIndicatorVisible = NO;
+    #endif
 }
 
 #pragma mark - <RSTActivityIndicating> -
