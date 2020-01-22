@@ -64,8 +64,9 @@
     if (bitmapInfo & kCGImageAlphaLast)
     {
         bitmapInfo &= ~(kCGImageAlphaLast);
-        bitmapInfo |= kCGImageAlphaNoneSkipLast;
     }
+    
+    bitmapInfo |= kCGImageAlphaNoneSkipLast;
     
     CGContextRef context = CGBitmapContextCreate(NULL,
                                                  CGRectGetWidth(rect),
