@@ -6,6 +6,8 @@
 //  Copyright © 2016 Riley Testut. All rights reserved.
 //
 
+#import "RSTDefines.h"
+
 @import UIKit;
 @import CoreData;
 
