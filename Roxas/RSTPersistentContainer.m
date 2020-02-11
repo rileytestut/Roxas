@@ -80,6 +80,7 @@ NS_ASSUME_NONNULL_END
             dispatch_group_enter(dispatchGroup);
             
             [self progressivelyMigratePersistentStoreToModel:self.managedObjectModel
+                                               configuration:description.configuration
                                               isAsynchronous:description.shouldAddStoreAsynchronously
                                            completionHandler:^(NSError * _Nullable error) {
                                                if (error != nil)
@@ -157,11 +158,11 @@ NS_ASSUME_NONNULL_END
 
 // Migration logic based off of https://www.objc.io/issues/4-core-data/core-data-migration/
 
-- (void)progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model isAsynchronous:(BOOL)asynchronous completionHandler:(void (^)(NSError * _Nullable))completionHandler
+- (void)progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model configuration:(nullable NSString *)configuration isAsynchronous:(BOOL)asynchronous completionHandler:(void (^)(NSError * _Nullable))completionHandler
 {
     void (^migrate)(void) = ^(void) {
         NSError *error = nil;
-        BOOL success = [self _progressivelyMigratePersistentStoreToModel:model error:&error];
+        BOOL success = [self _progressivelyMigratePersistentStoreToModel:model configuration:configuration error:&error];
         
         if (success)
         {
@@ -185,7 +186,7 @@ NS_ASSUME_NONNULL_END
     }
 }
 
-- (BOOL)_progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model error:(NSError * _Nonnull *)error
+- (BOOL)_progressivelyMigratePersistentStoreToModel:(NSManagedObjectModel *)model configuration:(nullable NSString *)configuration error:(NSError * _Nonnull *)error
 {
     NSPersistentStoreDescription *description = self.persistentStoreDescriptions.firstObject;
     if (description == nil)
@@ -200,28 +201,10 @@ NS_ASSUME_NONNULL_END
         return NO;
     }
     
-    NSDictionary<NSString *, NSData *> *currentHashes = sourceMetadata[NSStoreModelVersionHashesKey];
-    
-    for (NSString *configuration in model.configurations)
+    if ([self.managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata])
     {
-        // -[NSManagedObjectModel isConfiguration:compatibleWithStoreMetadata:] does not work properly with configurations.
-        // As a workaround, we manually compare the hashes of entities in each configuration to see if any configurations are compatible.
-        // If there is a compatible configuration, Core Data can then perform a final lightweight migration to finish if necessary.
-        // This can occur when migrating a persistent store that has configurations and doesn't have mapping for all model objects.
-        // (For example, using Harmony to sync Core Data results in a persistent store with configurations).
-        NSMutableDictionary<NSString *, NSData *> *previousHashes = [NSMutableDictionary dictionary];
-        
-        for (NSEntityDescription *entity in [model entitiesForConfiguration:configuration])
-        {
-            NSData *hash = model.entityVersionHashesByName[entity.name];
-            previousHashes[entity.name] = hash;
-        }
-        
-        if ([previousHashes isEqualToDictionary:currentHashes])
-        {
-            // The store is now compatible with the managed object model, so we're done.
-            return YES;
-        }
+        // The store is now compatible with the managed object model, so we're done.
+        return YES;
     }
 
     NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:NSBundle.allBundles forStoreMetadata:sourceMetadata];
@@ -232,7 +215,7 @@ NS_ASSUME_NONNULL_END
     }
     
     NSMappingModel *mappingModel = nil;
-    NSMigrationManager *migrationManager = [self progressiveMigrationManagerForSourceModel:sourceModel mappingModel:&mappingModel];
+    NSMigrationManager *migrationManager = [self progressiveMigrationManagerForSourceModel:sourceModel destinationModel:model configuration:configuration mappingModel:&mappingModel];
     if (migrationManager == nil)
     {
         *error = [NSError errorWithDomain:RoxasErrorDomain code:RSTErrorMissingMappingModel userInfo:nil];
@@ -272,20 +255,37 @@ NS_ASSUME_NONNULL_END
         ELog(deletionError);
     }
     
-    return [self _progressivelyMigratePersistentStoreToModel:model error:error];
+    return [self _progressivelyMigratePersistentStoreToModel:model configuration:configuration error:error];
 }
 
-- (nullable NSMigrationManager *)progressiveMigrationManagerForSourceModel:(NSManagedObjectModel *)sourceModel mappingModel:(NSMappingModel **)outMappingModel
+- (nullable NSMigrationManager *)progressiveMigrationManagerForSourceModel:(NSManagedObjectModel *)sourceModel destinationModel:(NSManagedObjectModel *)destinationModel configuration:(nullable NSString *)configuration mappingModel:(NSMappingModel **)outMappingModel
 {
     NSArray<NSURL *> *managedObjectModelURLs = [self managedObjectModelURLs];
     for (NSURL *modelURL in managedObjectModelURLs)
     {
         NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-        
         NSMappingModel *mappingModel = [NSMappingModel mappingModelFromBundles:NSBundle.allBundles
                                                                 forSourceModel:sourceModel
                                                               destinationModel:model];
         if (mappingModel == nil)
+        {
+            continue;
+        }
+        
+        // If this model contains at least one entity that belongs to our configuration,
+        // we can assume that this is a valid mapping model for the configuration.
+        BOOL isValidForConfiguration = NO;
+        
+        for (NSEntityDescription *entityDescription in [sourceModel entitiesForConfiguration:configuration])
+        {
+            if (model.entitiesByName[entityDescription.name] != nil)
+            {
+                isValidForConfiguration = YES;
+                break;
+            }
+        }
+        
+        if (!isValidForConfiguration)
         {
             continue;
         }
@@ -296,7 +296,21 @@ NS_ASSUME_NONNULL_END
         return migrationManager;
     }
     
-    return nil;
+    // Fallback to inferring mapping model.
+    
+    NSError *error = nil;
+    NSMappingModel *inferredMappingModel = [NSMappingModel inferredMappingModelForSourceModel:sourceModel destinationModel:destinationModel error:&error];
+    
+    if (inferredMappingModel == nil)
+    {
+        NSLog(@"Error inferring mapping: %@", error);
+        return nil;
+    }
+    
+    *outMappingModel = inferredMappingModel;
+    
+    NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel destinationModel:destinationModel];
+    return migrationManager;
 }
 
 - (NSArray<NSURL *> *)managedObjectModelURLs
