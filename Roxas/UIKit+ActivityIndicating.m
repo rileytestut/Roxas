@@ -126,7 +126,15 @@ NS_ASSUME_NONNULL_END
     {
         if (_activityIndicatorView == nil)
         {
-            _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            if (@available(iOS 13, *))
+            {
+                _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+            }
+            else
+            {
+                _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            }
+            
             _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
