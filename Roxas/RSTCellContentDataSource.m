@@ -246,7 +246,12 @@ NS_ASSUME_NONNULL_END
         
         NSOperation *operation = self.prefetchHandler(item, indexPath, ^(id prefetchItem, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                prefetchCompletionHandler(prefetchItem, error);
+                
+                if (indexPath.section < [self numberOfSectionsInContentView:self.contentView] &&
+                    indexPath.row < [self contentView:self.contentView numberOfItemsInSection:indexPath.section])
+                {
+                    prefetchCompletionHandler(prefetchItem, error);
+                }
                 
                 if ([weakOperation isKindOfClass:[RSTAsyncBlockOperation class]])
                 {
