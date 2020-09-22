@@ -276,7 +276,8 @@ NS_ASSUME_NONNULL_END
         // we can assume that this is a valid mapping model for the configuration.
         BOOL isValidForConfiguration = NO;
         
-        for (NSEntityDescription *entityDescription in [sourceModel entitiesForConfiguration:configuration])
+        // sourceModel doesn't properly merge configurations, so retrieve configuration entities via self.managedObjectModel.
+        for (NSEntityDescription *entityDescription in [self.managedObjectModel entitiesForConfiguration:configuration])
         {
             if (model.entitiesByName[entityDescription.name] != nil)
             {
