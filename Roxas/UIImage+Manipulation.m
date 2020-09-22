@@ -58,9 +58,15 @@
     CGRect rect = CGRectIntegral(CGRectMake(0, 0, size.width * self.scale, size.height * self.scale));
     
     size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
-    CGColorSpaceRef colorSpace = CGImageGetColorSpace(self.CGImage);
-    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
+    CGColorSpaceRef imageColorSpace = CGImageGetColorSpace(self.CGImage);
     
+    CGColorSpaceRef outputColorSpace = imageColorSpace;
+    if (!CGColorSpaceSupportsOutput(imageColorSpace))
+    {
+        outputColorSpace = CGColorSpaceCreateDeviceRGB();
+    }
+    
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
     if (bitmapInfo & kCGImageAlphaLast)
     {
         bitmapInfo &= ~(kCGImageAlphaLast);
@@ -73,8 +79,13 @@
                                                  CGRectGetHeight(rect),
                                                  bitsPerComponent,
                                                  0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
-                                                 colorSpace,
+                                                 outputColorSpace,
                                                  bitmapInfo);
+    
+    if (!CGColorSpaceSupportsOutput(imageColorSpace))
+    {
+        CGColorSpaceRelease(outputColorSpace);
+    }
     
     if (context == NULL)
     {
