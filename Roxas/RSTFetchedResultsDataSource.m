@@ -176,11 +176,22 @@ NS_ASSUME_NONNULL_END
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
+    if (self.contentView.window == nil)
+    {
+        // Don't update content view if it's not in window hierarchy.
+        return;
+    }
+    
     [self.contentView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
+    if (self.contentView.window == nil)
+    {
+        return;
+    }
+    
     RSTCellContentChangeType changeType = RSTCellContentChangeTypeFromFetchedResultsChangeType(type);
     
     RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:changeType sectionIndex:sectionIndex];
@@ -190,6 +201,11 @@ NS_ASSUME_NONNULL_END
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
+    if (self.contentView.window == nil)
+    {
+        return;
+    }
+    
     RSTCellContentChangeType changeType = RSTCellContentChangeTypeFromFetchedResultsChangeType(type);
     
     RSTCellContentChange *change = nil;
@@ -271,6 +287,12 @@ NS_ASSUME_NONNULL_END
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (self.contentView.window == nil)
+    {
+        // Don't update content view if it's not in window hierarchy.
+        return;
+    }
+    
     [self.contentView endUpdates];
 }
 
