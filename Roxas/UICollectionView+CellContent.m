@@ -68,21 +68,39 @@
         [postMoveUpdateOperations addObject:updateOperation];
     }
     
-    [CATransaction begin];
-    [CATransaction setCompletionBlock:^{
+    __block BOOL isFinished = NO;
+    
+    void (^finish)(void) = ^{
+        if (isFinished)
+        {
+            // Ensure finish() only runs once, despite (most likely) being called twice.
+            return;
+        }
+        
+        isFinished = YES;
+        
+        if (postMoveUpdateOperations.count == 0)
+        {
+            return;
+        }
         
         // Perform additional updates after any moved items have been moved.
         // These additional updates must be performed after the first batch of operations have finished animating, or else the animation looks weird.
-        // However, the completion block for performBatchUpdates: is only called if the updates result in an animation.
-        // Since there is no way to know if an animation will actually occur (dependent on multiple factors), we explicitly create our own CATransaction.
-        // If there are no animations, the CATransaction's completion block will be called immediately. If there *are* animations, the completion block will be called after the animations finish.
-                
         [self performBatchUpdates:^{
             for (RSTCellContentChangeOperation *operation in postMoveUpdateOperations)
             {
                 [operation start];
             }
         } completion:nil];
+    };
+    
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        // The completion block for performBatchUpdates: is only called if the updates result in an animation.
+        // Since there is no way to know if an animation will actually occur (dependent on multiple factors), we also explicitly create our own CATransaction as a fallback.
+        // If there are no animations, this CATransaction completion block will call finish() immediately.
+        // Otherwise, finish() will be called from performBatchUpdates:'s completion block after the animations finish.
+        finish();
     }];
     
     [self performBatchUpdates:^{
@@ -90,7 +108,10 @@
         {
             [operation start];
         }
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        // Call finish() in case CATransaction's completion block has not yet run (which might be delayed indefinitely).
+        finish();
+    }];
     
     [CATransaction commit];
 }
