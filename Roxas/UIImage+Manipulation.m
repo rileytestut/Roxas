@@ -57,42 +57,11 @@
     
     CGRect rect = CGRectIntegral(CGRectMake(0, 0, size.width * self.scale, size.height * self.scale));
     
-    size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
-    CGColorSpaceRef imageColorSpace = CGImageGetColorSpace(self.CGImage);
-    
-    CGColorSpaceRef outputColorSpace = imageColorSpace;
-    if (!CGColorSpaceSupportsOutput(imageColorSpace))
-    {
-        outputColorSpace = CGColorSpaceCreateDeviceRGB();
-    }
-    
-    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
-    if (bitmapInfo & kCGImageAlphaLast)
-    {
-        bitmapInfo &= ~(kCGImageAlphaLast);
-    }
-    
-    bitmapInfo |= kCGImageAlphaNoneSkipLast;
-    
-    CGContextRef context = CGBitmapContextCreate(NULL,
-                                                 CGRectGetWidth(rect),
-                                                 CGRectGetHeight(rect),
-                                                 bitsPerComponent,
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
-                                                 outputColorSpace,
-                                                 bitmapInfo);
-    
-    if (!CGColorSpaceSupportsOutput(imageColorSpace))
-    {
-        CGColorSpaceRelease(outputColorSpace);
-    }
-    
-    if (context == NULL)
+    CGContextRef context = [self createContextWithRect:rect];
+    if (context == nil)
     {
         return nil;
     }
-    
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
     
     CGContextDrawImage(context, rect, self.CGImage);
     
@@ -154,25 +123,8 @@
     clippedRect = CGRectApplyAffineTransform(clippedRect, CGAffineTransformMakeScale(imageScale, imageScale));
     drawingRect = CGRectApplyAffineTransform(drawingRect, CGAffineTransformMakeScale(imageScale, imageScale));
     
-    size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
-    CGColorSpaceRef colorSpace = CGImageGetColorSpace(self.CGImage);
-    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
-    
-    if (bitmapInfo & kCGImageAlphaLast)
-    {
-        bitmapInfo &= ~(kCGImageAlphaLast);
-        bitmapInfo |= kCGImageAlphaNoneSkipLast;
-    }
-    
-    CGContextRef context = CGBitmapContextCreate(NULL,
-                                                 CGRectGetWidth(clippedRect),
-                                                 CGRectGetHeight(clippedRect),
-                                                 bitsPerComponent,
-                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
-                                                 colorSpace,
-                                                 bitmapInfo);
-    
-    if (context == NULL)
+    CGContextRef context = [self createContextWithRect:clippedRect];
+    if (context == nil)
     {
         return nil;
     }
@@ -191,6 +143,63 @@
     CFRelease(context);
     
     return image;
+}
+
+#pragma mark - Graphics Context -
+
+- (nullable CGContextRef)createContextWithRect:(CGRect)rect
+{
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(self.CGImage);
+    CGColorSpaceRef imageColorSpace = CGImageGetColorSpace(self.CGImage);
+    
+    CGColorSpaceRef outputColorSpace = imageColorSpace;
+    if (!CGColorSpaceSupportsOutput(imageColorSpace))
+    {
+        outputColorSpace = CGColorSpaceCreateDeviceRGB();
+    }
+    
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
+    CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(self.CGImage);
+    
+    bitmapInfo &= ~(kCGBitmapAlphaInfoMask & alphaInfo);
+    
+    switch (alphaInfo)
+    {
+        case kCGImageAlphaNone:
+        case kCGImageAlphaLast:
+            alphaInfo = kCGImageAlphaNoneSkipLast;
+            break;
+            
+        case kCGImageAlphaPremultipliedLast:
+            alphaInfo = kCGImageAlphaPremultipliedFirst;
+            break;
+            
+        default: break;
+    }
+    
+    bitmapInfo |= (kCGBitmapAlphaInfoMask & alphaInfo);
+    
+    CGContextRef context = CGBitmapContextCreate(NULL,
+                                                 CGRectGetWidth(rect),
+                                                 CGRectGetHeight(rect),
+                                                 bitsPerComponent,
+                                                 0, // CGImageGetBytesPerRow(self.CGImage) crashes on malformed UIImages (such as Crossy Road's). Passing 0 = automatic calculation, and is safer
+                                                 outputColorSpace,
+                                                 bitmapInfo);
+    
+    if (!CGColorSpaceSupportsOutput(imageColorSpace))
+    {
+        CGColorSpaceRelease(outputColorSpace);
+    }
+    
+    if (context == NULL)
+    {
+        return nil;
+    }
+    
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    
+    return context;
 }
 
 @end
