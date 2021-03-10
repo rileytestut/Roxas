@@ -145,6 +145,105 @@
     return image;
 }
 
+#pragma mark - Rotating -
+
+- (UIImage *)imageByRotatingToImageOrientation:(UIImageOrientation)imageOrientation
+{
+    UIImage *image = [UIImage imageWithCGImage:self.CGImage scale:self.scale orientation:imageOrientation];
+    UIImage *rotatedImage = [image imageByRotatingToIntrinsicOrientation];
+    
+    return rotatedImage;
+}
+
+- (nullable UIImage *)imageByRotatingToIntrinsicOrientation
+{
+    if (self.imageOrientation == UIImageOrientationUp)
+    {
+        // Image orientation is already UIImageOrientationUp, so no need to do anything.
+        return self;
+    }
+    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (self.imageOrientation)
+    {
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+            
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, self.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+    }
+    
+    switch (self.imageOrientation)
+    {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, self.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    CGRect rect = CGRectIntegral(CGRectMake(0, 0, self.size.width * self.scale, self.size.height * self.scale));
+    
+    CGContextRef context = [self createContextWithRect:rect];
+    if (context == nil)
+    {
+        return nil;
+    }
+    
+    CGContextConcatCTM(context, transform);
+    
+    switch (self.imageOrientation)
+    {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            CGContextDrawImage(context, CGRectMake(0, 0, CGRectGetHeight(rect), CGRectGetWidth(rect)), self.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(context, rect, self.CGImage);
+            break;
+    }
+    
+    CGImageRef imageRef = CGBitmapContextCreateImage(context);
+    UIImage *image = [[UIImage imageWithCGImage:imageRef scale:self.scale orientation:UIImageOrientationUp] imageWithRenderingMode:self.renderingMode];
+    
+    CFRelease(imageRef);
+    CFRelease(context);
+    
+    return image;
+}
+
 #pragma mark - Graphics Context -
 
 - (nullable CGContextRef)createContextWithRect:(CGRect)rect

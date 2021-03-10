@@ -36,6 +36,10 @@ RST_EXTERN UIImageOrientation UIImageOrientationFromMetadataOrientation(UIImageM
 - (nullable UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius;
 - (nullable UIImage *)imageWithCornerRadius:(CGFloat)cornerRadius inset:(UIEdgeInsets)inset;
 
+// Rotating
+- (nullable UIImage *)imageByRotatingToImageOrientation:(UIImageOrientation)imageOrientation NS_SWIFT_NAME(rotatedToImageOrientation(_:));
+- (nullable UIImage *)imageByRotatingToIntrinsicOrientation NS_SWIFT_NAME(rotatedToIntrinsicOrientation());
+
 @end
 
 NS_ASSUME_NONNULL_END
