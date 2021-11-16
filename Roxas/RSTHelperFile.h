@@ -7,6 +7,7 @@
 //
 
 #import "RSTNavigationController.h"
+#import "RSTDefines.h"
 
 @import UIKit;
 

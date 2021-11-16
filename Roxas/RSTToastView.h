@@ -6,6 +6,8 @@
 //  Copyright © 2017 Riley Testut. All rights reserved.
 //
 
+#import "RSTDefines.h"
+
 @import UIKit;
 
 typedef NS_ENUM(NSInteger, RSTViewEdge) {

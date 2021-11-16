@@ -7,6 +7,7 @@
 //
 
 #import "NSFileManager+URLs.h"
+#import "RSTDefines.h"
 
 @implementation NSFileManager (URLs)
 

@@ -16,9 +16,6 @@
 #endif
 
 #ifdef __OBJC__
-
-#import "RSTDefines.h"
-
 #endif
 
 #endif

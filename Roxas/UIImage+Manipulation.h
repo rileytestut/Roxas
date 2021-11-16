@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 TMT. All rights reserved.
 //
 
+#import "RSTDefines.h"
+
 @import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN

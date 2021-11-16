@@ -10,6 +10,7 @@
 #import "RSTRelationshipPreservingMergePolicy.h"
 
 #import "RSTError.h"
+#import "RSTDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
