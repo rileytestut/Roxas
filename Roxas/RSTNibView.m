@@ -41,7 +41,13 @@
     NSArray<NSString *> *components = [name componentsSeparatedByString:@"."];
     name = [components lastObject];
     
-    UINib *nib = [UINib nibWithNibName:name bundle:[NSBundle bundleForClass:self.class]];
+    #if SWIFT_PACKAGE
+    NSBundle *bundle = SWIFTPM_MODULE_BUNDLE;
+    #else
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    #endif
+    
+    UINib *nib = [UINib nibWithNibName:name bundle:bundle];
     NSArray *views = [nib instantiateWithOwner:self options:nil];
     
     UIView *nibView = [views firstObject];

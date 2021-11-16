@@ -6,7 +6,7 @@
 //  Copyright © 2015 Riley Testut. All rights reserved.
 //
 
-#import <Roxas/RSTNibView.h>
+#import "RSTNibView.h"
 
 @import UIKit;
 
