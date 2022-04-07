@@ -289,7 +289,10 @@ NS_ASSUME_NONNULL_END
 {
     if (self.contentView.window == nil)
     {
-        // Don't update content view if it's not in window hierarchy.
+        // If contentView isn't in view hierarchy, just call reloadData.
+        // This ensures contentView stays in sync with the data source, and
+        // contentView won't actually reload the cells until visible again.
+        [self.contentView reloadData];
         return;
     }
     

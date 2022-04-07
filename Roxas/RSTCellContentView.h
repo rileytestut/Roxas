@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)beginUpdates;
 - (void)endUpdates;
+- (void)reloadData;
 
 - (void)addChange:(RSTCellContentChange *)change;
 
