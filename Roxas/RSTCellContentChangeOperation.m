@@ -141,7 +141,15 @@
             
         case NSFetchedResultsChangeUpdate:
         {
-            [self.collectionView reloadItemsAtIndexPaths:@[self.change.currentIndexPath]];
+            if (self.change.sectionIndex != RSTUnknownSectionIndex)
+            {
+                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.change.sectionIndex]];
+            }
+            else
+            {
+                [self.collectionView reloadItemsAtIndexPaths:@[self.change.currentIndexPath]];
+            }
+            
             break;
         }
     }
