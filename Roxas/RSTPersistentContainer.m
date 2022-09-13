@@ -260,33 +260,22 @@ NS_ASSUME_NONNULL_END
 
 - (nullable NSMigrationManager *)progressiveMigrationManagerForSourceModel:(NSManagedObjectModel *)sourceModel destinationModel:(NSManagedObjectModel *)destinationModel configuration:(nullable NSString *)configuration mappingModel:(NSMappingModel **)outMappingModel
 {
+    NSMappingModel *explicitMappingModel = [self explicitMappingModelForSourceModel:sourceModel destinationModel:destinationModel configuration:configuration];
+    if (explicitMappingModel != nil)
+    {
+        *outMappingModel = explicitMappingModel;
+        
+        NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel destinationModel:destinationModel];
+        return migrationManager;
+    }
+    
     NSArray<NSURL *> *managedObjectModelURLs = [self managedObjectModelURLs];
     for (NSURL *modelURL in managedObjectModelURLs)
     {
         NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-        NSMappingModel *mappingModel = [NSMappingModel mappingModelFromBundles:NSBundle.allBundles
-                                                                forSourceModel:sourceModel
-                                                              destinationModel:model];
+        
+        NSMappingModel *mappingModel = [self explicitMappingModelForSourceModel:sourceModel destinationModel:model configuration:configuration];
         if (mappingModel == nil)
-        {
-            continue;
-        }
-        
-        // If this model contains at least one entity that belongs to our configuration,
-        // we can assume that this is a valid mapping model for the configuration.
-        BOOL isValidForConfiguration = NO;
-        
-        // sourceModel doesn't properly merge configurations, so retrieve configuration entities via self.managedObjectModel.
-        for (NSEntityDescription *entityDescription in [self.managedObjectModel entitiesForConfiguration:configuration])
-        {
-            if (model.entitiesByName[entityDescription.name] != nil)
-            {
-                isValidForConfiguration = YES;
-                break;
-            }
-        }
-        
-        if (!isValidForConfiguration)
         {
             continue;
         }
@@ -334,6 +323,40 @@ NS_ASSUME_NONNULL_END
     }
     
     return modelURLs;
+}
+
+- (nullable NSMappingModel *)explicitMappingModelForSourceModel:(NSManagedObjectModel *)sourceModel
+                                          destinationModel:(NSManagedObjectModel *)destinationModel
+                                             configuration:(nullable NSString *)configuration
+{
+    NSMappingModel *mappingModel = [NSMappingModel mappingModelFromBundles:NSBundle.allBundles
+                                                            forSourceModel:sourceModel
+                                                          destinationModel:destinationModel];
+    if (mappingModel == nil)
+    {
+        return nil;
+    }
+    
+    // If this model contains at least one entity that belongs to our configuration,
+    // we can assume that this is a valid mapping model for the configuration.
+    BOOL isValidForConfiguration = NO;
+    
+    // sourceModel doesn't properly merge configurations, so retrieve configuration entities via self.managedObjectModel.
+    for (NSEntityDescription *entityDescription in [self.managedObjectModel entitiesForConfiguration:configuration])
+    {
+        if (destinationModel.entitiesByName[entityDescription.name] != nil)
+        {
+            isValidForConfiguration = YES;
+            break;
+        }
+    }
+    
+    if (!isValidForConfiguration)
+    {
+        return nil;
+    }
+    
+    return mappingModel;
 }
 
 #pragma mark - NSNotifications -
