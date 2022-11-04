@@ -159,6 +159,14 @@ NS_ASSUME_NONNULL_END
     
     // Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toastViewWillShow:) name:RSTToastViewWillShowNotification object:nil];
+    
+    // Auto Layout
+    [NSLayoutConstraint activateConstraints:@[
+        [_stackView.topAnchor constraintEqualToAnchor:self.topAnchor],
+        [_stackView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor],
+        [_stackView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor],
+        [_stackView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
+    ]];
 }
 
 #pragma mark - UIView -
