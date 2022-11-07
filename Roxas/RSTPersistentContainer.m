@@ -359,6 +359,25 @@ NS_ASSUME_NONNULL_END
     return mappingModel;
 }
 
+- (BOOL)isMigrationRequired
+{
+    for (NSPersistentStoreDescription *description in self.persistentStoreDescriptions)
+    {
+        NSDictionary *metadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:description.type URL:description.URL options:description.options error:nil];
+        if (metadata == nil)
+        {
+            continue;
+        }
+        
+        if (![self.managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:metadata])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 #pragma mark - NSNotifications -
 
 // Use rst_ prefix to prevent collisions with subclasses.

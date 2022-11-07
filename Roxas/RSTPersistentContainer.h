@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RSTPersistentContainer : NSPersistentContainer
 
-@property (assign) BOOL shouldAddStoresAsynchronously;
+@property (nonatomic, readonly) BOOL isMigrationRequired;
 
+@property (assign) BOOL shouldAddStoresAsynchronously;
 @property (nonatomic) NSMergePolicy *preferredMergePolicy;
 
 - (instancetype)initWithName:(NSString *)name bundle:(NSBundle *)bundle;
