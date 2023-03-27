@@ -129,10 +129,16 @@ NS_ASSUME_NONNULL_END
     return context;
 }
 
-- (NSManagedObjectContext *)newViewContextWithParent:(NSManagedObjectContext *)parentContext
+- (NSManagedObjectContext *)newViewContextWithParent:(nullable NSManagedObjectContext *)parentContext
 {
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [self configureManagedObjectContext:context parent:parentContext];
+    
+    if (parentContext == nil)
+    {
+        context.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    }
+    
     return context;
 }
 
