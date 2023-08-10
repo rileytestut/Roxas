@@ -343,26 +343,29 @@ NS_ASSUME_NONNULL_END
         return nil;
     }
     
-    // If this model contains at least one entity that belongs to our configuration,
-    // we can assume that this is a valid mapping model for the configuration.
-    BOOL isValidForConfiguration = NO;
-    
     // sourceModel doesn't properly merge configurations, so retrieve configuration entities via self.managedObjectModel.
     for (NSEntityDescription *entityDescription in [self.managedObjectModel entitiesForConfiguration:configuration])
     {
-        if (destinationModel.entitiesByName[entityDescription.name] != nil)
+        if (destinationModel.entitiesByName[entityDescription.name] == nil)
         {
-            isValidForConfiguration = YES;
-            break;
+            // entityDescription not included in destinationModel, skip.
+            continue;
+        }
+        
+        // entityDescription included in destinationModel, make sure mapping model's destination also includes it.
+        
+        for (NSEntityMapping *mapping in mappingModel.entityMappings)
+        {
+            if ([mapping.destinationEntityName isEqualToString:entityDescription.name])
+            {
+                // If mappingModel contains at least one entity that belongs to our configuration,
+                // we can assume that this is a valid mapping model.
+                return mappingModel;
+            }
         }
     }
     
-    if (!isValidForConfiguration)
-    {
-        return nil;
-    }
-    
-    return mappingModel;
+    return nil;
 }
 
 - (BOOL)isMigrationRequired
