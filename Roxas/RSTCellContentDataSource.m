@@ -436,6 +436,12 @@ NS_ASSUME_NONNULL_END
     // We store the completionHandler, and it's not guaranteed to be nil'd out (since prefetch may take a long time), so we use a weak reference to self inside the block to prevent strong reference cycle.
     RSTCellContentDataSource *__weak weakSelf = self;
     [self prefetchItemAtIndexPath:indexPath completionHandler:^(id prefetchItem, NSError *error) {
+        void (^prefetchCompletionHandler)(UIView<RSTCellContentCell> *, _Nullable id, NSIndexPath *, NSError *_Nullable) = weakSelf.prefetchCompletionHandler;
+        if (prefetchCompletionHandler == nil)
+        {
+            return;
+        }
+        
         NSIndexPath *cellIndexPath = [contentView indexPathForCell:cell];
         
         if (cellIndexPath)
@@ -444,7 +450,7 @@ NS_ASSUME_NONNULL_END
             if ([item isEqual:cellItem])
             {
                 // Cell is in use, but its current index path still corresponds to the same item, so update.
-                weakSelf.prefetchCompletionHandler(cell, prefetchItem, cellIndexPath, error);
+                prefetchCompletionHandler(cell, prefetchItem, cellIndexPath, error);
             }
             else
             {
@@ -454,7 +460,7 @@ NS_ASSUME_NONNULL_END
         else
         {
             // Cell is currently being configured for use, so update.
-            weakSelf.prefetchCompletionHandler(cell, prefetchItem, indexPath, error);
+            prefetchCompletionHandler(cell, prefetchItem, indexPath, error);
         }
     }];
     
