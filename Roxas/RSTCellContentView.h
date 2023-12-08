@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nullable) UIView *backgroundView;
 
+@property (nonatomic, readonly) NSInteger numberOfSections;
+
 - (void)beginUpdates;
 - (void)endUpdates;
 - (void)reloadData;
@@ -30,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addChange:(RSTCellContentChange *)change;
 
 - (nullable id)indexPathForCell:(id)cell;
+
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
 
 - (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 

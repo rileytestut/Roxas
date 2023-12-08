@@ -226,8 +226,36 @@ NS_ASSUME_NONNULL_END
     
     if (self.liveFetchLimit > 0)
     {
-        NSInteger itemCount = self.itemCount;
+        // Reflects _previous_ section counts.
+        NSInteger currentSectionCount = -1;
+        NSInteger destinationSectionCount = -1;
         
+        id<NSFetchedResultsSectionInfo> currentSection = nil;
+        if (indexPath.section < self.fetchedResultsController.sections.count)
+        {
+            currentSection = self.fetchedResultsController.sections[indexPath.section];
+        }
+        
+        if (indexPath != nil)
+        {
+            NSIndexPath *globalIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:indexPath] ?: indexPath;
+            currentSectionCount = [self.contentView numberOfItemsInSection:globalIndexPath.section];
+        }
+        
+        if (newIndexPath != nil)
+        {
+            NSIndexPath *globalIndexPath = [self.indexPathTranslator dataSource:self globalIndexPathForLocalIndexPath:newIndexPath] ?: newIndexPath;
+            if (globalIndexPath.section < [self.contentView numberOfSections])
+            {
+                destinationSectionCount = [self.contentView numberOfItemsInSection:globalIndexPath.section];
+            }
+            else
+            {
+                // Section does not yet exist, so count is 0.
+                destinationSectionCount = 0;
+            }
+        }
+                
         switch (change.type)
         {
             case RSTCellContentChangeInsert:
@@ -244,14 +272,14 @@ NS_ASSUME_NONNULL_END
                     return;
                 }
                 
-                if (itemCount >= self.liveFetchLimit)
+                if (currentSectionCount >= self.liveFetchLimit)
                 {
                     // Unlike insertions, deletions don't also report the items that moved.
                     // To ensure consistency, we manually insert an item previously hidden by fetch limit.
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:0];
+                    NSIndexPath *insertedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:indexPath.section];
 
-                    RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:indexPath];
-                    [self.contentView addChange:change];
+                    RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:insertedIndexPath];
+                    [self addChange:change];
                 }
                 
                 break;
@@ -271,11 +299,55 @@ NS_ASSUME_NONNULL_END
                 }
                 else if (indexPath.item >= self.liveFetchLimit && newIndexPath.item < self.liveFetchLimit)
                 {
+                    // Previously hidden, but now visible.
+                    
                     change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:newIndexPath];
+                    
+                    if (destinationSectionCount >= self.liveFetchLimit)
+                    {
+                        // Remove item from destination section.
+                        NSIndexPath *deletedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:newIndexPath.section];
+
+                        RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeDelete currentIndexPath:deletedIndexPath destinationIndexPath:nil];
+                        [self addChange:change];
+                    }
                 }
                 else if (indexPath.item < self.liveFetchLimit && newIndexPath.item >= self.liveFetchLimit)
                 {
+                    // Previously visible, but now hidden.
+                    
                     change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeDelete currentIndexPath:indexPath destinationIndexPath:nil];
+                    
+                    if (currentSectionCount >= self.liveFetchLimit && currentSection.numberOfObjects > self.liveFetchLimit)
+                    {
+                        // Section currently has more items than liveFetchLimit, so insert item to section to balance deletion.
+                        NSIndexPath *insertedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:indexPath.section];
+
+                        RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:insertedIndexPath];
+                        [self addChange:change];
+                    }
+                }
+                else if (indexPath.section != newIndexPath.section)
+                {
+                    // Visible before and after move, but moving between sections.
+                    
+                    if (currentSectionCount >= self.liveFetchLimit && currentSection.numberOfObjects > self.liveFetchLimit)
+                    {
+                        // Section currently has more items than liveFetchLimit, so insert item to section to balance move.
+                        NSIndexPath *insertedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:indexPath.section];
+
+                        RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:insertedIndexPath];
+                        [self addChange:change];
+                    }
+                    
+                    if (destinationSectionCount >= self.liveFetchLimit) // Greater than OR equal
+                    {
+                        // Remove item from destination section.
+                        NSIndexPath *deletedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:newIndexPath.section];
+
+                        RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeDelete currentIndexPath:deletedIndexPath destinationIndexPath:nil];
+                        [self addChange:change];
+                    }
                 }
                 
                 break;
@@ -389,6 +461,12 @@ NS_ASSUME_NONNULL_END
 {
     if (self.fetchedResultsController.fetchedObjects == nil)
     {
+        return [super itemCount];
+    }
+    
+    if (self.liveFetchLimit > 0)
+    {
+        // Use superclass implementation to calculate with liveFetchLimit.
         return [super itemCount];
     }
     

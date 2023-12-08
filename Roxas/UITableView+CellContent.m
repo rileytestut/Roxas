@@ -71,6 +71,11 @@
     return [self cellForRowAtIndexPath:indexPath];
 }
 
+- (NSInteger)numberOfItemsInSection:(NSInteger)section
+{
+    return [self numberOfRowsInSection:section];
+}
+
 - (id)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
 {
     return [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
