@@ -274,12 +274,18 @@ NS_ASSUME_NONNULL_END
                 
                 if (currentSectionCount >= self.liveFetchLimit)
                 {
-                    // Unlike insertions, deletions don't also report the items that moved.
-                    // To ensure consistency, we manually insert an item previously hidden by fetch limit.
                     NSIndexPath *insertedIndexPath = [NSIndexPath indexPathForItem:self.liveFetchLimit - 1 inSection:indexPath.section];
-
-                    RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:insertedIndexPath];
-                    [self addChange:change];
+                    if ([self isValidIndexPath:insertedIndexPath])
+                    {
+                        // Unlike insertions, deletions don't also report the items that moved.
+                        // To ensure consistency, we manually insert an item previously hidden by fetch limit.
+                        RSTCellContentChange *change = [[RSTCellContentChange alloc] initWithType:RSTCellContentChangeInsert currentIndexPath:nil destinationIndexPath:insertedIndexPath];
+                        [self addChange:change];
+                    }
+                    else
+                    {
+                        // Index path is invalid, which means there are no additional items to insert into the section.
+                    }
                 }
                 
                 break;

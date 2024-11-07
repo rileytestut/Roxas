@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfSectionsInContentView:(__kindof UIScrollView<RSTCellContentView> *)contentView;
 - (NSInteger)contentView:(__kindof UIScrollView<RSTCellContentView> *)contentView numberOfItemsInSection:(NSInteger)section;
 
+- (BOOL)isValidIndexPath:(NSIndexPath *)indexPath;
+
 - (void)prefetchItemAtIndexPath:(NSIndexPath *)indexPath completionHandler:(void (^_Nullable)(id prefetchItem, NSError *error))completionHandler;
 - (void)filterContentWithPredicate:(nullable NSPredicate *)predicate;
 
