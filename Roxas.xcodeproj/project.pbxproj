@@ -138,6 +138,11 @@
 		BFF2D107219CEC3B00191AB4 /* RSTToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF2D105219CEC3B00191AB4 /* RSTToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFF2D10A219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */; };
 		BFF2D10B219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D54CBCE72E3047EF00F704F5 /* RSTLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CBCE62E3047EF00F704F5 /* RSTLocalizedError.swift */; };
+		D54CBCE92E3048C900F704F5 /* NSError+Roxas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CBCE82E3048C900F704F5 /* NSError+Roxas.swift */; };
+		D54CBCEC2E3049CA00F704F5 /* RSTWrappedError.h in Headers */ = {isa = PBXBuildFile; fileRef = D54CBCEA2E3049CA00F704F5 /* RSTWrappedError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D54CBCED2E3049CA00F704F5 /* RSTWrappedError.m in Sources */ = {isa = PBXBuildFile; fileRef = D54CBCEB2E3049CA00F704F5 /* RSTWrappedError.m */; };
+		D54CBCEF2E304B1F00F704F5 /* UserInfoValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CBCEE2E304B1F00F704F5 /* UserInfoValue.swift */; };
 		D55E1226212F44710095CA4F /* RSTNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = D55E1224212F44710095CA4F /* RSTNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D55E1227212F44710095CA4F /* RSTNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = D55E1225212F44710095CA4F /* RSTNibView.m */; };
 		D581E69F2137310600789E1D /* RSTTintedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D581E69D2137310600789E1D /* RSTTintedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -249,6 +254,11 @@
 		BFF2D105219CEC3B00191AB4 /* RSTToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTToastView.h; sourceTree = "<group>"; };
 		BFF2D108219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISpringTimingParameters+Conveniences.m"; sourceTree = "<group>"; };
 		BFF2D109219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISpringTimingParameters+Conveniences.h"; sourceTree = "<group>"; };
+		D54CBCE62E3047EF00F704F5 /* RSTLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTLocalizedError.swift; sourceTree = "<group>"; };
+		D54CBCE82E3048C900F704F5 /* NSError+Roxas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Roxas.swift"; sourceTree = "<group>"; };
+		D54CBCEA2E3049CA00F704F5 /* RSTWrappedError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTWrappedError.h; sourceTree = "<group>"; };
+		D54CBCEB2E3049CA00F704F5 /* RSTWrappedError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTWrappedError.m; sourceTree = "<group>"; };
+		D54CBCEE2E304B1F00F704F5 /* UserInfoValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoValue.swift; sourceTree = "<group>"; };
 		D55E1224212F44710095CA4F /* RSTNibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTNibView.h; sourceTree = "<group>"; };
 		D55E1225212F44710095CA4F /* RSTNibView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTNibView.m; sourceTree = "<group>"; };
 		D581E69D2137310600789E1D /* RSTTintedImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTTintedImageView.h; sourceTree = "<group>"; };
@@ -472,6 +482,7 @@
 				BF0FB4421C017DD600D26616 /* Visual Components */,
 				BFC6B5CF1A0A100E00BECAB5 /* Containers */,
 				BF8422232193776F0035340B /* Functionality */,
+				D54CBCE52E3047D300F704F5 /* Errors */,
 				BF36F1CE1A1459720057FF07 /* Categories */,
 				BFADAFFB19AE7BB70050CF31 /* Supporting Files */,
 			);
@@ -648,6 +659,18 @@
 			name = "Toast View";
 			sourceTree = "<group>";
 		};
+		D54CBCE52E3047D300F704F5 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D54CBCE62E3047EF00F704F5 /* RSTLocalizedError.swift */,
+				D54CBCEE2E304B1F00F704F5 /* UserInfoValue.swift */,
+				D54CBCE82E3048C900F704F5 /* NSError+Roxas.swift */,
+				D54CBCEA2E3049CA00F704F5 /* RSTWrappedError.h */,
+				D54CBCEB2E3049CA00F704F5 /* RSTWrappedError.m */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		D55E1223212F444C0095CA4F /* Nib View */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +757,7 @@
 				BF71CF8E1FE912D1001F1613 /* RSTCompositeDataSource.h in Headers */,
 				BF58BC0E1D51A027008FC1A3 /* UICollectionView+CellContent.h in Headers */,
 				BFC5B07F20A0F25A0085B6A3 /* RSTCollectionViewCell.h in Headers */,
+				D54CBCEC2E3049CA00F704F5 /* RSTWrappedError.h in Headers */,
 				BF8FD1CC1E5BBFB100820F2C /* UITableViewCell+CellContent.h in Headers */,
 				BF2DF1521C97484A00F9FDD8 /* UIViewController+TransitionState.h in Headers */,
 				BF53E98D207B46EE00A57BCE /* UIKit+ActivityIndicating.h in Headers */,
@@ -820,7 +844,7 @@
 				TargetAttributes = {
 					BFADAFF719AE7BB70050CF31 = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1620;
 					};
 					BFADB00219AE7BB80050CF31 = {
 						CreatedOnToolsVersion = 6.0;
@@ -919,12 +943,14 @@
 			files = (
 				BFF2D10A219CEC4900191AB4 /* UISpringTimingParameters+Conveniences.m in Sources */,
 				BF3AC2CA20E686EE00F7DD99 /* RSTSeparatorView.m in Sources */,
+				D54CBCEF2E304B1F00F704F5 /* UserInfoValue.swift in Sources */,
 				BFE35D841DBED4D700F77C10 /* UITableView+CellContent.m in Sources */,
 				BF8D82271E53CFEE00756F08 /* NSPredicate+Search.m in Sources */,
 				BFE8F0471E4AF8A200A64745 /* RSTSearchController.m in Sources */,
 				BFADB01419AE7C4A0050CF31 /* RSTHelperFile.m in Sources */,
 				BF18B6141E2967D400F70067 /* NSString+Localization.m in Sources */,
 				BFDF04DA1D51193B00091747 /* RSTCellContentChangeOperation.m in Sources */,
+				D54CBCED2E3049CA00F704F5 /* RSTWrappedError.m in Sources */,
 				BFBDEA351EC274D20034D65E /* UIAlertAction+Actions.m in Sources */,
 				BF36F1D11A1459B90057FF07 /* UIImage+Manipulation.m in Sources */,
 				BF357B5320FD240B00A4A1A0 /* RSTRelationshipPreservingMergePolicy.m in Sources */,
@@ -937,11 +963,13 @@
 				BF9AB7D21A477FF4007DFEFF /* NSFileManager+URLs.m in Sources */,
 				BFA0E42A1A3E956300DA1EC2 /* NSBundle+Extensions.m in Sources */,
 				BFAFF4E51E5C233500C67FF3 /* RSTBlockOperation.m in Sources */,
+				D54CBCE72E3047EF00F704F5 /* RSTLocalizedError.swift in Sources */,
 				BFE8F04B1E4AF9F400A64745 /* RSTCellContentDataSource.m in Sources */,
 				BF2DF1471C96ABA100F9FDD8 /* RSTOperationQueue.m in Sources */,
 				BFB2283C2066FBBF00F08151 /* RSTLaunchViewController.m in Sources */,
 				BFF2D106219CEC3B00191AB4 /* RSTToastView.m in Sources */,
 				BFDB50631EB942F50084C58A /* NSLayoutConstraint+Edges.m in Sources */,
+				D54CBCE92E3048C900F704F5 /* NSError+Roxas.swift in Sources */,
 				BFC5B08020A0F25A0085B6A3 /* RSTCollectionViewCell.m in Sources */,
 				BF8FD1CD1E5BBFB100820F2C /* UITableViewCell+CellContent.m in Sources */,
 				BF2DF14C1C96B56000F9FDD8 /* RSTOperation.m in Sources */,

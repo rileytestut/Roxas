@@ -76,6 +76,9 @@ FOUNDATION_EXPORT const unsigned char RoxasVersionString[];
 // Functionality
 #import <Roxas/RSTHasher.h>
 
+// Errors
+#import <Roxas/RSTWrappedError.h>
+
 // Categories
 #import <Roxas/UIImage+Manipulation.h>
 #import <Roxas/NSBundle+Extensions.h>
