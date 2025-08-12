@@ -14,5 +14,6 @@ import SwiftSyntaxMacros
 @main
 struct RoxasPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
+        RSTLocalizedErrorMacro.self
     ]
 }
