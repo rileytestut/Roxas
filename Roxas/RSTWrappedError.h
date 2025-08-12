@@ -6,7 +6,9 @@
 //  Copyright © 2022 Riley Testut. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Roxas/Roxas.h>
+
+@import Foundation;
 
 NS_ASSUME_NONNULL_BEGIN
 

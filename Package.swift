@@ -11,7 +11,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "Roxas",
-            targets: ["Roxas"]
+            targets: ["Roxas", "RoxasObjC"]
         ),
         .executable(
             name: "RoxasClient",
@@ -34,7 +34,17 @@ let package = Package(
         ),
 
         // Library that exposes a macro as part of its API, which is used in client programs.
-        .target(name: "Roxas", dependencies: ["RoxasMacros"]),
+        .target(name: "Roxas", dependencies: ["RoxasMacros", "RoxasObjC"]),
+        
+        // Library that contains all Objective-C code in Roxas.
+        .target(
+            name: "RoxasObjC",
+            path: "Roxas",
+            publicHeadersPath: "",
+            cSettings: [
+                .headerSearchPath("")
+            ]
+        ),
 
         // A client of the library, which is able to use the macro in its own code.
         .executableTarget(name: "RoxasClient", dependencies: ["Roxas"]),

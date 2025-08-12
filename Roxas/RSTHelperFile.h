@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Riley Testut. All rights reserved.
 //
 
-#import "RSTNavigationController.h"
+#import <Roxas/Roxas.h>
 
 @import UIKit;
 

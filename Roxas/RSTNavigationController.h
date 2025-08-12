@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Riley Testut. All rights reserved.
 //
 
+#import <Roxas/Roxas.h>
+
 @import UIKit;
 
 @interface RSTNavigationController : UINavigationController
