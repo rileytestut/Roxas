@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RSTLaunchViewController ()
 
 @property (nonatomic, nullable) UIView *launchView;
+@property (nonatomic, nullable) UIViewController *launchViewController;
 
 @end
 
@@ -68,8 +69,9 @@ NS_ASSUME_NONNULL_END
     {
         UIStoryboard *launchStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
         
-        UIViewController *initialViewController = [launchStoryboard instantiateInitialViewController];
-        self.launchView = initialViewController.view;
+        // Strong references to avoid unowned reference crash on iOS 26.
+        self.launchViewController = [launchStoryboard instantiateInitialViewController];
+        self.launchView = self.launchViewController.view;
     }
     
     if (self.launchView == nil)
