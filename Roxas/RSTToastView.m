@@ -110,7 +110,8 @@ NS_ASSUME_NONNULL_END
     _detailTextLabel.numberOfLines = 0;
     [_detailTextLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(text)) options:NSKeyValueObservingOptionOld context:RSTToastViewContext];
     
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+    _activityIndicatorView.color = UIColor.whiteColor;
     _activityIndicatorView.hidesWhenStopped = YES;
     
     UIStackView *labelsStackView = [[UIStackView alloc] initWithArrangedSubviews:@[_textLabel, _detailTextLabel]];

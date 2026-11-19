@@ -126,15 +126,7 @@ NS_ASSUME_NONNULL_END
     {
         if (_activityIndicatorView == nil)
         {
-            if (@available(iOS 13, *))
-            {
-                _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
-            }
-            else
-            {
-                _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            }
-            
+            _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
             _activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
@@ -531,12 +523,14 @@ NS_ASSUME_NONNULL_END
 
 - (void)startIndicatingActivity
 {
-    self.networkActivityIndicatorVisible = YES;
+    // Deprecated as of iOS 13 and not supported by modern devices.
+    // self.networkActivityIndicatorVisible = YES;
 }
 
 - (void)stopIndicatingActivity
 {
-    self.networkActivityIndicatorVisible = NO;
+    // Deprecated as of iOS 13 and not supported by modern devices.
+    // self.networkActivityIndicatorVisible = NO;
 }
 
 #pragma mark - <RSTActivityIndicating> -
