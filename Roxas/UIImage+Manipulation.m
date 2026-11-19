@@ -260,7 +260,7 @@
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(self.CGImage);
     CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(self.CGImage);
     
-    bitmapInfo &= ~(kCGBitmapAlphaInfoMask & alphaInfo);
+    bitmapInfo &= ~(kCGBitmapAlphaInfoMask & (CGBitmapInfo)alphaInfo);
     
     switch (alphaInfo)
     {
@@ -276,7 +276,7 @@
         default: break;
     }
     
-    bitmapInfo |= (kCGBitmapAlphaInfoMask & alphaInfo);
+    bitmapInfo |= (kCGBitmapAlphaInfoMask & (CGBitmapInfo)alphaInfo);
     
     CGContextRef context = CGBitmapContextCreate(NULL,
                                                  CGRectGetWidth(rect),
